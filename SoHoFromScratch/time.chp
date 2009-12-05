@@ -1,6 +1,10 @@
-
+====
 Time
 ====
+
+Fruit Flies like a banana
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Time waits for no man. Or it flies like an arrow. Something like that. But still keeping accurate time is as important now as it was when Harrison built his first clock.  In a networked world, having one machine with accurate time is not the worst problem - all the machines we use need to be synchronised to the same time, else trying to compare logs on different machines is quite simply a nightmare.
 
 The solution to both these problems is called Network Time Protocol or NTP. NTP is a way for any server to get the current time from an atomic clock, even if it is thousands of miles away.  Atomic clocks keep, what is simply the most accurate time humankind can keep.  These clocks then are used to keep *stratum 1* servers up to date. These stratum 1 servers are the starting point for NTP, and are primarily run by academic and governmental institutions.  They are the source point for, rather boringly, *stratum 2* servers. These stratum 2 servers are run, often by volunteers to provide you and I with a machine that knows precisely what the time is, and more importantly, are willing to tell us.
