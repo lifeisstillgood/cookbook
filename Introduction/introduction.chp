@@ -133,7 +133,7 @@ There are several guiding principles
 - build from scratch, from scripts.
 - release well
 - everything can have programmatic access. Everything. 
-- Right, Wrong, Not Wrong, Not Even Wrong
+- Right, Wrong, Not Wrong, `Not Even Wrong <./notwrong.html>`_
 - Everyone will be able to program, but not everyone will earn a living as a programmer. Just as everyone uses writing to do their jobs, but not everyone will earn a living writing.
 
 

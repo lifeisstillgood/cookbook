@@ -2,13 +2,28 @@
 Identity Crises
 ===============
 
+Why are all government ID schemes bad ideas and what can be done instead ?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+..  notes:
+    Put our own ID / biometrics online
+    then others can see them - too hide them in govt dbases that are somehow made secure
+    is to belive foolishly the govt can do this (and then allow every toim dick and customs guard to view it, instantly
+    and to beleive in security through obscurity.
+    its like thinking if I wear a paper bag no one can steal my face.
+    Stealing a likeness of your face or retina is not the hard part.
+    Passing your self off with my face or retina. Thats the hard part.
+
+    security is web of trust, and amount of trust.
+
+
+
 Identity, Security and ID Cards
 ===============================
 
-
 You are unique, a one-off, there is no-one quite like you in the world. Honestly.
 
-It sounds like a nice compliment, and of course I meant it like that.  I love your work, dahling. 
+It sounds like a nice compliment, and of course I meant it like that.  I _love_ your work, _dahling_. 
  
 However, its probably less of a compliment than most of us would first think, because its rather an obvious statement.
 
@@ -38,7 +53,32 @@ Identity is not Authentication, nor is it Authorisation.
 
 Identity, and this is important, identity is a *public* thing. I am Paul Brian.  But for security to work well there need to be secrets, usually secrets *shared* between the secure system and the person wanting access.
 
-For example, using a persons identity to Authenticate their identity is circular and foolish.  It is the basic mistake made by pretty much any I.D. Card scheme [#]_.  My bank will not let someone walk in, announce in a loud voice "I am Paul Brian" and withdraw my cash.  However bio-metrics are leading us down this dangerous path.  Oh, I do mean dangerous.  
+I am the identity Paul Brian.  There is next to no point in spending effort to ensure that I am who I claim to be.
+
+The simplest security approach is to have a shared secret, and rely on that.  For example a PIN number or a key.  This works fairly well.  Of course this is one-factor authentication.  Two factor authentication works even better - for example a PIN Number and a bank card.  
+
+This is OK, for most security.  If you want to do more you have two choices - monitor for likely fraudulent or suspect transactions, or try for three-factor security.  
+
+THree factor security usually means not only must any human hold the card and know the PIN number, but the hand holding the card must bleong to a given person.  Now here are two foolish assumptions.  Firstly three factor authentication is a bit more secure, but the minute biometrics work say 98% well, then we shall junk the bank cards and go back to two factor authentication, or even one factor, losing even the PIN numbers. This is dangerous
+
+OK, three factor authentication is not getting us anywhere.  How about monotoring for suspect transactions.  This works surprisingly well.  I have had credit cards refused on holiday because I forgot to tell the bank I was going.  Enbarrassing but from the banks point of view it empahsises their main selling point - security.
+
+And it works well for the things governments are concerned about too - crime and taxation.  Tax evasion is prevented not because governments know the identity of those supposed to be paying tax.  (well the really easy cases might be :-).  But evasion is caught because that massive loss in the second quarter looked a bit unlikely, because the auditor counted the number of chinese takeaway foil boxes coming in and meals going out. [#]_
+
+
+
+Failure of biometrics and two factor authentication
+---------------------------------------------------
+
+Using a persons identity to Authenticate their identity is circular and foolish.  This is the failure of biometrics.  THe most common biometric all humans have is their face.  Millions of years of evolution have brought us the ability to easily recognise the clearest identity-proxy humans have.  I can be pretty sure of differentiating between any one of 6 billion humans using this simple biometric.  And so what.  I will not let any of them into my web of trust based on the idea they are an identity. 
+
+
+web of trust allows us to continually gradate the trust available over time.  
+
+ID cards are a one off solution - in or out, passport or not.
+
+
+
 
 In 2005 [#]_ the Mercedes S-class had fingerprint recognition on the handle.  Very swish.  Till robbers in Malaysia cut off a man's fingers and stole his car.  The car makers had confused a public (and publicly available) statement (the owner's identity) with Authentication - a corroboration of the identity (i.e. knowing a pin number to get in the car).  This was not Identity theft.  It was theft of his car keys.
 
@@ -183,7 +223,6 @@ woman who was refused credit because of woman with same name and birthday living
   
 
 
-(insert from mail)
 
 Weaknesses of ID card schemes
 -----------------------------
@@ -196,9 +235,15 @@ privacy and data trails
 The ability to remove the data trail.  Bruce Schneir writes interestingly on this and compares our data pollution with the pllution of the early Industrial Age.  
 
 
+
+
+
+
 +++
 
 .. [#]  (http://news.bbc.co.uk/2/hi/asia-pacific/4396831.stm). One thing to take away from this is biometrics are usernames (ie public declarations).  They really do not need to be kept secret, or even particularly private.  All biometrics are is a door key. It says nothing about who you are, just what you have or hold.  Mercedes effectively turned this mans fingers into his car keys.  The robbers just stole his car keys.
+
+.. [#] This might be an urban myth.
 
 .. [#] compared to all the other basic mistakes, like thinking somehow you can build a single database with everyones retina scans on it, and have it available to every civil servant, *and still keep it secret*.
 
