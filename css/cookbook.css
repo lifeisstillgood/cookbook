@@ -8,16 +8,19 @@ body {
         border:0;		
         width:100%;
         background:#fff;
-        min-width:600px;    
+        min-width:600px;  
+	font-size: 62.5%;
+ 
 }
 
 .document{
-    font-family: Georgia,Serif;
     margin-bottom: 1em;
     margin-top: 0;
-    line-height: 140%;
-    margin-left:3em;
-    margin-right:3em;
+    font-size: 1.2em;
+    font-family: verdana, sans-serif;
+    line-height: 1.4em;
+    margin-left:2em;
+    margin-right:2em;
 }    
 
 
