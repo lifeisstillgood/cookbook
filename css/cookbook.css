@@ -16,9 +16,9 @@ body {
 .document{
     margin-bottom: 1em;
     margin-top: 0;
-    font-size: 1.2em;
+    font-size: 1.8em;
     font-family: verdana, sans-serif;
-    line-height: 1.4em;
+    line-height: 120%;
     margin-left:2em;
     margin-right:2em;
 }    

@@ -100,6 +100,7 @@ The first thing to do is see if the adaptor can find the AP ::
   ifconfig rum0 up 
   ifconfig rum0 list scan
 
+
 In a NY hotel room I get ::
 
   pbrian_laptop# ifconfig rum0 list scan
@@ -111,6 +112,22 @@ In a NY hotel room I get ::
   pbrian_laptop# ifconfig -v rum0 list scan
   SSID                              BSSID              CHAN RATE   S:N     INT CAPS
   Buckingham_Hotel                  00:c0:02:0f:ac:67    8   54M -89:-95  100 ES  
+
+
+But I do not always get a listing?
+----------------------------------
+
+Yeah, OK.  list scan is it seems a bit broken in the BSD world.  Firstly make sure the interface is up::
+
+  pbrian_laptop# ifconfig rum0  
+  rum0: flags=108843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST,NEEDSGIANT>
+                    /\/\
+                    says UP
+
+But I have sat for hours waiting for ifconfig rum0 scan to complete and got no where.
+So net-mgmt/kismet is our friend.  Its a sniffer tool, and does the job we want.
+
+
 
 unencrypted
 -----------

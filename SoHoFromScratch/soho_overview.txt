@@ -1,0 +1,252 @@
+Unix
+----
+   1.
+      Chapter 1 Introduction to System Administration
+         1.
+            Thinking About System Administration
+         2.
+            Becoming Superuser
+         3.
+            Communicating with Users
+         4.
+            About Menus and GUIs
+         5.
+            Where Does the Time Go?
+   2.
+      Chapter 2 The Unix Way
+         1.
+            Files
+         2.
+            Processes
+         3.
+            Devices
+   3.
+      Chapter 3 Essential AdministrativeTools and Techniques
+         1.
+            Getting the Most from Common Commands
+         2.
+            Essential Administrative Techniques
+   4.
+      Chapter 4 Startup and Shutdown
+         1.
+            About the Unix Boot Process
+         2.
+            Initialization Files and Boot Scripts
+         3.
+            Shutting Down a Unix System
+         4.
+            Troubleshooting: Handling Crashes and Boot Failures
+   5.
+      Chapter 5 TCP/IP Networking
+         1.
+            Understanding TCP/IP Networking
+         2.
+            Adding a New Network Host
+         3.
+            Network Testing and Troubleshooting
+   6.
+      Chapter 6 Managing Users and Groups
+         1.
+            Unix Users and Groups
+         2.
+            Managing User Accounts
+         3.
+            Administrative Tools for Managing User Accounts
+         4.
+            Administering User Passwords
+         5.
+            User Authentication with PAM
+         6.
+            LDAP: Using a Directory Service for User Authentication
+   7.
+      Chapter 7 Security
+         1.
+            Prelude: What's Wrong with This Picture?
+         2.
+            Thinking About Security
+         3.
+            User Authentication Revisited
+         4.
+            Protecting Files and the Filesystem
+         5.
+            Role-Based Access Control
+         6.
+            Network Security
+         7.
+            Hardening Unix Systems
+         8.
+            Detecting Problems
+   8.
+      Chapter 8 Managing Network Services
+         1.
+            Managing DNS Servers
+         2.
+            Routing Daemons
+         3.
+            Configuring a DHCP Server
+         4.
+            Time Synchronization with NTP
+         5.
+            Managing Network Daemons under AIX
+         6.
+            Monitoring the Network
+   9.
+      Chapter 9 Electronic Mail
+         1.
+            About Electronic Mail
+         2.
+            Configuring User Mail Programs
+         3.
+            Configuring Access Agents
+         4.
+            Configuring the Transport Agent
+         5.
+            Retrieving Mail Messages
+         6.
+            Mail Filtering with procmail
+         7.
+            A Few Final Tools
+  10.
+      Chapter 10 Filesystems and Disks
+         1.
+            Filesystem Types
+         2.
+            Managing Filesystems
+         3.
+            From Disks to Filesystems
+         4.
+            Sharing Filesystems
+  11.
+      Chapter 11 Backup and Restore
+         1.
+            Planning for Disasters and Everyday Needs
+         2.
+            Backup Media
+         3.
+            Backing Up Files and Filesystems
+         4.
+            Restoring Files from Backups
+         5.
+            Making Table of Contents Files
+         6.
+            Network Backup Systems
+         7.
+            Backing Up and Restoring the System Filesystems
+  12.
+      Chapter 12 Serial Lines and Devices
+         1.
+            About Serial Lines
+         2.
+            Specifying Terminal Characteristics
+         3.
+            Adding a New Serial Device
+         4.
+            Troubleshooting Terminal Problems
+         5.
+            Controlling Access to Serial Lines
+         6.
+            HP-UX and Tru64 Terminal Line Attributes
+         7.
+            The HylaFAX Fax Service
+         8.
+            USB Devices
+  13.
+      Chapter 13 Printers and the Spooling Subsystem
+         1.
+            The BSD Spooling Facility
+         2.
+            System V Printing
+         3.
+            The AIX Spooling Facility
+         4.
+            Troubleshooting Printers
+         5.
+            Sharing Printers with Windows Systems
+         6.
+            LPRng
+         7.
+            CUPS
+         8.
+            Font Management Under X
+  14.
+      Chapter 14 Automating Administrative Tasks
+         1.
+            Creating Effective Shell Scripts
+         2.
+            Perl: An Alternate Administrative Language
+         3.
+            Expect: Automating Interactive Programs
+         4.
+            When Only C Will Do
+         5.
+            Automating Complex Configuration Tasks with Cfengine
+         6.
+            Stem: Simplified Creation of Client-Server Applications
+         7.
+            Adding Local man Pages
+  15.
+      Chapter 15 Managing System Resources
+         1.
+            Thinking About System Performance
+         2.
+            Monitoring and Controlling Processes
+         3.
+            Managing CPU Resources
+         4.
+            Managing Memory
+         5.
+            Disk I/O Performance Issues
+         6.
+            Monitoring and Managing Disk Space Usage
+         7.
+            Network Performance
+  16.
+      Chapter 16 Configuring and Building Kernels
+         1.
+            FreeBSD and Tru64
+         2.
+            HP-UX
+         3.
+            Linux
+         4.
+            Solaris
+         5.
+            AIX System Parameters
+  17.
+      Chapter 17 Accounting
+         1.
+            Standard Accounting Files
+         2.
+            BSD-Style Accounting: FreeBSD, Linux, and AIX
+         3.
+            System V-Style Accounting: AIX, HP-UX, and Solaris
+         4.
+            Printing Accounting
+  18.
+      Chapter 18 The Profession of System Administration
+         1.
+            SAGE: The System Administrators Guild
+         2.
+            Administrative Virtues
+
+   1.
+      Appendix A Administrative Shell Programming
+         1.
+            Basic Syntax
+         2.
+            The if Statement
+         3.
+            Other Control Structures
+         4.
+            Getting Input: The read Command
+         5.
+            Other Useful Commands
+         6.
+            Shell Functions
+
+
+
+Windows
+-------
+Autoit
+
