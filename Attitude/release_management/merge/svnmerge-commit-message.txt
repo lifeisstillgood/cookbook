@@ -1,0 +1,8 @@
+Merged revisions 8 via svnmerge from 
+file:///usr/home/pbrian/samlearning.com/merge/demo_repo/trunk
+
+........
+  r8 | root | 2009-12-15 08:00:08 +0000 (Tue, 15 Dec 2009) | 1 line
+  
+  fixed something ci 8?
+........

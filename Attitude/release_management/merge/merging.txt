@@ -1,0 +1,30 @@
+===================
+Merge and branching
+===================
+
+A tutorial 
+
+
+Create a test subversion repository::
+
+  $ export myrepo=/usr/home/pbrian/samlearning.com/merge/
+  $ mkdir $myrepo
+  $ svnadmin create $myrepo
+  $ ls $myrepo
+
+  README.txt	conf		db		format		hooks		locks
+
+
+  $ mkdir -p devmachine/wc1
+  $ mkdir -p devmachine/wc2
+  
+  $ mkdir -p devmachine/wc1
+
+[root@pbrian_laptop ~/samlearning.com/merge/devmachine]# svn import menu/ file:///usr/home/pbrian/samlearning.com/merge/demo_repo/
+Adding         menu/lunch.txt
+
+Committed revision 1.
+
+
+
+  

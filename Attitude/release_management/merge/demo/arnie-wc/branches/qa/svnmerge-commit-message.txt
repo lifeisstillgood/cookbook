@@ -1,0 +1,2 @@
+Initialized merge tracking via "svnmerge" with revisions "1" from 
+file:///usr/home/pbrian/samlearning.com/trac/merge/demo/demo_repo/trunk

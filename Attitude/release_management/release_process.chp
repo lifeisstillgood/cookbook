@@ -1,0 +1,627 @@
+===============
+Release process
+===============
+
+
+
+.. divide all tickets into top 4 
+   - features
+   - technology
+   - tasks
+   - bugs
+
+   Then divide into components of the system
+ 
+   why closing low prioriy bugs - pressure. we need to do something. so instead of taking time we just do the easy ones.
+
+
+Test before moving to RC
+Test plan in each ticket / at each point ticket is handed over
+
+
+Testing > Tested > Deploy
+
+RC is always ready to deploy, or one ticket revert away
+RC is moved forward one commit at a time.
+Patch 
+
+WHat if patch merge fails
+developer responsibility to supply new patch
+svn merge -n 
+
+one ticket a day
+
+Ticke tmust have a test plan
+test plan is the spec
+we cannot progress or work on a ticket till we have been happy that ticket has moved to 'it has a written spec'.
+
+
+
+
+
+Summary
+=======
+intro
+ - difficult, indicaor of professionalism, common.
+ - oss overview
+idealised version
+inherent problems
+common broken pathologies
+common solutions 
+
+
+Introduction
+============
+Its hard to write good quality software.  It's just as hard to release that software, regularly and stabily, to the world in a usable, tested and controlled manner.  If you do not release in professional manner, why will people think you code in a professional manner.  And that is the great frustration of release management - in general decent quality code is marred by poor release processes - and in-house software development seems to be the main culprit.  This document is aimed mostly at developers for proprietary software, but it draws many lessons and inferences from Open Source Software.  
+
+For something that so awful in its consequences, bad software releases are amazingly common.  I have never known a company, especially a company with an in-house software development team, that has not made available broken (sometimes really badly broken) software.[#]_  The reason for this seems to be that good software releases demand a fairly high overhead of professional engineering effort - and that effort is rarely allocated time and resources in companies that are headed by an illiterate [#]_
+
+So good release management is an indicator of other good software engineering practises, and it also makes *confidence* in the software easier to achieve.  
+
+
+Linus Torvalds
+
+read (xxx) 
+several points come out. 
+1. torvalds is being a very effective 'manager' - he is not ordering or demanding that submaintainers act in a certain way - he just points out that without delegation they will drive themselves into ground.
+2. he himself used to do this
+3. now release management is pushed out - it becomes process of taking patches 
+4. 
+
+its never as simple as people think.
+
+Yes, the actual gathering and then releasing of sotware that is already written is a job in itself.  Linus Torvalds is responsible for the release of the Linux Kernel and he describes it as   ''  and said to do it without 
+
+
+The idea is to make others do most of the work - linus
+
+
+idealised release process
+=========================
+Below is an idealised version of software release process:
+
+1. Develop
+- write a piece of code
+
+2. Functional Test
+- test if the code does what it says
+- create a patch against the last known good code
+
+3. Integration Test
+- taking a change of code (patch)
+- applying that to the last known good code
+- testing if the change breaks anything 
+
+4. Release Early and Often
+- release that change to the world so the next patch can be made against the new 'last known good' code
+
+
+
+
+There are several difficulties  with this nice idealised approach that are *inherent* - that is we cannot get rid of
+them thorugh process or technology - we can just reduce their impact.  And of course, different approaches to minimise impact of one problem makes other issues harder.  In short, good release management is a balancing act.
+
+
+the problems:
+
+- impedance mismatch between Functional Testing and Integration Testing and between Integration Testing and Releasing.
+- what happens when I create a patch and someone else changes the last known good code and my patch fails to merge?
+- do we control all running instances of the code
+- which is more important - new features or stability (regulatory, market, personal choice)
+
+Trade offs 
+==========
+
+Time based releases
+Feature based releases
+Bug Based releases
+
+
+Stability of regression 
+New important/features (feature branches)
+number og bugs fixed
+
+
+
+
+How to choose?
+
+
+Scrum is, curiously, in the camp of Time based releases.  The idea is to have working documented tested releaseable code at the end of a fixed period of time.
+I think that this approach is very well suited for internal development houses, especially with uncertain and ever changing requirements
+
+
+
+Stability 
+
+
+
+Ideal Release Process
+=====================
+
+* Developer writes code that he believes fixes Ticket A.  
+  (this is important. it implies at least one other repo - the developer personal one).
+
+* Developer creates a patch for his changes against the current GoldMaster HEAD
+
+* Developer submits patch 
+
+* patch is applied against the RegressionTestBranch - which is the GoldMaster HEAD copy of.
+
+* Regression tests pass / fail.  If fail go back to 1. 
+
+* patch is applied to QABranch - which is the GOLDMaster HEAD copy
+
+* QA pass / fail
+
+* immediate release to GOldMaster - everyone updates.  GoldSevers are refreshed.
+
+
+
+Issues
+
+* start at R
+
+currently
+---------
+The everyone checks into HEAD
+
+* dev1 commits 1a against R; R -> R1
+* dev2 commits 2a against R1; R1 -> R2
+* dev3 commits 3a against R2; R2 -> R3
+
+* if any check in conflcts with any other there must be
+* if a check in breaks the system, no other subsequnent patch can be tested or used.
+  It is not possible to tell if the subsequent patch was designed to work with the breaking patch.
+
+There is a inverse here - either a developer with an conflict alters their code to match a repo in an unknown 
+state or they alter to match it in a known good state.
+
+
+
+
+
+* dev1 commits 1a against R
+* dev2 commits 2a against R + 1a
+  - testing shows 1a is faulty. it is removed
+  - dev2 must now check to see if their patch will be affected
+* dev1 commits 1b against R + 1a + 2a
+
+OR
+
+* dev1 commits 1a against R
+* dev2 commits 2a against R
+  - testing shows 1a is faulty and it is not committed
+  - dev2 needs to do nothing
+* R -> R1
+
+* dev1 commits 1b against R
+
+
+* Lots of work for developers
+  Saw tooth methodology
+  You are only committing to the last good release.
+  If between the time you write your code and the time 
+
+ability to squash new code into a previous untested patch
+
+
+moving patches between branches must be a low cost, tool supported process.
+
+A developer with a patch must continually? update it against goldmaster.  yes.
+
+Regression tests can test each individual patch
+manaul QA can do same - or take groups at a time - at cost of harder bisection approach
+
+
+
+- there is always QA
+
+passed manual QA 
+passed regression test
+passed developer test
+
+dead without automated regression tests
+
+the merge problem
+
+
+
+
+This is a discussion on how to transition from a messy, perhaps chaotic release process, to one that is sane and towards an idealised process.  It is I think disingenuous to promote the idea that there is *one true release process*, even if 
+continuous deployment methods are used successfully elsewhere.  However the essential parts of a continuous deployment process can be achieved, and indeed I will argue that they are required for any sane development process.
+
+The transition stages
+
+1. Release Candidate branch (release to RC)
+2. automated regression tests (unittest, whitebox)
+3. improved merge tools
+4. feature branches
+
+
+Common broken processes
+-----------------------
+
+* everyone checks into trunk, release from trunk
+
+* manual regression and QA
+
+* whats on which server now?
+
+
+Manual Testing
+--------------
+Manual Testing is not a bad idea.  Manual testing is *always* done - quite simply you cannot write an automated test without 
+doing the manual test first.  Seriously, how do you know your test actually works as a test otherwise.  (There is a slippery slope into an infinite loop here).  But anyway I want to get away from the idea that manual testing is bad.   
+
+Some things are not (reasonably) amenable to automated testing (look and feel issues spring to mind) that are perfect for manul testing.  What is bad is repeatedly performing the same test manually.  That is a waste of time and affort. (see joke)
+
+
+
+
+
+Advantages of Manual QA
+-----------------------
+1. QA as architect/manager : allows for checking that the *working* code actually does what was needed (not what asked for)
+
+2. QA as political expediency.  The boss wants to sign off on important changes.  That is his right.  But if there is no mnaula QA step built in, then the boss is an exception each time.  
+
+3. QA as handover point for Outsourced development
+
+Current problems
+----------------
+
+* unstable HEAD
+* impedance mismatch between rate of development, rate of testing and rate of release.
+* lack of Confidence
+
+We work hard, and produce creative code to solve quite difficult problems.  It is galling when that hardwork and creativity are not shown to the rest of the business and the outside world in the best way possible.  It is made worse because in software, weeks of hard work and one bug that prevents it compiling looks exactly the same as no work at all.
+
+This is not about the code we produce, it is about how we go from code to tested, documented release.
+
+In Scrum parlance, *clean code* is tested, documented code that adheres to style guidelines and other maintenance needs.
+
+We want to have a *branch* in our source control that is always clean and always ready to release.  There are many names for this - perhaps GoldMaster is a good one.  
+
+However achieving this does require some extra work.  But I am sure that work is worth it.  For starters it is possible to have a continuously updated server that represents what live would look like should the next release be authorised.
+
+
+- Whats wrong with Trunk/Head?
+  Nothing much, its how we use it that is the problem.  Source control has three uses,  firstly as a place to keep changes to code safe, the developer will check-in code that is partially done just to be sure.  Secondly it is a place to co-ordinate effort - to share changes and updates in a controlled manner, and thirdly it is a place to show how and why certain changes occureed - usually for business related reasons it is useful to know when and how a feature was added.
+
+However if we mix-up these uses, confusion can occur. and it seems that is where we have gone.  Code is being checked in to the trunk, from where we shall release (ie the bit that is supposed to be always clean) and that code has not passed testing.  Different features are developed and put onto the same branch, so even if one feature is ready, it is hard to release it as the other feature might not be.
+
+On top of this testing is being made more difficult because it can be unclear what is being tested on what server.  If we are always testing HEAD which feature that is being worked on should be tested. If something breaks, which changeset did break it.  It is valuable to test just one thing at a time (see Continuous Integration)
+
+There are solutions, and they range from the radical, to the less radical.
+
+continuous integration
+----------------------
+This is a simple idea.  Add some code to the SVN.  Check out that new set of code, install it on CI server, run all your tests (automatically) and if it passes, great, release it.
+
+This may sound crazy but it has some things going for it.  
+
+Now, every other release process is just continuous integration but *slowed down*
+
+
+discussion on time and co-odination
+-----------------------------------
+Michael has raised some powerful arguments about the amount of time and testing needed.
+
+Lets review the idea so far - take a changeset, apply it to the "last good release".  Load it onto a test server and
+test it.  If it passes, then "release" it. (either really, or to the GoldMaster branch).  Then the "last good release" 
+becomes the GoldMaster plus the changeset.  If it fails, rollback and get the developer to fix it.
+
+There are two main issues
+
+* if we take one changeset, then test it, the other changes will be waiting to be tested.  If testing takes a long time,
+ everything will take forever
+
+* if we push the GoldMaster forwards every time, then anyone who has written their changeset against GoldMaster needs to check it still works/merges against GoldMaster + 1.
+
+The first argument is based on the speed of testing.  This is a genuine problem, and the *impedance mismatch* between development and testing (and between testing and releaseing) can cause genuine problems.  However, we must test every change.  
+
+::
+
+    There is a Moldovian who goes to Odessa for a job, and is hired to paint white lines down the middle of the road.  At the end of the first day his boss asks how he got on.  
+
+    "Well I painted 1,000 yards of road today."  "
+
+    "1,000 yards! - thats incredible, you are my best worker.  Keep going"
+
+    The next day the foreman asks again and is told 
+
+    "500 yards today boss" 
+
+    "Thats still better than all my other workers, keep it up"
+
+    But after a week the boss asks again and is told
+
+    "Just 10 yards of road painted today"
+
+    "10 yards!  But you were doing so well.  What happened ?"
+
+    "Well, boss, every day it takes longer and longer to walk back to the paint pot"
+
+
+There are two kinds of testing - testing something new for the first time.  This requires thought and some effort.
+We should paint the line carefully.  But there is a second testing, testing to see if what we tested yesterday still works.
+This should not take us nearly so much time.  Yes, doing a complete integration test after every changeset would be prohibitive if it were done manually.  This is why contiuous integration processes use automated tests.
+
+In short, we need to test every change, at least once.  We cannot avoid this cost at all, and if that slows us down there are limited choices.  However, if we find we are testing the same thing many times, we should look to automate and so speed up the process.
+
+The second argument is more subtle and very valid too.  It may be instructional to think how develoments like the Liux Kernel do it.  WHils Git has made this process much simpler, the essentials still remain.  A GoldMaster is held by TOrvalds, who asks for patchs from developers, each patch against the last release of the 
+
+Release daily?? vs release after each checkin
+release daily helps but has need for things like bisection to see who caused problems
+"
+
+
+Causes
+------
+
+I believe we suffer from an *impedance mismatch* (or two): between the rate of development and the rate of testing, and the rate of testing and the rate of release to live.
+
+We check into Trunk/HEAD almost willy-nilly, and from that cauldron of potentially conflicting changes we make direct releases, often a few checkins back.
+
+The problems seem to arise in two ways
+
+* HEAD becomes a mess - it is getting used as "SaveAs" by developers.  SVN should be, but not where we release from.  We want to see clean timelines there.
+
+* Even if we do test and approve a change on HEAD, ten minutes later a checkin could have just blown it all apart.  How do we know the test that approved a fix yesterday is still working after 10 more checkins?  DO we really keep excellant records of which version passed the tests for a ticket.  I know I have been testing a ticket on a server, and seen the version number increment during the time I was testing a single ticket.  
+
+* The staging servers also become a mess - I may be testing version 12345, but is that supposed to fix the ticket I am concerned about? 
+
+
+Things we *should* fix
+----------------------
+
+* We should run continuous deployment. (except we can't)
+* We should release at the pace of testing not of development (except we don't)
+* We should release to live whenever David wants us to - not before. (Except that causes us real problems)
+* We should only test on one branch - not test the same thing on branches, trunk, RC1 RC2 etc. (except how can we be sure of a fix unless it is tested)
+
+
+
+A possible solution
+-------------------
+
+Focus on one thing at a time.
+
+Parallel vs serial development
+------------------------------
+Imagine you are asked to throw a tennis ball into a wastepaper bin about 6 feet away.  You can probably do so accurately and
+reliably.  Now imagine you are asked to do so, but another person is placed next to you.  You both *must* throw your balls into the bin at *precisely* the same time (a parallel release).  If you throw at different times, you both need to collect the balls and start over.  It will be awkward to co-ordinate. Now add two or three more people, the likelihood of failing in a throw is exponentially increased.
+
+But what if you release serially.  One person throwing ball after ball is probably faster than eight people trying to co-ordinate their throws, but eight people throwing one after another is going to be faster still, especially if you think of the time taken to turn around, pick up a tennis ball, check it etc.  We can easily imagine a system where if a person is not ready to throw they shout 'pass' and the next person ready throws, 
+
+This is why USB is so much faster than parallel ports - its easier to co-ordinate.
+
+This is a workflow I believe works well with Git, however it is not limited to that tool.
+
+
+The process
+-----------
+
+.. figure:: release_process.png
+   :scale: 50 %
+   :alt: map to buried treasure
+
+
+Everyone can check into trunk.  HEAD progresses as it wishes.  But we *never* release from HEAD. Ever.
+
+Trunk/HEAD is where the latest development changes go.  WIlly nilly - as they are completed by a developer [#]_
+
+We have two more branches.  and a few definitions
+
+RCBase 
+ the state of the code at the last release to live (or virtuallive)
+
+VirtualLive 
+ a branch that does nothing more than pretend to be the real live release code.  It is from here that actual releases will get taken from.
+
+RC Branch
+ Release-Candidate Branch.  Probably a better name is Testing Branch. This is a copy of the most recently released to live code *plus* the patches/changeset that is needed to fix the one single thing we are testing right now.
+
+Changeset
+ Fairly obvious, but want to be clear.  A *clean changeset against RCBase* is all the patches needed to fix one ticket (bug, feature, master set of features). This is not the same as saying this version number fixes it.  We want a patch that takes us from state A to state B - often it is the merging of lots of other little patches.  In Git this is simple to do. In SVN harder.  But that is a tool issue not a process one.
+
+So, the testing department looks at the series of priority tickets, and asks who has a changeset ready to test (a ball to throw).  Some people will pass for now, some will reply.  Testing takes the highest priority ticket and applies that changeset to RCBranch and (someone) deploys to stageX.  StageX cannot now be altered changed or anything else [#]_
+
+We test.
+
+If it fails, it is sent back to the developer, the patch is unapplied, and the testing department moves onto the next ready to tes changeset.
+
+If it passes, great!  We *immediately*, yes *immediately* release that changeset.  It has passed testing.  Get it out there.  This is continuous development.  
+However, we cannot release daily - the company will not wear it (for now).  So we do a virtual release.  We merge from RCBranch (which is the last release plus a single changeset) to VirtualLive (which is the last release).  Its a simple fast-forward merge, and then we make the RCBranch and the VirtualLive the same - they have exactly the same code - that is our live state.
+
+If at *any* moment, we want to release to live, the VirtualLive branch contains the code that is ready to go - tested and approved.  There is no way to launch code that has not been tested and approved.  So what is on VirtualLive is what we go with.
+Want something else on VirtualLive - change the priorities.
+
+Is this a bottleneck?
+---------------------
+
+What if we want to test in parallel.  Thats fine.  Have more than one RCBranch, spawned off the same 
+point of VirtualLive (ie the last release state), and test in each RCBranch one and only one changeset/ticket.  Then the one that passes testing first is virtuallyreleased first, and the next one, well that has to merge the just released changeset so it is testing the right thing.  
+
+But that will add to the testing burden I hear you cry.  Yes, probably. and that is one downside of parallelism.  SOmetimes we can get away with it where there is not a lot of interdependancy, but the simpler approach is - if you have sifficient testing resources to test two things in parallel, why not have two people test one changeset at a time - the testing will be done twice as fast and no co-ordination overhead.  (and you do not even have to test on same server, just in case you were wondering)
+
+Advantages
+----------
+* We get a very clean looking timeline for VirtualLive.  The value of this is huge. 
+* Everyone can easily know what is being developed, what is being tested and what is ready to go live.
+* Just doing one thing at a time is easier for humans to deal with
+* It looks much more understandable from outside software - and so gives a better impression of how controlled we have things.
+* It works with unittests and selenium and with just one person doing manual tests
+
+
+Disadvantages
+-------------
+
+* It can be awkward to make a single changeset out of lots of different checkins over time.  This rebaseing - and some source control tools make it a lot easier than others.
+
+Summary
+=======
+
+1. release at pace of testing not development
+2. release to 'VirtualLive' at much faster pace than to 'real-live'
+3. serial release - do one thing, then the next.  It is easier to co-ordinate.
+
+
+
+Comments
+--------
+Is the RC branch / virtual branch needed - they are pretty much the same thing.  True, but a) the division makes the process clearer and b) it depends on how we use source control - if its patches passed around, fine, if its git/svn it is awkward without a second branch.  It just depends.
+
+There may be a culture of rushing to turn-around a ticket that has been raised, instead of deeper thinking about the best solution (not analysis by paralysis, but just sensible thinking.  The US SCMS is a good case in point)
+
+
+
+The release process
+===================
+
+All we do is change 1's and 0's around.  The actual difference between 
+one release of software and the next is a very simple _diff_.
+This should make the process simple.  It rarely is however.
+
+By having a (lightweight but formal) release process we can give ourselves
+confidence that the changes we are about to make are 
+
+- tested
+and 
+- expected
+
+
+By tested, the change has been examined and tested and not found wanting.
+By expected, all those involved should be able to easily see what is going to 
+change after this release.
+
+A ticket is a way of tracking why we changed something.  A ticket has a *changeset*
+associated with it.  The changesets of one or more tickets make up a *release*.
+
+We propose to 
+
+
+- create a post of "Release Officer", which sounds better than "Release Mug"
+  
+- Create a ticket for each new release planned.
+  There will not be one for a sprint. A Sprint does not release code. It develops
+  clean, tested code that is suitable for release.
+  However we would create a release ticket for a days worth of bug fixes, 
+  or a particular development from a sprint that is considered v impt.
+
+  These are *similar* to master tickets.  But they are not about development
+  only releases.  however they will gather together the #refs for each ticket 
+  that is going to be released.
+
+- Unless the "Release Officer" signs off a ticket, under no circumstances 
+  can that code be released to LIVE.  In most cases the Release officer is 
+  just chasing up other people to sign off the release.  For example 
+  most releases would not happen if merhard and mtaylor had not approved.
+
+
+Be transparent
+
+- It should be clear on which server one can find the system with the 
+  new changeset.  That is the ticket should clearly say where to find the
+  newest code. 
+
+- It should be clear what is ready and what is not.  You can look at the release
+  ticket and see which bits are reviewed, dev-tested, uat-tested and ready to go.
+
+Below are a couple of examples worked through to make things a bit clearer
+
+Simple process
+--------------
+
+We decide that the Student Upload component needs to handle UUIDs better, 
+and create #123 and #456 with details.
+
+Intersog creates a branch off the *last release tag*, calling it 'UUID_branch'
+Intersog make various fixes in the branch, and they run their unit tests and 
+a peer of the developer runs a code review.  The results of the review 
+are attched to tickets #123 and #456  
+It all seems ok.  
+
+At this point they tell the release officer they have done that work.
+
+Although this is in the sprint, we can release early.
+
+The release officer creates ticket #789, and attaches the two refs to that ticket.
+The release officer asks where the *branch* has been deployed and intersog tells 
+her that the branch is on stage27 server.
+This is also put on the ticket
+
+The ticket goes to UAT-testing.
+
+UAT testing is done, but a problem is found.  The problem is noted on #123
+and #123 goes back to the developer.  The fix is applied, the unit tests run,
+the code review done again and re-deployed.  This time it is deployed to stage18
+because stage27 has been used for a new release just done.  At this point
+intersog must merge into (all) branches the changes that just went live.
+
+UAT testing finds no further problems.  It is marked as uat-tested.
+
+At this point the release officer will canvas the opinions of the appropriate 
+people in management team - is what is on stage18 acceptable to release. 
+In most cases having passed UAT-testing will be fine, however the reason for 
+a release officer is to handle these uncertainties.
+
+The release officer marks the ticket 'ready for live deployment' status.
+
+Intersog will now release the whole thing from the branch.  The branch becomes
+the HEAD of the main trunk now.  after all that is what has been tested, 
+so that is what gets released.
+
+
+There should be no danger of losing changes previously, because the uuid branch
+has had all the changes from the intermediate release merged into it.
+Any merging difficulties should be reviewed in the light of SCM tool-choices.
+
+
+UI/content process
+------------------
+We decide that 20 exercises need 'updating' - new graphics and new questions.
+There is no change to the exercise player, just the graphics that get dragged
+and dropped.
+
+We create a tickets #101 - #121 and the graphics are created, avatars drawn
+and backgrounds made.  Each asset is linked through to the tickets #101-#120
+so a graphic for exercise 10 is linked to ticket #111.  #111 is signed off 
+by content team as good enough - it is marked as dev-tested.
+
+At this point the content team tell the release officer, who creates ticket
+#122 and links all 20 tickets in. They go to UAT-testing and the exercises
+re tested.  The testing team also sign off on the quality, look and feel of 
+the assets, based on a company style guide.  Gevans will head that up.
+
+One of the backgrounds for exercise 10 looks like someone smoking a cigarette.
+It is sent back to the content team, where it is adjusted.  The asset is checked 
+back in to the asset management and linked to #110
+
+The UAT-testing is run again - and it all passes.  The release ticket is marked
+as 'ready-to-deploy-live' and intersog is asked to move the assets live.
+
+
+
+
+We need
+
+1. a type of ticket called release
+2. two new status for tickets - dev-testing / dev-tested and uat-testing / dev-tested
+one of these will replace current testing/tested
+3. a 'ready for live deployment' status
+
+
+
+
+.. [#] Yes I have thought it might be to do with the companies I choose to work for... but others have similar war-stories so it does seem a industry-wide phenonomen.
+
+.. [#] I am talking about software illiteracy, (another term might be computer illiteracy).  I have harped on about this often before but in short, if you cannot read and write source code, you are illiterate.  Imagine the problems if a newspaper was edited by an illiterate - if they were hard working and clever it *might* work - but why would you hire them ?
+
+.. [#] OK - ideally yes. But if we are only testing one thing at a time, it is *feasible* for developer to make changes during testing.  Not actually ideal, but feasible.
+
+.. [#] Ideally the developer massages his checkins from a personal branch so tha check in is clean and coherent.  Thats mostly a git thing though.
+
+
+

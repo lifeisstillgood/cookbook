@@ -1,0 +1,58 @@
+PLAIN
+K 19
+svnmerge-integrated
+V 8
+/trunk:1
+END
+ENDREP
+id: 0-1.0-2.r3/55
+type: dir
+pred: 0-1.0-2.r2/0
+count: 2
+text: 1 212 39 39 d4c37f2a1b3376697103a7937b1349d5
+props: 3 0 42 0 8371d968bbdf2a90815a1e564df5bd29
+cpath: /branches/qa
+copyroot: 2 /branches/qa
+
+PLAIN
+K 2
+qa
+V 17
+dir 0-1.0-2.r3/55
+END
+ENDREP
+id: 5-1.0.r3/304
+type: dir
+pred: 5-1.0.r2/192
+count: 2
+text: 3 257 34 34 33afc05e49b834db8d72d2fb9630312c
+cpath: /branches
+copyroot: 0 /
+
+PLAIN
+K 8
+branches
+V 16
+dir 5-1.0.r3/304
+K 4
+tags
+V 16
+dir 6-1.0.r1/448
+K 5
+trunk
+V 16
+dir 0-1.0.r1/264
+END
+ENDREP
+id: 0.0.r3/557
+type: dir
+pred: 0.0.r2/445
+count: 3
+text: 3 442 102 102 766bd452d0815a68eb1bd65c0180767f
+cpath: /
+copyroot: 0 /
+
+0-1.0-2.t2-2 modify-dir false true /branches/qa
+
+
+557 685

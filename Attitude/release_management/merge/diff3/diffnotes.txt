@@ -1,0 +1,77 @@
+===================
+Merging and Diffing
+===================
+
+Control over the released code.  This is one of the prime jobs of the IT Manager.
+
+It requires a solid but well understood process, a strong understanding of merging and diffing and lots of automated tests
+
+Merging and diffing
+===================
+
+The essential question is how do I convert file 1 into file 2 ?
+
+start with two files
+
+::
+
+  mine          older
+   
+  A             A
+  B             C 
+  C             F
+
+We shall cover 2 way diffs first.  Do not worry why the files are named mine and older.  It will become clear.
+
+::
+
+  diff mine older
+
+  2d1
+  < B
+  3a3
+  > F
+
+So, err, what does that mean?
+
+In general the line 2d1 is a *change command*.  It has a rough form of <lines in file 1><command><lines in file 2>.
+So the first part is line 2 in file 1, delete, (it owuld have been in line 1 of file 2 if we were not deleting it)
+
+Huh?
+
+Well, to convert ABC to ACF we need to bring C up one line. So we need to delete B, which if it was in Older, would now cover line 1 if we slid C up.  See?
+
+OK, next.
+
+Line 3 from file 1 needs to be added to line 3 of file 2.
+
+And yes, that is how to convert ABC to ACF
+
+Conflicts
+---------
+When does a conflict occur?
+
+from info diff3 ::
+
+   You can think of this as subtracting OLDER from YOURS and adding the
+  result to MINE, or as merging into MINE the changes that would turn
+  OLDER into YOURS.  This merging is well-defined as long as MINE and
+  OLDER match in the neighborhood of each such change.  This fails to be
+  true when all three input files differ or when only OLDER differs; we
+  call this a "conflict".  When all three input files differ, we call the
+  conflict an "overlap".
+
+So, a conflict is where older is different but two candidates same
+or all three files different
+
+
+
+
+diff3
+-----
+When two people have made changes to a common ancestor file, 
+
+
+How does knowing more about common ancestor help ?
+
+
