@@ -1,2 +1,2 @@
 [include]
-include:  time.chp  printing.chp cvsup-mirror.chp  sound.chp samba.chp XWindows.chp LaTeX.chp usbdisk.chp email.chp misc.chp unix_commands.chp basebuild.chp  gnupg.chp imagemagick.chp  workstation.chp  sed_sort.chp filesharing.chp emacs.chp faces.chp xterm.chp DNS.chp virtualisation.chp
+include:  time.chp  printing.chp cvsup-mirror.chp  sound.chp samba.chp XWindows.chp LaTeX.chp usbdisk.chp email.chp misc.chp unix_commands.chp basebuild.chp  gnupg.chp imagemagick.chp  workstation.chp  sed_sort.chp filesharing.chp emacs.chp faces.chp xterm.chp DNS.chp virtualisation.chp wifi.chp

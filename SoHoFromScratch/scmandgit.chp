@@ -34,3 +34,17 @@ process like
 - all changes are made in the branch.
 - If you have "been away" from the branch too long, you should have divided up the milestone into smaller deliverables (see Option Theory)
 
+
+
+Why releaseing every day helps
+
+if do not release every day you get three brnaches
+
+
+last good release   - bugfix branch
+                    - curr development
+
+with release per day you simply release from bugfix each day.
+and bugfix is just those that come from current and are passed QA
+
+it simplfiys everything

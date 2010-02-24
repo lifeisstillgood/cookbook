@@ -69,3 +69,9 @@ $ scp myremotesvr:/tmp/misc/\*.txt ./
 http://books.google.co.uk/books?id=3XzIFG3w8-YC&pg=PA316&lpg=PA316&dq=scp+wildcard+match&source=bl&ots=oEjO3_aptE&sig=-YFh37YI4hLdFX8hWasA9N0NEOs&hl=en&ei=E5bnSe74CpG1-Qb02LjoBQ&sa=X&oi=book_result&ct=result&resnum=3http://books.google.co.uk/books?id=3XzIFG3w8-YC&pg=PA316&lpg=PA316&dq=scp+wildcard+match&source=bl&ots=oEjO3_aptE&sig=-YFh37YI4hLdFX8hWasA9N0NEOs&hl=en&ei=E5bnSe74CpG1-Qb02LjoBQ&sa=X&oi=book_result&ct=result&resnum=3
 
 
+mirroring with wget
+-------------------
+
+wget -m -k -K -E http://url/of/web/site
+
+
