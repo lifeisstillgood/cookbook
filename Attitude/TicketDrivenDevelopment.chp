@@ -1,0 +1,20 @@
+=========================
+Ticket Driven Development 
+=========================
+
+The other TDD
+=============
+
+Test driven development is a catchy phrase beloved by the Agile crowd (which does include me, so this may be a confusing article).
+
+Anyway, the idea is that a developer writes a test *first* before changing the code, so that the problem is well defined up front, and that he knows when to stop codiing.  Sounds good, and it is.  Except that it really stops handling the bigger corporate picture.  How does the developer know that that piece of code is going to be changed, how do they know whatcriteria the tests need to use, in short, how do they know what to do?
+
+THis is where ticket driven development comes in.
+
+Ticket can be ordered by prioority and understaood by business
+ticket can drive change in specs (whcih are in scm) and change in tests and code.  Tickets can be tested, QA'd released on a schedule, merged into or out of trunk and more.
+
+
+
+
+Corporate development is trying to get developers to create code that will do something silly or that they do not understand, as part of a decision making in larger organisation.  
