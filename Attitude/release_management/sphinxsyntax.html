@@ -1,0 +1,379 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml" lang="en-US"><head>
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Sphinx Syntax — GeoServer Documentation Guide v2.0.x documentation</title>
+  <link rel="stylesheet" href="sphinxsyntax_files/screen.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="sphinxsyntax_files/print.css" type="text/css" media="print"> 
+  <!--[if IE]>
+  <link rel="stylesheet" href="_static/blueprint/ie.css" type="text/css" media="screen, projection" />
+  <![endif]-->
+  <link rel="stylesheet" href="sphinxsyntax_files/default.css" type="text/css">
+  <link rel="stylesheet" href="sphinxsyntax_files/pygments.css" type="text/css">
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.0.x',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html'
+    };
+  </script>
+  <script type="text/javascript" src="sphinxsyntax_files/jquery.js"></script>
+  <script type="text/javascript" src="sphinxsyntax_files/doctools.js"></script>
+  <script type="text/javascript" src="sphinxsyntax_files/searchtools.js"></script>
+  <script type="text/javascript" src="sphinxsyntax_files/searchindex.js"></script>
+      <link rel="top" title="GeoServer Documentation Guide v2.0.x documentation" href="http://docs.geoserver.org/trunk/en/docguide/index.html">
+      <link rel="next" title="Style Guidelines" href="http://docs.geoserver.org/trunk/en/docguide/style.html">
+      <link rel="prev" title="Workflow" href="http://docs.geoserver.org/trunk/en/docguide/workflow.html">
+</head><body class="sphinx">
+  <div id="header" class="selfclear">
+    <div class="wrap selfclear">
+      <div id="logo"><a href="http://docs.geoserver.org/trunk/en/docguide/index.html">GeoServer Documentation Guide v2.0.x documentation</a></div>
+      <ul id="top-nav">
+        <li class="first"><a href="http://geoserver.org/display/GEOS/What+is+Geoserver">About</a></li>
+        <li><a href="http://blog.geoserver.org/">Blog</a></li>
+        <li><a href="http://geoserver.org/display/GEOS/Download">Download</a></li>
+        <li><a href="http://docs.geoserver.org/trunk/en/docguide/index.html">Documentation</a></li>
+      </ul>
+        <form id="quick-search" action="search.html" method="get">
+          <fieldset>
+            <input name="check_keywords" value="yes" type="hidden">
+            <input name="area" value="default" type="hidden">
+            <input id="quick-search-query" accesskey="q" name="q" value="Search Documentation…" size="25" tabindex="3" onblur="if(this.value=='') this.value='Search Documentation…';" onfocus="if(this.value=='Search Documentation…') this.value='';" type="text">
+            <input id="quick-search-submit" value="Search" src="sphinxsyntax_files/search_icon_green.png" type="image">
+          </fieldset>
+        </form>
+    </div><!-- /.wrap -->
+  </div><!-- /#header -->
+  <div id="main">
+    <div class="wrap selfclear">
+      <div id="content">
+<ul id="breadcrumbs">
+  
+  <li><a href="http://docs.geoserver.org/trunk/en/docguide/index.html">GeoServer Documentation Guide 2.0.x Home</a> »</li>
+  <li>Sphinx Syntax</li>
+</ul>
+<ul id="relatedlinks" class="selfclear">
+  <li class="first">
+    <a href="http://docs.geoserver.org/trunk/en/docguide/genindex.html" title="General Index" accesskey="I">index</a></li>
+  <li>
+    <a href="http://docs.geoserver.org/trunk/en/docguide/style.html" title="Style Guidelines" accesskey="N">next</a>|</li>
+  <li>
+    <a href="http://docs.geoserver.org/trunk/en/docguide/workflow.html" title="Workflow" accesskey="P">previous</a>|</li>
+</ul>
+        
+  <div class="section" id="sphinx-syntax">
+<span id="sphinx"></span><h1>Sphinx Syntax<a class="headerlink" href="#sphinx-syntax" title="Permalink to this headline">¶</a></h1>
+<p>This page contains syntax rules, tips, and tricks for using Sphinx
+and reStructuredText. For more information, please see this <a class="reference external" href="http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html">comprehensive guide to reStructuredText</a>, as well as the <a class="reference external" href="http://sphinx.pocoo.org/rest.html">Sphinx reStructuredText Primer</a>.</p>
+<div class="section" id="basic-markup">
+<h2>Basic markup<a class="headerlink" href="#basic-markup" title="Permalink to this headline">¶</a></h2>
+<p>A reStructuredText document is written in plain text. Without the
+need for complex formatting, one can be composed simply, just like one
+would any plain text document. For basic formatting, see this table:</p>
+<table class="docutils" border="1">
+<colgroup>
+<col width="30%">
+<col width="40%">
+<col width="30%">
+</colgroup>
+<tbody valign="top">
+<tr><td><strong>Format</strong></td>
+<td><strong>Syntax</strong></td>
+<td><strong>Output</strong></td>
+</tr>
+<tr><td>Italics</td>
+<td><tt class="docutils literal"><span class="pre">*italics*</span></tt> (single asterisk)</td>
+<td><em>italics</em></td>
+</tr>
+<tr><td>Bold</td>
+<td><tt class="docutils literal"><span class="pre">**bold**</span></tt> (double asterisk)</td>
+<td><strong>bold</strong></td>
+</tr>
+<tr><td>Monospace</td>
+<td>`` <tt class="docutils literal"><span class="pre">monospace</span></tt> `` (double back quote)</td>
+<td><tt class="docutils literal"><span class="pre">monospace</span></tt></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lists">
+<h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
+<p>There are two types of lists, bulleted lists and numbered lists.  A <strong>bulleted list</strong> looks like this:</p>
+<ul class="simple">
+<li>An item</li>
+<li>Another item</li>
+<li>Yet another item</li>
+</ul>
+<p>This is accomplished with the following code:</p>
+<div class="highlight-python"><pre>* An item
+* Another item
+* Yet another item</pre>
+</div>
+<p>A <strong>numbered list</strong> looks like this:</p>
+<ol class="arabic simple">
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ol>
+<p>This is accomplished with the following code:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c">#. First item</span>
+<span class="c">#. Second item</span>
+<span class="c">#. Third item</span>
+</pre></div>
+</div>
+<p>Note that numbers are automatically generated, making it easy to add/remove items.</p>
+</div>
+<div class="section" id="list-tables">
+<h2>List-tables<a class="headerlink" href="#list-tables" title="Permalink to this headline">¶</a></h2>
+<p>Bulleted lists can sometimes be cumbersome and hard to follow. When
+dealing with a long list of items, use list-tables. For example, to
+talk about a list of options, create a table that looks like this:</p>
+<table class="docutils" border="1">
+<colgroup>
+<col width="20%">
+<col width="80%">
+</colgroup>
+<tbody valign="top">
+<tr><td><strong>Shapes</strong></td>
+<td><strong>Description</strong></td>
+</tr>
+<tr><td>Square</td>
+<td>Four sides of equal length, 90 degree angles</td>
+</tr>
+<tr><td>Rectangle</td>
+<td>Four sides, 90 degree angles</td>
+</tr>
+</tbody>
+</table>
+<p>This is done with the following code:</p>
+<div class="highlight-python"><pre>.. list-table::
+   :widths: 20 80
+
+   * - **Shapes**
+     - **Description**
+   * - Square
+     - Four sides of equal length, 90 degree angles
+   * - Rectangle
+     - Four sides, 90 degree angles</pre>
+</div>
+</div>
+<div class="section" id="page-labels">
+<h2>Page labels<a class="headerlink" href="#page-labels" title="Permalink to this headline">¶</a></h2>
+<p><strong>Ensure every page has a label that matches the name of the file.</strong> For example if the page is named <tt class="docutils literal"><span class="pre">foo_bar.rst</span></tt> then the page should have the label:</p>
+<div class="highlight-python"><pre>..  _foo_bar:</pre>
+</div>
+<p>Other pages can then link to that page by using the following code:</p>
+<div class="highlight-python"><pre>:ref:`foo_bar`</pre>
+</div>
+</div>
+<div class="section" id="linking">
+<span id="id1"></span><h2>Linking<a class="headerlink" href="#linking" title="Permalink to this headline">¶</a></h2>
+<p>Links to other pages should never be titled as “here”. Sphinx makes
+this easy by automatically inserting the title of the linked document.</p>
+<dl class="docutils">
+<dt>Bad</dt>
+<dd>More information about linking can be found <a class="reference internal" href="#linking"><em>here</em></a>.</dd>
+<dt>Good</dt>
+<dd>For more information, please see the section on <a class="reference internal" href="#linking"><em>Linking</em></a>.</dd>
+</dl>
+<p>To insert a link to an external website:</p>
+<div class="highlight-python"><pre>`Text of the link &lt;http://example.com&gt;`_</pre>
+</div>
+<p>The resulting link would look like this: <a class="reference external" href="http://example.com/">Text of the link</a></p>
+</div>
+<div class="section" id="sections">
+<h2>Sections<a class="headerlink" href="#sections" title="Permalink to this headline">¶</a></h2>
+<p>Use sections to break up long pages and to help Sphinx generate tables of contents.</p>
+<p>The top of the page (i.e. the title) should have a double underline:</p>
+<div class="highlight-python"><pre>Camel Spotting
+==============</pre>
+</div>
+<p>Subsequent section headers should have a single underline:</p>
+<div class="highlight-python"><pre>Camel Spotting
+==============
+
+Intro to the Camel
+------------------
+
+Finding a Camel
+---------------
+
+Recording its Serial Number
+---------------------------</pre>
+</div>
+<p>Should these sections require subsections, use the back quote:</p>
+<div class="highlight-python"><pre>Intro to the Camel
+------------------
+
+Camel History
+`````````````
+
+Camels Today
+````````````</pre>
+</div>
+</div>
+<div class="section" id="notes-and-warnings">
+<h2>Notes and warnings<a class="headerlink" href="#notes-and-warnings" title="Permalink to this headline">¶</a></h2>
+<p>When it is beneficial to have a section of text stand out from the
+main text, Sphinx has two such boxes, the note and the warning. They
+function identically, and only differ in their coloring. You should use
+notes and warnings sparingly, however, as adding emphasis to everything
+makes the emphasis less effective.</p>
+<p>Here is an example of a note:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is a note.</p>
+</div>
+<p>This note is generated with the following code:</p>
+<div class="highlight-python"><pre>.. note:: This is a note.</pre>
+</div>
+<p>Similarly, here is an example of a warning:</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Beware of dragons.</p>
+</div>
+<p>This warning is generated by the following code:</p>
+<div class="highlight-python"><pre>.. warning:: Beware of dragons.</pre>
+</div>
+</div>
+<div class="section" id="images">
+<h2>Images<a class="headerlink" href="#images" title="Permalink to this headline">¶</a></h2>
+<p>Add images to your documentation when possible. Images, such as
+screenshots, are a very helpful way of making documentation
+understandable. When making screenshots, try to crop out unnecessary
+content (browser window, desktop, etc). Avoid scaling the images, as
+the Sphinx theme automatically resizes large images. It is also helpful
+to include a caption underneath the image.</p>
+<div class="figure" align="center">
+<img alt="_images/pagelogo.png" src="sphinxsyntax_files/pagelogo.png">
+<p class="caption"><em>The GeoServer logo as shown on the homepage.</em></p>
+</div>
+<p>This image is generated by the following code:</p>
+<div class="highlight-python"><pre>.. figure:: pagelogo.png
+   :align: center
+
+   *The GeoServer logo as shown on the homepage.*</pre>
+</div>
+<p>In this example, the image file exists in the same directory as the
+source page. If this is not the case, you can insert path information
+in the above command.</p>
+</div>
+<div class="section" id="external-files">
+<h2>External files<a class="headerlink" href="#external-files" title="Permalink to this headline">¶</a></h2>
+<p>Text snippets, large blocks of downloadable code, and even zip files
+or other binary sources can all be included as part of the
+documentation. To include files as part of the build process, use the
+following syntax:</p>
+<div class="highlight-python"><pre>:download:`An external file &lt;readme.txt&gt;`</pre>
+</div>
+<p>The result of this code will generate a standard link to an <a href="http://docs.geoserver.org/trunk/en/docguide/_downloads/readme.txt"><strong class="xref">external file</strong></a></p>
+</div>
+<div class="section" id="reference-files-and-paths">
+<h2>Reference files and paths<a class="headerlink" href="#reference-files-and-paths" title="Permalink to this headline">¶</a></h2>
+<p>Use the following syntax to reference files and paths:</p>
+<div class="highlight-python"><pre>:file:`myfile.txt`</pre>
+</div>
+<p>This will output: <tt class="docutils literal"><span class="pre">myfile.txt</span></tt>.</p>
+<p>You can reference paths in the same way:</p>
+<div class="highlight-python"><pre>:file:`path/to/myfile.txt`</pre>
+</div>
+<p>This will output: <tt class="docutils literal"><span class="pre">path/to/myfile.txt</span></tt>.</p>
+<p>For Windows paths, use double backslashes:</p>
+<div class="highlight-python"><pre>:file:`C:\\myfile.txt`</pre>
+</div>
+<p>This will output: <tt class="docutils literal"><span class="pre">C:\myfile.txt</span></tt>.</p>
+<p>If you want to reference a non-specific path or file name:</p>
+<div class="highlight-python"><pre>:file:`{your/own/path/to}/myfile.txt`</pre>
+</div>
+<p>This will output: <tt class="docutils literal"><em><span class="pre">your/own/path/to</span></em><span class="pre">/myfile.txt</span></tt></p>
+</div>
+<div class="section" id="reference-commands">
+<h2>Reference commands<a class="headerlink" href="#reference-commands" title="Permalink to this headline">¶</a></h2>
+<p>Reference commands (such as <strong>make</strong>) with the following syntax:</p>
+<div class="highlight-python"><pre>:command:`make`</pre>
+</div>
+</div>
+<div class="section" id="reference-an-element-in-a-gui">
+<h2>Reference an element in a GUI<a class="headerlink" href="#reference-an-element-in-a-gui" title="Permalink to this headline">¶</a></h2>
+<p>Use the following syntax to direct a user to click a link or look to a certain area of the GUI:</p>
+<div class="highlight-python"><pre>:guilabel:`Main Menu`</pre>
+</div>
+<p>This will output: <strong>Main Menu</strong>.</p>
+</div>
+<div class="section" id="menu-traversal">
+<h2>Menu traversal<a class="headerlink" href="#menu-traversal" title="Permalink to this headline">¶</a></h2>
+<p>Direct a user through a menu with the following syntax:</p>
+<div class="highlight-python"><pre>:menuselection:`Start Menu --&gt; Programs --&gt; GeoServer`</pre>
+</div>
+<p>This will output <em>Start Menu ‣ Programs ‣ GeoServer</em>.</p>
+</div>
+<div class="section" id="show-source">
+<h2>Show Source<a class="headerlink" href="#show-source" title="Permalink to this headline">¶</a></h2>
+<p>Every page in the GeoServer documentation has a link for <tt class="docutils literal"><span class="pre">Show</span> <span class="pre">Source</span></tt>
+under the Table of Contents on the right side of the page. This allows
+for easy reverse engineering of unfamiliar markup. When in doubt, look
+at the source!</p>
+</div>
+</div>
+
+
+      <div class="selfclear pagination-nav">
+          <div class="leftwise"><strong>Previous</strong>: <a href="http://docs.geoserver.org/trunk/en/docguide/workflow.html" title="previous chapter">Workflow</a></div>
+          <div class="rightwise"><strong>Next</strong>: <a href="http://docs.geoserver.org/trunk/en/docguide/style.html" title="next chapter">Style Guidelines</a></div>
+      </div>
+      </div><!-- /#content> -->
+  <div id="sidebar" class="contrast">
+      <div id="toc" class="section">
+        <h3 class="pngfix">Table Of Contents</h3>
+        <ul>
+<li><a class="reference external" href="">Sphinx Syntax</a><ul>
+<li><a class="reference external" href="#basic-markup">Basic markup</a></li>
+<li><a class="reference external" href="#lists">Lists</a></li>
+<li><a class="reference external" href="#list-tables">List-tables</a></li>
+<li><a class="reference external" href="#page-labels">Page labels</a></li>
+<li><a class="reference external" href="#linking">Linking</a></li>
+<li><a class="reference external" href="#sections">Sections</a></li>
+<li><a class="reference external" href="#notes-and-warnings">Notes and warnings</a></li>
+<li><a class="reference external" href="#images">Images</a></li>
+<li><a class="reference external" href="#external-files">External files</a></li>
+<li><a class="reference external" href="#reference-files-and-paths">Reference files and paths</a></li>
+<li><a class="reference external" href="#reference-commands">Reference commands</a></li>
+<li><a class="reference external" href="#reference-an-element-in-a-gui">Reference an element in a GUI</a></li>
+<li><a class="reference external" href="#menu-traversal">Menu traversal</a></li>
+<li><a class="reference external" href="#show-source">Show Source</a></li>
+</ul>
+</li>
+</ul>
+
+        <div class="section-footer"></div>
+      </div>
+        <div class="section">
+          <h3>Continue Reading</h3>
+          <ul>
+            <li>Previous: <a href="http://docs.geoserver.org/trunk/en/docguide/workflow.html" title="previous chapter">Workflow</a></li>
+            <li>Next: <a href="http://docs.geoserver.org/trunk/en/docguide/style.html" title="next chapter">Style Guidelines</a></li>
+          </ul>
+        </div>
+        <div class="section">
+        <h3>This Page</h3>
+        <ul class="this-page-menu">
+          <li><a href="http://docs.geoserver.org/trunk/en/docguide/_sources/sphinx.txt">Show Source</a></li>
+        </ul>
+        </div>
+      <div class="section">
+        <a href="http://geoserver.org/display/GEOSDOC/Documentation" title="We're still porting content over to our new documentation. If it's not here, try the legacy GeoServer documentation">Legacy Documentation</a>
+      </div>
+  </div><!-- /#sidebar -->
+  </div><!-- /.wrap> -->
+</div><!-- /#main -->
+<div id="footer">
+  <div class="wrap">
+    © Copyright 2009, GeoServer.
+    Last updated on Feb 21, 2010.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div><!-- /.wrap> -->
+</div><!-- /#footer -->
+  </body></html>

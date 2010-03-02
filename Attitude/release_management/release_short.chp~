@@ -1,0 +1,116 @@
+=======================
+Release process - brief
+=======================
+
+Three different types of release management process
+===================================================
+
+There are basically three different approaches to branching in source control
+
+- Unstable Trunk
+- Stable Trunk
+- Continuous Integration
+
+They each have different advantages in different development contexts
+
+contexts
+--------
+We do not develop code in isolation.  Frankly it would be silly.  
+The environment in which we work has a huge influence over the way we work.
+Which issue(s) have the most impact in our organistion will be the ones that
+most affect how we do releases
+
+integration
+~~~~~~~~~~~
+The difficulty of managing integration is an ever present and "inherent" 
+software problem.  Simple textual merging is getting easier, not withstanding issues with 3-way merges.  Tools such as git and mercurial make textual merges almost magically accurate.  However no merge tool will be able to solve a situation where developer A changes the names of functions developer B uses, or worse alters its behaviour.  Tests, esepcially unit tests, are the best protection against this.  (monitoring changes *to* unittests is a very good method)
+
+
+Political decision making
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  "Politics", he spat, "bah, I hate it when companies resort to 'politics'"
+
+Yeah, I hate it when humans go round breathing.  Bastards. 
+
+Making a decision, or rather commiting to and sticking with a decision, is a costly exercise.  Sometimes commitment makes life easier.  For example, instead of constantly wondering if this attractive available single woman would be a better mother than that attractive single woman, it works out better for everyone if a guy picks one, settles down and starts raising kids.  Stuff Love.  Constantly swapping from option A to B is usually destryed by what one might call transaction costs.  Modern Banking illustrates this perfectly.  The big trading arms of Banks (yes the ones that recently fucked us all over), constantly swapped "women" looking for the one offering just that little bit extra.  The difference in return was so minute that the profits only came from mmassively leveraging - and debt brought them all down when they found their wolf-trap moment.
+
+Anyway, what was I saying, yes, banks, constantly swapped options, only paid off with huge debts (leverage).  So in short, its barely worth shopping around - just settle down.
+
+However there is a cost.  Black and Scholes got a Nobel for this stuff so listen closely.  Commiting to a decision early reduces the value of the option (the option in this case being the other woman).  And this works all over - commiting to develop *this* feature, but when the time to actually release it live, we look again, maybe it could be improved, perhaps its not right, perhasps.  This attack of cold feet comes from the feeling that their is no cost to delaying.
+
+
+
+
+
+Other symption
+
+- Did not think we were capable of developing it
+  This is depressingly common.  Total loss of faith.  But no idea what to do
+
+- Is this the *right* thing to do?
+
+
+
+ 
+We all want to be Agile, reacting fluidly and smoothly to the shifting priorities of a company, providing best value to the clients at all times.
+Sadly it does not work like that all the time.
+
+Scrum is probably the best of the current set of Agile Methods.  It can boil down to keep a priority list of changes the company wants, deliver and release those every few weeks, keep close to the product owners.  
+
+It is a really nice idea.  And in situations where the product being worked on is, and is perceived as, the *most* important, *most* impactful, *mission critical* work the company has, it tends to work really well.
+
+Scrum, like all Agile, works best when there is attention and focus from the rest of the business
+
+However, if the perception shifts, so does the attention.  And the decision making starts to flap around.  
+
+Delaying a decision increases the option value of that decision.  This is well known, and understood viscerally by most people.  
+
+What happens when decisions made at the start of a sprint are broken by the end of the sprint.  What happens when the business says, 
+
+Actually we dont want that bit released - but that bit is really important.
+And that bit - good so far but it needs changing - quite fundamentally.  Did we not mention that three weeks ago? Oh things have changed.  Thought you were agile?
+
+A sprint can be made atomic.  And once upon a time I insisted that if things had changed, then nothing got released.  Two sprints later with nothin released, I caved.  Released bits of a sprint in a rush - blew two days of mad rush integration and the release did not work very well.  The perception in the busiess - we had spent weeks "developing", and in the end put out a load of crap.  This is not just me.  Almost every in-house team will have similar stories.
+
+So we can defend against political decision making.
+
+Agile tries to defend against it in process.  Make the Sprint atomic, if a change is wanted must drop another story.
+
+::
+  stevey
+  "So BOY, which card do you want to get rid of, eh Boy! Boy! Hear me Boy?"
+
+It is not helpful to treat people who are simply trying to maximise thier option value as children.  They do not care about your problems.  Remember they are not mission critical now.  
+
+Political follow through
+
+
+
+frequency of releases
+~~~~~~~~~~~~~~~~~~~~~
+Monthly? Weekly?  Daily? 10 times a day?  No this is not a Cosmopolitan survey, but how often should one release software.  
+
+If you release 50 times a day (see some Contiuous Integtration Poster boys)
+then cherry-picking out of trunk into a release branch (manaully) will never work.  You must release direct from an (unstable) trunk.  DO you want your bank to be releaseing its credit card processing code 50 times a day.?
+
+
+degree of product owner involvement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This is similar to "lack of follow through" problem - is your product owner in the sprint on a daily basis?  Is he watching the latest release and considering possible impacts.  Well if it is a "bet the farm" development, then yes he is.  If not, well he does have a job to do.  Probably he now is in charge of a sales drive that is mission ciritical.  Your chance to get his actual involcement - hell, snowball.
+
+At some point, probably the day before the release (which can be *after* the Scrum Sprint rememebr), he will look and decide if what he asked for is still want he wants, and if what you produced is what he wants / asked for.
+
+And that needs to be handled. Or you are into re-integraton friday 
+
+
+
+Unstable Trunk
+--------------
+Everyone can check into the trunk at any time - thus the trunk is rarely going to be "working" at any one time.  
+
+This works primarily in a centralised environment
+It encourages good integration - that is integration problems are quickly found.  However, it is much harder to manage political decision making and release creation.  Wnat to leave out ticket 23 and alter ticket 45? Err, the changests can be pulled out of trunk.  Oh no - I rely on changes to getstudent made by ticket 23.  Erm put some of it back but not all of it...
+
+Not good.
+

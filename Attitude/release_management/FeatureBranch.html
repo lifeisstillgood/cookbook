@@ -1,0 +1,344 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><title>MF Bliki: FeatureBranch</title><link rel="alternate" type="application/atom+xml" title="Feed" href="http://www.martinfowler.com/bliki/bliki.atom"><style type="text/css">@import url(bliki.css);</style></head><body><style>
+				<!--
+				A.nav:link {color: #D54000; font-weight: bold}
+				A.nav:visited {color: #D54000}
+				A.nav:hover {color: blue}
+			 	-->
+			</style>
+	<div class="navbar">
+		<table style="height: 70px; border-collapse: collapse; vertical-align: bottom;">
+			<tbody><tr style="">
+				<td>
+					<a href="http://www.martinfowler.com/">
+						<img src="FeatureBranch_files/mflogo.gif" alt="martinfowler.com logo" style="border: medium none ;">
+					</a>
+				</td>
+	<td style="border-bottom: thick solid rgb(213, 64, 0); padding: 5px;"><a href="http://martinfowler.com/" class="nav">Home</a></td>
+	<td style="border-bottom: thick solid rgb(213, 64, 0); padding: 5px;"><a href="http://martinfowler.com/bliki" class="nav">Blog</a></td>
+	<td style="border-bottom: thick solid rgb(213, 64, 0); padding: 5px;"><a href="http://martinfowler.com/articles.html" class="nav">Articles</a></td>
+	<td style="border-bottom: thick solid rgb(213, 64, 0); padding: 5px;"><a href="http://martinfowler.com/books.html" class="nav">Books</a></td>
+	<td style="border-bottom: thick solid rgb(213, 64, 0); padding: 5px;"><a href="http://martinfowler.com/aboutMe.html" class="nav">About Me</a></td>
+	<td style="border-bottom: thick solid rgb(213, 64, 0); padding: 5px;"><a href="http://martinfowler.com/aboutMe.html#contactInfo" class="nav">Contact Me</a></td>
+	<td style="border-bottom: thick solid rgb(213, 64, 0); padding: 5px;"><a href="http://www.thoughtworks.com/" class="nav">ThoughtWorks</a></td>
+</tr>
+</tbody></table>
+<p style="clear: left;">
+</p></div>
+
+<p></p>
+<table cellspacing="10"><tbody><tr><td valign="top">
+<table>
+<tbody><tr>
+<td style="font-size: larger;"><a href="http://martinfowler.com/bliki/FeatureBranch.html">FeatureBranch</a></td>
+
+<td valign="bottom" width="15%"><a href="http://martinfowler.com/bliki/design.html">design</a></td>
+
+<td valign="bottom" width="20%"><b>3 September 2009</b></td>
+
+<td valign="bottom" width="10%"><a href="http://blogsearch.google.com/blogsearch?hl=en&amp;scoring=d&amp;ie=UTF-8&amp;q=link:http://martinfowler.com/bliki/FeatureBranch.html">Reactions</a></td>
+</tr>
+
+<tr>
+<td colspan="4">
+<p></p>
+<p>With the rise of Distributed Version Control Systems (DVCS) such
+  as git and Mercurial, I've seen more conversations about strategies
+  for branching and merging and how they fit in with <a href="http://martinfowler.com/articles/continuousIntegration.html">Continuous
+  Integration</a> (CI). There's a bit of confusion here, particularly
+  on the practice of feature branching and how it fits in with CI.</p>
+<h3>Simple (isolated) Feature Branch</h3>
+<p>The basic idea of a feature branch is that when you start work on
+  a feature (or story if you prefer that term) you take a branch of
+  the repository to work on that feature. In a DVCS, you'll do this
+  in  your personal repository, but the same kind of thing works in a
+  centralized VCS too.</p><p>I'm going to illustrate this with a series of diagrams. I have a
+  shared project mainline, colored blue, and two developers, colored
+  purple and green (since the developers names are Reverend Green and
+  Professor Plum). </p><img src="FeatureBranch_files/simple1.png"><p>I'm using labeled colored boxes (eg P1 and P2) to represent
+  local commits on the branch. Arrows between branches represent
+  merges between branches, the boxes are colored orange to make them stand
+  out. In this case there are updates, say a couple of bug-fixes,
+  applied to the mainline (presumably by Mrs Peacock). When these
+  happen our developers merge them into their work. To give this a
+  sense of time, I'll assume we're looking at a few days work here,
+  with each developer committing to their local branch roughly once a day.</p><p>In order to ensure things are working properly, they can run
+  builds and tests on their branch. Indeed for this article I'll
+  assume that each commit and merge comes with an automated build and
+  test on the branch it's on.</p><p>The advantage of feature branching is that each developer can
+  work on their own feature and be isolated from changes going on
+  elsewhere. They can pull in changes from the mainline at their own
+  pace, ensuring they don't break the flow of their
+  feature. Furthermore it allows the team to choose its features for
+  release. If Reverend Green takes too long, we can release with just
+  Professor Plum's changes. Or we may want to delay Professor Plum's
+  feature, perhaps because we are uncertain that the feature works the
+  way we want to release it. In this case we just tell the professor
+  to not merge his changes into mainline until we are ready for the
+  feature. This is called <i>cherry-picking</i>, the team decides
+  which features to merge in before release.</p><p>Attractive though that picture looks, there can be trouble
+  ahead.</p><img src="FeatureBranch_files/simple2.png"><p>Although our developers can develop their features in isolation,
+  at some point their work does have to be integrated. In this case
+  Professor Plum easily updates the mainline with his own
+  changes. There's no merge here because he's already incorporated the
+  mainline changes into his own branch (there will be a build). Things
+  are however not so simple for Reverend Green, he needs to merge all
+  of his changes (G1-6) with all of Professor Plum's (P1-5).</p><p>(At this point many users of DVCSs may feel I'm missing
+  something as this is a simple, perhaps simplistic view of feature
+  branching. I'll get to a more involved scheme later.)</p><p>I've made this a big merge box as it's a scary merge. It may be
+  just fine, the developers may have been working on completely
+  separate parts of the code base with no interaction, in which case
+  the merge will go smoothly. But they may be working on bits that do
+  interact, in which case here lye dragons.</p><p>The dragons can come in many forms, and tooling can help slay
+  <i>some</i> of them. The most of obvious dragon is the complexity of
+  merging the source code and dealing with conflicts as developers
+  edit the same files. Modern DVCSs actually handle this rather well,
+  indeed somewhat magically. Git has quite the reputation for dealing
+  with complicated merges. So much so that the textual issues of
+  merging are much better than they used to be - indeed I'll go so far
+  as to discount textual conflicts for the purposes of this
+  article.</p><p>The problem I worry more about is a semantic conflict. A simple
+  example of this is that if Professor Plum changes the name of a method
+  that Reverend Green's code calls. Refactoring tools allow you to
+  rename a method safely, but only on your code base. So if G1-6
+  contain new code that calls foo, Professor Plum can't tell in his
+  code base as he doesn't have it. You only find out on the big merge.</p><p>A function rename is a relatively obvious case of a semantic
+  conflict. In practice they can be much more subtle. Tests are the
+  key to discovering them, but the more code there is to merge the
+  more likely you'll have conflicts and the harder it is to fix
+  them. It's the risk of conflicts, particularly semantic conflicts,
+  that make big merges scary.</p><p>This fear of big merges also acts as a deterrent to
+  refactoring. Keeping code clean is constant effort, to do it well it
+  requires everyone to keep an eye out for cruft and fix it wherever
+  they see it. However this kind of refactoring on a feature branch is
+  awkward because it makes the Big Scary Merge worse. The result we
+  see is that teams using feature branches shy away from refactoring
+  which leads to uglier code bases.</p>
+<h3>Continuous Integration</h3>
+<p>It's these problems that Continuous Integration was designed to
+  solve. With Continuous Integration my diagram looks like this.</p><img src="FeatureBranch_files/continuous.png"><p>There's a lot more merging going on here, but merging is one of
+  those things that's much easier to do frequently and small rather
+  than rarely and large. As a result if Professor Plum is changing
+  some code that Reverend Green relies on, the Reverend will find it
+  early, such as when he merges in P1-2. At that point he's only got
+  to modify G1-2 to work with the changes, rather than G1-6.</p><p>CI is effective at removing the problem of big merges, but it's
+  also a vital communication mechanism. In this scenario the potential
+  conflict will actually appear when Professor Plum merges G1 and
+  realizes that Reverend Green is actively building on Plum's
+  libraries. At this point Professor Plum can go and find Reverend
+  Green and they can discuss how their two features interact. It may
+  be that Professor Plum's feature requires some changes that don't
+  mesh well with Reverend Green's changes. By looking at both their
+  features they can come up with a better design that affects both
+  their work-streams. With the isolated feature branches our
+  developers don't discover this till late, probably too late to do
+  much about it. Communication is one of the key factors in software
+  development and one of CI's most important features is that it
+  facilitates human communication.</p><p>It's important to note that, most of the time, feature branching
+  like this is a different approach to CI. One of the principles of CI
+  is that everyone commits to the mainline every day. So unless
+  feature branches only last less than a day, running a feature branch
+  is a different animal to CI. I've heard people say they are doing CI
+  because they are running builds, perhaps using a CI server, on every
+  branch with every commit. That's continuous building, and a Good
+  Thing, but there's no <i>integration</i>, so it's not CI.</p>
+<h3>Promiscuous Integration</h3>
+<p>Earlier I said parenthetically that there are other ways of doing
+  feature branching. Say Professor Plum and Reverend Green take tea
+  together early in the cycle. While chatting they discover they are
+  working on features that interact. At this point they may choose to
+  integrate with each other directly, like this.</p><img src="FeatureBranch_files/promiscuous.png"><p>With this approach they only push to the mainline at the end, as
+  before. But they merge frequently with each other, so this avoids
+  the Big Scary Merge. The point here is that the primary issue with
+  the isolated feature branching scheme is its isolation. When you
+  isolate the feature branches, there is a risk of a nasty conflict
+  growing without you realizing it. Then the isolation is an illusion,
+  and will be shattered painfully sooner or later.</p><p>So is this more ad-hoc integration a form of CI or a different
+  animal entirely? I think it is a different animal, again a key point
+  of CI is everyone integrates to the <i>mainline</i> every
+  day. Integrating across feature branches, which I shall call
+  <i>promiscuous integration</i> (PI), doesn't involve or even need a
+  mainline. I think this difference is important.</p>
+<div class="quote">
+<blockquote><i>I see CI as primarily giving birth to
+  a release candidate at each commit. The job of the CI system and
+  deployment process is to disprove the production-readiness of a
+  release candidate. This model relies on the need to have some
+  mainline that represents the current shared, most up to date
+  picture of complete.</i></blockquote>
+
+<p align="center"><i>--Dave Farley</i></p>
+</div>
+
+<h3>Promiscuous Integration vs Continuous Integration</h3>
+<p>So if it's different is PI better than CI, or more
+  realistically under what circumstances is PI better than CI? </p><p>With CI, you lose the ability to use the VCS to do cherry
+  picking. Every developer is touching mainline, so all features grow
+  in the mainline. With CI, the mainline must always be healthy, so in
+  theory (and often in practice) you can safely release after any
+  commit. Having a half built feature or a feature you'd rather not
+  release yet won't damage the other functionality of the software,
+  but may require some masking if you don't want it to be visible in
+  the user-interface. This can be as simple as not including a menu
+  item in the UI to trigger the feature.</p><p>PI can provide some middle ground here. It allows Reverend Green
+  the choice of when to incorporate Professor Plum's changes. If
+  Professor Plum makes some core API changes in P2, then Reverend
+  Green can import P1-2 but leave the others until Professor Plum's
+  feature is put onto the release.</p><p>One worry with all this picking and choosing is that PI makes it
+  really hard to keep track of who has what in their branch. In
+  practice, it seems tooling pretty much solves this problem. DVCSs
+  keep a clear track of changes and their origins and can figure out
+  that when Professor Plum pulls G3 he already has G2 but doesn't have
+  B2. I may have made mistakes drawing the diagram by hand, but tools
+  do keep track of these things well.</p><p>On the whole, however, I don't think cherry-picking with the VCS
+  is a good idea. </p>
+<div class="quote">
+<blockquote><i>Feature Branching is a poor man's
+  modular architecture, instead of building systems with the ability
+  to easy swap in and out features at runtime/deploytime they couple
+  themselves to the source control providing this mechanism through
+  manual merging. </i></blockquote>
+
+<p align="center"><i>--Dan Bodart</i></p>
+</div>
+<p>I much prefer designing the software in such a way that makes it
+  easy to enable or disable features through configuration changes. My
+  colleague Paul Hammant calls this <a href="http://paulhammant.com/blog/branch_by_abstraction.html">Branch by
+  Abstraction</a>. This requires you to put some thought into what
+  needs to be modularized and how to control that variation, but we've
+  found the result to be far less messy that relying on the VCS.</p><p>The main thing that makes me nervous about PI is the influence on
+  human communication. With CI the mainline acts as a communication
+  point. Even if Professor Plum and Reverend Green never talk, they
+  will discover the nascent conflict - within a day of it
+  forming. With PI they have to notice they are working on interacting
+  code. An up-to-date mainline also makes it easy for someone to be
+  sure they are integrating with everyone, they don't have to poke
+  around to find out who is doing what - so less chance of some
+  changes being hidden until a late integration.</p><p>PI arose out
+  of open-source work, and it could be that the less intensive tempo
+  of open-source could be a factor here. In a full time job, you work
+  several hours a day on a project. This makes it easier for features
+  to be worked in priority. With an open source project people often
+  put in a hour here, and the next hour a few days later. A feature
+  may take one developer quite a while to complete while other
+  developers with more time are able to get features into a releasable
+  state earlier. In this situation cherry picking can be more
+  important.</p><p>It's important to realize that the tools you use are largely
+  independent of the integration strategy you use. Although many
+  people associate DVCSs with feature branching, they can be used with
+  CI. All you need to do is mark one branch on one repository as the
+  mainline. If everyone pulls and pushes to that every day, then you
+  have a CI mainline. Indeed with a disciplined team, I would usually
+  prefer to use a DVCS on a CI project than a centralized one. With a
+  less disciplined team I would worry that a DVCS would nudge people
+  towards long lived branches, while a centralized VCS and a
+  reluctance to branch nudges them towards frequent mainline
+  commits. Paul Hammant may be right: "I wonder though, if a team
+  should not be adept with trunk-based development before they move to
+  distributed."</p><hr></td>
+</tr>
+</tbody></table>
+</td><td valign="top" width="15%">
+<table><tbody><tr bgcolor="#ffb595"><td><b>Links</b></td></tr><tr>
+<td><a href="http://martinfowler.com/">home</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki">bliki</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/bliki.atom">feed</a>&nbsp;<a href="http://martinfowler.com/bliki/bliki.atom"><img href="http://martinfowler.com/bliki/bliki.atom" src="FeatureBranch_files/feed-icon-14x14.png" border="0"></a></td>
+</tr><tr bgcolor="#ffb595"><td><b>Translations</b></td></tr><tr>
+<td><a href="http://capsctrl.que.jp/kdmsnr/wiki/bliki/">Japanese</a></td>
+</tr><tr>
+<td><a href="http://www.agile-spain.com/agilev2/blog/traduccionmartinfowler">Spanish</a></td>
+</tr><tr>
+<td><a href="http://younghoe.info/category/MartinFowler">Korean</a></td>
+</tr><tr>
+<td><a href="http://blog.csdn.net/mfowler/">Chinese</a></td>
+</tr><tr>
+<td><a href="http://fowler.thaidev.org/">Thai</a></td>
+</tr><tr bgcolor="#ffb595"><td><b>Categories</b></td></tr><tr>
+<td><a href="http://martinfowler.com/bliki/agile.html">agile</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/design.html">design</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/dsl.html">dsl</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/leisure.html">leisure</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/refactoring.html">refactoring</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/ruby.html">ruby</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/thoughtWorks.html">thoughtWorks</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/tools.html">tools</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/uml.html">uml</a></td>
+</tr><tr>
+<td><a href="http://martinfowler.com/bliki/writing.html">writing</a></td>
+</tr><tr bgcolor="#ffb595"><td><b>Blog Roll</b></td></tr><tr>
+<td><a href="http://blogs.thoughtworks.com/"><b>Thought</b>Blogs</a><hr></td>
+</tr><tr>
+<td><a href="http://blogs.thoughtworks.com/alumni/">TW Alumni</a></td>
+</tr><tr>
+<td><a href="http://www.roughtype.com/">Nicholas Carr</a></td>
+</tr><tr>
+<td><a href="http://blogs.msdn.com/stevecook/default.aspx">Steve Cook</a></td>
+</tr><tr>
+<td><a href="http://www.laputan.org/catfish/">Brian Foote</a></td>
+</tr><tr>
+<td><a href="http://www.redhillconsulting.com.au/blogs/simon/">Simon Harris</a></td>
+</tr><tr>
+<td><a href="http://www.eaipatterns.com/ramblings.html">Gregor Hohpe</a></td>
+</tr><tr>
+<td><a href="http://www.toolshed.com/blog">/\ndy Hunt</a></td>
+</tr><tr>
+<td><a href="http://www.cincomsmalltalk.com/userblogs/ralph/blogView">Ralph Johnson</a></td>
+</tr><tr>
+<td><a href="http://patricklogan.blogspot.com/">Patrick Logan</a></td>
+</tr><tr>
+<td><a href="http://www.from9till2.com/">David Ing</a></td>
+</tr><tr>
+<td><a href="http://www.testing.com/cgi-bin/blog">Brian Marick</a></td>
+</tr><tr>
+<td><a href="http://codebetter.com/blogs/jeremy.miller/default.aspx">Jeremy Miller</a></td>
+</tr><tr>
+<td><a href="http://www.jnsk.se/weblog/rss.xml">Jimmy Nilsson</a></td>
+</tr><tr>
+<td><a href="http://www.pepysdiary.com/">Samuel Pepys</a></td>
+</tr><tr>
+<td><a href="http://homepage.mac.com/keithray/blog/">Keith Ray</a></td>
+</tr><tr>
+<td><a href="http://www.jrothman.com/weblog/blogger.html">Johanna Rothman</a></td>
+</tr><tr>
+<td><a href="http://headrush.typepad.com/creating_passionate_users/">Kathy Sierra</a></td>
+</tr><tr>
+<td><a href="http://blogs.pragprog.com/cgi-bin/pragdave.cgi">Dave Thomas</a></td>
+</tr></tbody></table>
+</td></tr></tbody></table><div class="pageFooter">	
+<hr>
+		<table width="100%">
+			<tbody><tr>
+				<td align="left">
+					<a href="http://www.martinfowler.com/">
+						<img src="FeatureBranch_files/mflogo.gif" alt="martinfowler.com logo" style="border: 0pt none ;" height="51" width="147">
+					</a>
+				</td>
+					<td align="right">
+					<a href="http://studios.thoughtworks.com/mingle-project-intelligence">
+						<img src="FeatureBranch_files/mingle.png" alt="mingle logo" style="border: 0pt none ;">
+					</a>
+				</td>
+			<td align="right">
+					<a href="http://www.thoughtworks.com/">
+						<img src="FeatureBranch_files/twlogo.gif" alt="thoughtworks logo" style="border: 0pt none ;">
+					</a>
+				</td>
+			</tr>
+		</tbody></table>
+		<hr>
+			<p>
+			© <small>Copyright <a href="http://www.martinfowler.com/">Martin
+					Fowler</a>, all rights reserved</small>
+			</p>
+</div>
+</body></html>

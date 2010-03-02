@@ -1,0 +1,78 @@
+=================
+X on two monitors
+=================
+
+Two heads are better than <Pun Enforcement Police Forbid further reading>
+=========================================================================
+
+How to put two monitors onto your system.
+
+scenarios
+
+1. A laptop with a laptop screen and a VGA out
+
+2. A PC with a dual capable card
+
+xrandr
+------
+*xrandr* is a command line tool (described in its own man page as "primitive") for looking at and changing settings realted to multiple monitor usage.
+
+X RandR is *X Resize and Rotate* - enabling changing X properties *without* having to reboot the XServer. 
+
+device
+    A graphics device such as a computer graphics card or a computer motherboard's integrated graphics chipset.
+monitor
+    A physical device such as a CRT or a flat screen computer display.
+screen
+    An area into which graphics may be rendered, either through software alone into RAM as with VNC, or within a graphics device, some of which support rendering into more than one screen simultaneously, either viewable simultaneously or interchangeably. Interchangeable screens are often set up to be notionally left and right from one another, flipping from one to the next as the mouse pointer reaches the edge of the monitor.
+virtual screen
+    Two different meanings are associated with this term:
+
+            * A technique allowing panning a monitor around a screen running at a larger resolution than the monitor is currently displaying.
+            * An effect simulated by a window manager by maintaining window position information in a larger coordinate system than the screen and allowing panning by simply moving the windows in response to the user.
+
+display
+    A collection of screens, often involving multiple monitors, generally configured to allow the mouse to move the pointer to any position within them. Linux-based workstations usually support having multiple displays, which are switched by special keyboard combinations such as control-alt-function-key, simultaneously flipping all the monitors from showing the screens of one display to the screens in another. 
+
+
+http://en.wikipedia.org/wiki/Low-voltage_differential_signaling
+commonly used for linking graphics cards to laptop monitors
+
+
+Laptop
+------
+If i type xrandr I will see current status
+
+::
+
+   pbrian_laptop# xrandr
+   Screen 0: minimum 320 x 200, current 1280 x 800, maximum 1280 x 1280
+   VGA1 disconnected
+   DVI2 disconnected
+   LVDS connected 1280x800+0+0 286mm x 179mm
+      1280x800       59.9*+
+
+If i then plug my VGA cable into the laptop VGA Out
+
+::
+
+   pbrian_laptop# xrandr
+   Screen 0: minimum 320 x 200, current 1280 x 800, maximum 1280 x 1280
+   VGA1 connected
+      1280x1024      75.0     60.0  
+      1280x960       60.0  
+      1152x864       75.0  
+      1152x720       60.0  
+      1024x768       75.0     60.0  
+      832x624        74.6  
+      800x600        75.0     60.3  
+      640x480        75.0     59.9  
+      720x400        70.1  
+   DVI2 disconnected
+   LVDS connected 1280x800+0+0 286mm x 179mm
+      1280x800       59.9*+
+
+
+that seems a good sign.  What does it mean?
+
+
