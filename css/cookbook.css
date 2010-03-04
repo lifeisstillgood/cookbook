@@ -9,18 +9,18 @@ body {
         width:100%;
         background:#fff;
         min-width:600px;  
-	font-size: 62.5%;
+	    font-size: 100%;
  
 }
 
 .document{
     margin-bottom: 1em;
-    margin-top: 0;
-    font-size: 1.8em;
+    margin-top: 1em;
+    font-size: 1em;
     font-family: verdana, sans-serif;
     line-height: 120%;
-    margin-left:2em;
-    margin-right:2em;
+    margin-left:2.5em;
+    margin-right:2.5em;
 }    
 
 
@@ -152,6 +152,7 @@ img {
         width:170px;
         position:relative;
         left:185px;
+        text-align:justify;
     }
 	/* Footer styles */
 	#footer {
@@ -174,27 +175,23 @@ color:#369;
 
 div.col1 p,div.col1 ul,div.col1 ol {
 font-family:Georgia, Serif;
-font-size:1.1em;
+font-size:1em;
 margin-bottom:1em;
-margin-top:0;
+margin-top:1em;
 }
 
-div.col2, div.col3
-{
+div.col2, div.col3 {
     font-family: Helvetica, Sans-Serif;
     font-size: 0.9em;
-    line-height: 120%;
 }
 
 h1.title {
   color:#369;
 }
 
-
 .contentSubtitle{
     font-size: small;
 }
-
 
 .screenshot{
 
