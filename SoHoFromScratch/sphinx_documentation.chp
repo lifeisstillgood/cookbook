@@ -2,19 +2,24 @@
 Documenting code with Sphinx
 ============================
 
-`Sphinx <http://sphinx.pococo.org>`_ is the new standard for Python documetnation. 
-and whilst it can be a bit awkward to start with, it is surprisingly useful.
+`Sphinx <http://sphinx.pococo.org>`_ is the new standard for Python
+documetnation.  and whilst it can be a bit awkward to start with, it
+is surprisingly useful.
 
 Firstly it can be installed simply through easy_install::
 
   $ easy_install sphinx
 
-In short, Sphinx takes ReSt-based documents that you write, along with ReSt-based docstrings from within Python files, and outputs HTML (or PDF).
+In short, Sphinx takes ReSt-based documents that you write, along with
+ReSt-based docstrings from within Python files, and outputs HTML (or
+PDF).
 
 Documenting a project 
 =====================
 
-It is best to divide up each project into Python packages, or at the very least directories that make sense.  Inside each directory I recommend putting::
+It is best to divide up each project into Python packages, or at the
+very least directories that make sense.  Inside each directory I
+recommend putting::
 
   .doc/
       .doc
@@ -22,39 +27,58 @@ It is best to divide up each project into Python packages, or at the very least 
       .spec
   .deploy/
 
-in the first .doc run *sphinx-quickstart* which will create a configuration file and a few other directories to set up sphinx *in this directory*.  They are fairly straightforward settings. but I suggest taking the autodoc option now.  Ensure that in the conf.py file the following line (or similar exists::
+To get-started, in the outer .doc run *sphinx-quickstart* which will
+create a configuration file and a few other directories to set up
+sphinx *in this directory*.  They are fairly straightforward
+settings. but I suggest taking the autodoc option now.  Ensure that in
+the conf.py file the following line (or similar exists::
 
    extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary']
 
 You will probably need to manually add the *sphinx.ext.autosummary*.  
 
-These two settings enable a useful capability.  Sphinx is able to examine any importable module that you point it to and produce documentation based on docstrings.  Otherwise it simply produces documentation on what you write.
+These two settings enable a useful capability.  Sphinx is able to
+examine any importable module that you point it to and produce
+documentation based on docstrings.  Otherwise it simply produces
+documentation on what you write.
 
-AS an example, imagine I am working on tracTools, and want to put a quick paragraph together and then let Sphinx output all my docstrings I worked so hard on.::
+As an example, imagine I am working on tracTools, and want to put a
+quick paragraph together and then let Sphinx output all my docstrings
+I worked so hard on.::
 
    <file: tracToolsOverview>
-   This is a document that gives and overview of tracTools
+   This is a document that gives an overview of tracTools
    You can see what tracTools does, oh and here is a link to a module
    you should know about if you are a developer
 
    .. autosummary::
 
       tracTools.mikadoSvnLib
+      tracTools.freeze_help
 
-   Now, this link will not work if there is not a *stub file* in the 
-   reach of Sphinx (same directory?) that does not produce an autodoc
-   of the module.
+Now, this link will not work if there is not a *stub file* in the
+reach of Sphinx (same directory?) that does not produce an autodoc of
+the module.
 
-   <file: tracTools lib stub file>
+Then ::
+
+   <file: stub_mikadoSvnLib.rst>
    .. automodule:: tracTools.mikadoSvnLib
+      :members:
 
 the stub can have any name as long as it ends in *.rst* or whatever
-*source_suffix = '.rst'* has been set to. 
-You can also include more than one automodule in one stub file, but 
-it is clearer to have one stub file per module.
+*source_suffix = '.rst'* has been set to.  However a sensible naming convention is shown.  I have one stub file per module, because I also include 
+the *:members:* directive which outputs the docstrings of each function
+/class in the module. 
 
 This gives us coverage of the documentation, and we can then concentrate
 our writing onto important areas.
+
+So, realtively simply, I can have a document root file (index) that I
+can write anything I like in, but easily link into real modules that
+have real docstrings - making documentation about as easy as it ever
+gets.  And as a bonus, the docs are stored in the same repository as
+the code.
 
 
 

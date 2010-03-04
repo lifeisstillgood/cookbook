@@ -116,7 +116,25 @@ Yes, this is true, but psychoanalysts, who have been at the change management bu
 
  "The patient has got to *want* to change."
 
-So, we need look for pragmatic solutions, that do not place the success of releases, and the reputation of developers, on everyone else changing to meet our needs.
+I recently was looking for contracting work, coaching development
+organisations in Scrum.  One potential client was very excited about
+putting Scrum into use in a new project - driven almost entirely by a
+third party.  This third party wanted nothing to do with Scrum.  "We
+want you to deliver all this, by this date, you are already behind, do
+it. dont bother us" The idea of working in *partnership* to deliver
+working code was not something they cared about or wanted.  And there
+is little you can do at this point.  It *might* be possible to sell
+the third party on making more investment to ensure they get the best
+value they can - but you just know that it will go badly - and when it
+does "being transparent" is not likely to help.  What will help?
+
+
+
+
+
+So, we need look for pragmatic solutions, that do not place the
+success of releases, and the reputation of developers, on everyone
+else changing to meet our needs.
 
 - sticking to priorities
 - know what they want
