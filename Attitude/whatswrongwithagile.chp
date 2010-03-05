@@ -1,15 +1,143 @@
-=========
+=====
 Agile
-=========
+=====
 
-1. Agile is supposed to be agile not prescriptive
+Tom Gilb is one of those little heard IT writers who called early on a lot of 
+the problems we know see all around us.  Jack Reeves told us that `source code is design </Attitude/thecodeisthedesign.html>`_, Fred Brooks told us not to believe the hype.  Tom Gilb called Agile long before there was a Manifesto.  Evolutionary Planning (as opposed to the then dominant Waterfall) was his bag - and he called for allowing a team to work with business partners in iterative cycles, with the "selection of high value/cost steps [as a] distinguishing feature". [#]_ So, dedicated teams, working in iterative cycles, with business partners, and a list of most important steps to take first.  I think I just described Scrum.
 
-2. It tries to pretend BA not needed, by pushing that back onto the customer (like airline ticket booking)
+Anyway, having established that there is nothing new under the sun (and if we selectively choose quotes from 30 year old books we can prove almost anything), we come to the present - and the Agile movement.  To call it a movement is a bit rich - there are two trends - the label and the practise.  The label does tend to come with seminars and buzzwords, but peel away the outer layers and you find a simple, engineering-focused approach to making businesses better.
 
-3. The link between strategy and daily action is still unclear - lets do this in next three weeks is not same as 
-   being able to see that these things link to big goals
+If I can explain it, it is to say that IT systems never operate in isolation - they are always an (intimate) part of the processes and functioning of any company.
+As such if you try and change a company's IT systems, you will change the company.
+And if you are going to change the company, you had better not be focused *solely* on technology.
 
-So the whole is a fave for programmers, and it can take badly underperforming teams (chaotic) and
-drag some order out of chaos, but there are still holes.
+Agile (or evolutionary computing, or whatever label we choose) works because it makes changing a company part and parcel of changing an IT system.
+
+So, for my money, Agile Methodologies are just pre-packed sanity.  But I swear, if a business owner can buy-in to the Method, then the prescriptions can be used to prevent destructive interference so much more easily than trying to persuade a return to sanity.  
 
 
+Why does Agile work?
+--------------------
+
+- Its pre-packed sanity.  Some, perhaps most failures in IT are pathological - nothing whatsoever to do with technology but to do with ineffective organisational decision making.  By setting clear boundaries, like SuperNanny, organisations can buy a little bit of sanity for themselves.
+
+- good engineering practises.  Scrum basically forces them on people
+  To me this is *the* winner from the development side.  A system that can be 
+  deployed from scratch, unit-tested, has documentation, code reviews and 
+  all the professional polish of a working machine, is a system that can evolve
+  and adapt to meet the needs of the business.  Good engineering puts that quality - ready to adapt, so high that it is necessary to keep the system *always* ready.
+
+
+
+::
+
+	Google is an exceptionally disciplined company, from a
+	software-engineering perspective. They take things like unit
+	testing, design documents and code reviews more seriously than any
+	other company I've even heard about. They work hard to keep their
+	house in order at all times, and there are strict rules and
+	guidelines in place that prevent engineers and teams from doing
+	things their own way. The result: the whole code base looks the
+	same, so switching teams and sharing code are both far easier than
+	they are at other places.
+
+
+- Pushing onto customer the effort of specification
+  The first NDA I ever signed was to review the efforts of a London-based company 
+  that was just outsourcing its development to India back in the early Ninties.
+  I think the description I got was "We did not think the developers here in the office did very well - and they hardly spoke to us.  So we decided to do it cheaper
+  over in India, but it has taken months of my and my management teams time to 
+  write out the large specification - but we have learnt so much and changed our minds so often it has been a great learning curve, and when they deliver this system
+  it will be so much better than what we have now.  We are right that UK developers  are expensive but not very good aren't we?
+
+  Agile has an interesting cost reduction exercise - the Business Analyst subtly 
+  slips out of sight - and the customer (business) is expected to be on site, available, constantly feeding into the team.  This *sometimes* works.  For piddling little projects that barely matter to the survival of the company, getting a high-powered executive to join in a cross functional team is next to impossible.  But we don't use Scrum on piddling little projects do we.  We bet the farm.
+
+- betting the farm
+  Rupert Murdoch is famous for betting the future of his whole company on a new venture.  Some see it as risk taking behaviour, which it might be, but it also works.  It works because the whole company knows that the new venture *must* work.  So there is clear focus, cross functional focus, on the success of a venture.  Successful Scrum teams also seem to be part of such ventures - in the literature and my own experience.  You need a farm bet to make the corss functional work at the right level.  However companies like Unilever seem to have made cross-functional product management just part of their DNA - which is where Scrum and Agile need to go now - into the DNA of companies.
+
+- drag order out of chaos - without having to have a complete plan
+  Agile techniques are (probably) useless for house building - its generally a known problem and just repetitive.  However for projects where a significant component has not been done before or is highly complex, you need some means of operating in chaos.  Short sprints, highest value task currently known - these things keep the odds on our side.
+
+
+
+Weaknesses
+----------
+
+Oddly, in my view, the ability to drag order out of chaos is also one of its weaknesses - it is much harder to link a strategy / vision to what we are doing now.  There is *no* promise that if we do this for six months, yes you will get what you want.  Only a promise you will get what you ask for.  Traditional project management did make those promises.  But they were lying.
+
+The second weakness is also one of these strength as weaknesses - the hype surrounding Agile.  For something that honestly is "just common sense", you want less hype.  But without it, the chances of being allowed to apply common sense to insanity is lower.
+
+
+So how do we get there?
+-----------------------
+
+I say we try to build a slope within a company - leading down towards sanity, so that the easiest thing for each person in the company is to contribute towards the Scrum goals.
+
+How - is a later post...
+
+.. continuous pushing v low energy state (slope)
+
+   scrum idea - total transparency of state of whole project this
+   helps a lot towards getting rid of artifacts that tell us what to
+   do if we focus on launching, and listing the most important things,
+   which is managements job, that works
+
+   (see idea of privitsation)
+
+
+   building a slope
+   ----------------
+   how do we make a slope 
+   marathon not a sprint
+   clear vision
+   clear measure method - empiricism, not opinion
+   tools and processes - svnmerge etc
+
+   work queue - queuing theory
+
+
+   Comparison to Google
+
+   - Managers code - Oh do I like that ! YEs please.
+   - Stiong engieering culture - code reviews
+   - launching counts.  Great engineers ship. Same as MS
+
+
+   ::
+
+	 The company has got to want to change
+
+   Its a bit of a get out.
+   clean ups and refactoring and reviews - these need to be done
+
+
+   FOr my money Scrum wins *for now* because it emphasises what I
+   think is most important area - code is not "clean" until it is
+   working, refactored, reviewed, documented and tested. It requires
+   good engineering practises.
+
+   This makes it possible to resist pressure to short circuit 
+
+   WHy does google support this - we could say because they are nice
+   people.  I dont agree - its because they opoerate at such scale
+   that anything other than good engeineering practise brings down
+   everything
+
+   SO the next slope item is linking visible loss of cash to bad
+   engineering practises.  Not too sure how we do that - air crash
+   investigation reviews seems likely.
+
+
+
+   googles business model (ad sales) supports non date driven
+   development - but date driven is not such a terror if you have
+   ability to drop functionality
+
+
+bibliography
+------------
+A good place to start is with `Steve Yegge <http://steve-yegge.blogspot.com/2006/09/good-agile-bad-agile_27.html>`_ 
+
+
+.. [#] Tom Gilb Principles of Software Engineering Management (1988)
