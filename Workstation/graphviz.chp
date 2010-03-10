@@ -28,6 +28,8 @@ Then run it as ::
 
   dot -Tps dot1 -o dot1.ps
 
+  (I generated the png files on this page as 
+  dot -Tpng test1 -o test1.png )
 
 Which is format postscript, output file is X and then we can view it::
 
@@ -66,3 +68,25 @@ produces:
 .. figure:: ../img/dot2.jpg
    :class: screenshot
 
+
+Beyond Basics
+=============
+
+
+We can also include external images::
+
+   digraph {
+
+   CLOUD [image="../img/cloud.png" label="" color=white];
+   MODEM [image="../img/modem.png" label="" color=white];
+
+   CLOUD -> MODEM;
+
+   }
+
+
+.. figure:: ../img/dot_images.png
+   :class: screenshot
+
+
+Further reading on dot language : http://www.graphviz.org/doc/info/attrs.html
