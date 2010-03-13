@@ -12,22 +12,61 @@ Why erlang
 - of the main language types its only one I do not have some fluency with (OOP, declarative, procedural, functional)
 
 
+Basics
+======
+- Installation
+  - install server (manual, PXE, kickstart)
+  - upgrade (cvsup to merge)
+  - jails
+  - package building and serving
+  - hardware, cabling, servers etc
 
 
+
+- SysadminBasics - monitoring
+
+  - netflow
+  - firewall
+  - tripwire (what has been altered on what machine)
+  = mrtg
+  - security auditing
+  - 
+
+
+- handling hardware
+  - usbdisk
+  - wifi
+  - image scanner
+  
+
+- useful functions
+  - gnuplot
+  - faces / taskjuggler
+
+
+- programming
+  - unicode
 
 
 Structure
 =========
 
+Knowledge management always used to be a manual process.  One brain,
+one notebook.  But we have entered an era where Industrial Processes
+are coliding with traditional knowledge management, creating a
+revolution where the heavy lifting is still done by machine, but they
+lift thoughts not material.
+
+In such uncertain times, specific plans are often worse than useless.
+So I ahve tried to set out a set of principles that I beleive,
+whatever the strange turns we shall see, will guide us through the next 
+generation.
+
+These are placed under Attitude, touching on subjects like Identity or
+just how Boeing Airplanes stay up.  From Attitude I try to link to specific
+how-to's relevant to the discussion, such as creating client SSL certificates on Identity.
 
 
-
-
-
-
-Starting theme - we are entering an era characterised by industrial processes transforming into more traditional knowledge management - industrial knoweldge management - where heavy lifting will still be done by machines.  More knowledge can be processed than before in one brain
-
-This demands a transformation of our workplace - and the agents of change will be those in charge of organisations and conversant with the technology - IT managers
 
 
 * What is an IT manager *Today*
