@@ -82,7 +82,7 @@ Whenever a printer is "connected" to a CUPS server, CUPS creates a queue and a d
 
 I have a new printer to setup, a Brother HL-5270DN, an ethernet capable B&W laser suitable for SOHO environments.  
 
-FIrstly I visit www.linuxprinting.org to find a suitable PPD file for my printer.  http://www.linuxprinting.org/show_printer.cgi gives me a link to a PPD file supplied by the manufacturer and says it works 'perfectly'.
+FIrstly I visit www.linuxprinting.org to find a suitable PPD file for my printer.  http://www.linuxprinting.org/printer_list.cgi gives me a link to a PPD file supplied by the manufacturer and says it works 'perfectly'.
 
 Now I need to create a device, a queue and configure them with the PPD device.
 
