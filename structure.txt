@@ -1,3 +1,40 @@
+
+immediate goals ( this month)
+-----------------------------
+google contacts and calendars (on phone)
+from contacts do a simple crm - notes per contact and how long since last contact
+
+scrumtools
+- est work done on ticket via checkin times
+
+orgmode - can I use org mode to do much?
+
+
+
+milestones
+----------
+Things to achieve by 2012
+
+1. Cycle lands end to John O'Groats for Mum cancer charity.
+
+2. setup business that actually has customers
+
+3. bring ciotools stack 
+
+4. able to do foraging and carving and pass on those skills
+
+5. politics
+
+6. academic research msc in measuring software project success and methods
+   A web site where softare engineers can anonymously put up their
+   current schedule and tasklist - we hash it and see how mnay chaged over period 
+   when it complete etc.
+
+
+
+
+
+
 Todo
 ====
 Enable a form of production where there can be any number of depth folders - so I can rganise more easily.

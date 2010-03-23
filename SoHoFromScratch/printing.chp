@@ -208,6 +208,71 @@ Access to printer functions is limited.
  
 
 
+(Optional) Replace lp* commands with CUPS versions:
+
+   1.
+
+      Add CUPS_OVERWRITE_BASE=yes and NO_LPR=true to /etc/make.conf
+   2.
+
+      Link CUPS lp* commands in /usr/local/bin to /usr/bin:
+
+      # cd /usr/bin 
+      # for i in lp* ; do mv $i $i.default ; ln -s /usr/local/bin/$i $i ; done
+
+The alternative is to put /usr/local/bin before /usr/bin in PATH. 
+
+see what printers configured on system::
+
+   $ lpstat -p -d
+    pbrian_laptop# lpstat -p
+    printer hp5550_sam is idle.  enabled since Mon Mar 22 15:06:05 2010
+    pbrian_laptop# lpstat -p -d 
+    printer hp5550_sam is idle.  enabled since Mon Mar 22 15:06:05 2010
+    no system default destination
+
+To print a (text/ps) file::
+
+   $ lpr -P printer filename
+   $ lpr -P hp5550_sam filename
+
+To set system wide default::
+
+   $ lpoptions -d hp5550_sam
+
+However the old lpr (ie BSD-style, non-CUPS, does not know how to talk to the CUPS server, so using lpr can result in ::
+
+   pbrian_laptop# lpr -P hp5550_sam task_cleanup_admin_logins
+   lpr: Unable to connect to /var/run/printer: No such file or directory
+   lpr: Check to see if the master 'lpd' process is running.
+   jobs queued, but cannot start daemon.
+
+So we need to replace the old style lpr with our new, shiny, understands CUPS lpr ::
+
+      *before* we build CUPS, we Add CUPS_OVERWRITE_BASE=yes and NO_LPR=true to /etc/make.conf            
+      OR
+      Link CUPS lp* commands in /usr/local/bin to /usr/bin:                         # cd /usr/bin                                                                # for i in lp* ; do mv $i $i.default ; ln -s /usr/local/bin/$i $i ; done                       
+
+Using foomatic-rip
+------------------
+
+Foomatic is a universal print filter that converts postscript files into the native (PCL usuallyfor HP) format needed for the printer itself, as described by the PPD file.  So to recap, a Postscript file is sent to printer, and if that printer "understands" Postscript, then CUPS is fine.  However, if hte printer does not understand Postscript, we need to convert Postscript into whatever the Printer does understand.  A PPD file, and the cleverness in foomatic will convert any postscript into any native language.
+
+What we need most of the time is ::
+
+   $ cd /usr/ports/printing/foomatic-rip; make install clean
+
+So my hp 5550 printer, which is non-Postscript, needs a PPD and foomatic
+
+Getting X applications to see it.
+---------------------------------
+print to lpr
+ensure you have print default set ala lpoptions -d <printername>
+
+
+
+
+
 
 What is IPP?
 http://www.networkworld.com/news/2000/0710ipp.html

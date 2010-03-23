@@ -1,0 +1,16 @@
+To be slightly shorter than those guys, the variable window-system is something if you're in a window-system, and nil if you're in a terminal, So if i wanted to load color-theme-darkblue2 i would have:
+
+(if window-system
+    (progn
+       (load "color-theme")
+       (color-theme-darkblue2)))
+
+and it will just use the default colors in the terminal. Of course, you could obviously load a term-friendly theme in the else-part if you wanted to:
+
+(load "color-theme")
+(if window-system
+     (color-theme-darkblue2)
+   (some-term-theme)))
+
+http://stackoverflow.com/questions/275736/how-can-i-use-no-color-theme-under-console-mode/276586#276586
+

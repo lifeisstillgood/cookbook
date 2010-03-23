@@ -211,3 +211,17 @@ h1.title {
 .breadcrumbs {
     color: cyan;
 }
+
+
+/////////// pbrian additions
+
+///// pbrian: make the call outs look nice
+pre.literal-block{
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+background:#EEEEEE none repeat scroll 0 0;
+border:1px solid #555555;
+font-size:9pt;
+padding:1em;
+}

@@ -1,0 +1,26 @@
+========
+Notebook
+========
+
+One should keep a notebook for those oddities that oneday may prove useful
+
+1. Installing org-mode in emacs::
+  
+   # Name of your emacs binary
+   EMACS=emacs
+
+   # Where local software is found
+   prefix=/usr/local
+
+   # Where local lisp files go.
+   lispdir = $(prefix)/share/emacs/site-lisp
+   #thirdparty lisp files it seems
+
+   # Where info files go.
+   infodir = $(prefix)/info
+   #info files for the gnu-help
+
+   THEN 
+
+   make install
+   

@@ -1,0 +1,47 @@
+====================================
+Discussing Plugins and extensibility
+====================================
+
+There is one general approach that is seen as acceptable: hooks
+
+
+http://wehart.blogspot.com/2009/01/python-plugin-frameworks.html
+
+http://trac.edgewall.org/wiki/TracDev/ComponentArchitecture
+
+http://martyalchin.com/2008/jan/10/simple-plugin-framework/
+http://www.martinaspeli.net/articles/writing-trac-plugins
+http://yapsy.sourceforge.net/
+http://aroberge.blogspot.com/2008/12/plugins-part-3-simple-class-based.html
+
+
+From Drupal (http://drupal.org/node/292)
+
+::
+
+   At the points where hooks are made available, the engine calls each
+   module's exported functions. This is done by iterating through the
+   modules directory. Say your module is named foo
+   (i.e. modules/foo.module) and exports a function called
+   foo_bar(). If the Drupal installation has a hook called bar, the
+   engine will call your foo_bar() function.
+
+::
+
+   Drupal's module system is based on the concept of "hooks". A hook
+   is a PHP function that is named foo_bar(), where "foo" is the name
+   of the module (whose filename is thus foo.module) and "bar" is the
+   name of the hook. Each hook has a defined set of parameters and a
+   specified result type.
+
+   To extend Drupal, a module need simply implement a hook. When
+   Drupal wishes to allow intervention from modules, it determines
+   which modules implement a hook and calls that hook in all enabled
+   modules that implement it.
+
+   The available hooks to implement are explained here in the Hooks
+   section of the developer documentation. The string "hook" is used
+   as a placeholder for the module name in the hook definitions. For
+   example, if the module file is called example.module, then
+   hook_help() as implemented by that module would be defined as
+   example_help().

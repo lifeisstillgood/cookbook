@@ -77,8 +77,6 @@ Monitor specs
 -------------
 Before we can finish the configuration of X, we need to know the basic specifications of the Monitor we are using, in other words the Horizontal Sync rate and Vertical refresh rate (think of these as how long it takes to start at top left pixel and repaint the whole screen down to bottom right.)
 
-
-
 A (fair) bit of googleing with the product ID from the back of my unbranded monitor, gets me ::
 
  EDID Name : CAL L15CX
@@ -86,14 +84,10 @@ A (fair) bit of googleing with the product ID from the back of my unbranded moni
  Maximum HorizSync : 60.000 kHz
  Minimum VertRefresh : 56 Hz
  Maximum VertRefresh : 75 Hz
- Maximum PixelClock : 80.000 MHz
+ ...
  Maximum Width : 1024 pixels
  Maximum Height : 768 pixels
- Preferred Width : 1024 pixels
- Preferred Height : 768 pixels
- Preferred VertRefresh : 75 Hz
- Physical Width : 300 mm
- Physical Height : 230 mm
+ ...
 
 
 So I want to enter the following  ::
@@ -101,56 +95,67 @@ So I want to enter the following  ::
  HorizSync    30-60
  VertRefresh  56-75
 
-I try it - and hey presto, it looks worse and the sawtooth is still flickering.
-So I play around with the settings a bit.[#]_ 
-Now the lines are rolling up the screen, which looks pretty for 5 seconds and nauseau-inducing thereafter.  Anyway, I guess it is the vertical refresh rate that is wrong, and so I constrain the vertical refresh rate, 69-75, then 74-75, and then I decide to drop the max and try 70-70. Hey, Google is not so useful after all - the maximum Vertical Refresh rate I found was too high. dropping it down to 70HZ gives me a clear fixed sawtooth.   As the manufacturer's website has broken links on it so I fear that unless you buy top quality monitors this sort of problem is always going to be with you.  It has been getting better recently though.
-
-Please note however, that just typing startx often just works with good enough defaults. The whole thing was usable before I played around.  I just like it perfect.::
+I try it - and hey presto, it looks worse and the sawtooth is still flickering. So I play around with the settings a bit. [#]_   Hmmm, now the lines are rolling up the screen, which looks pretty for 5 seconds and nauseau-inducing thereafter.  Anyway, I guess it is the vertical refresh rate that is wrong, and so I constrain the vertical refresh rate, 69-75, then 74-75, and then I decide to drop the max and try 70-70.  Are you as bored as I am?  Ok, *eventually* I experiment with the right settings and things work OK.::
 
  HorizSync    50-60
  VertRefresh  56-70
 
-Also I found that if I dropped the horizontal sync, the vert refresh goes out of whack. [#]_
+So, we have a refresh rate that is OK to stare at, now let us fix the
+resolution. 
 
+Resolution
+----------
 
-More Monitor stuff
-------------------
+Part of xorg.conf shows a section called "Screen".  A Screen is the
+complete "paintable" area the computer can use.  This is more obvious in 
+setting up `dual monitors </SoHoFromScratch/dualX.html>`_ 
+
+A Screen is a virtual display area, binding at least one video card output (Device) and at least one Monitor.  
+
+So below the Screen0 Section joins Card0 and Monitor0 together, and
+says that the 24 bit colour depth supports 1024x768 pixels.
+
 
 ::
+
  Section "Screen"
         Identifier "Screen0"
         Device     "Card0"
         Monitor    "Monitor0"
         DefaultDepth 24
+
         SubSection "Display"
                 Viewport  0 0
                 Depth     24
-                Modes     "1024x768"
+                Modes     "1024x768" "
         EndSubSection
  EndSection
 
 
-in short we want the mode line to have number of pixels supported, and the defaultdepth to link to that 
-level
-
 
 Keyboard layout
 ---------------
+
 Looking elsewhere in xorg.conf we find ::
 
   Section "InputDevice"
     Identifier  "Keyboard0"
     Driver      "kbd"
 
-Even though typing on the command line before we run X I can use my keyboard and the characters I expect 
-appear OK, this is because the OS is reading the line in /etc/rc.conf that says *keymap=uk.iso*.
+I can and usually do have the odd situation that before I launch X my keymap 
+works fine (ie I get a " mark when I expect).  After running X, suddenly I am using a different keyboard mapping.  T is because the OS is reading the line in /etc/rc.conf that says *keymap=uk.iso*.
+
 Unfortunately X will ignore this and default to some American setting. Which means that *"* is in the wrong place as is a fair number of other characters.
 This is annoying, but luckily we know that here, in xorg.conf are the settings that X will use.
 
 We can see the various options in /usr/local/share/X11/xkb/rules/org.lst
+
 UK is gb. 
-(Now actually Great Britain is not the same as United Kingdom, and this is one of those internationalisation
-problems, that the real world is a lot more complicated than one poor programmer can be bothered to deal with)
+
+(Now actually Great Britain is not the same as United Kingdom, and
+this is one of those internationalisation problems, that the real
+world is a lot more complicated than one poor programmer can be
+bothered to deal with)
 
 Now this file is in the Xkb directory and if you grep for ^!
 ! model
@@ -167,18 +172,18 @@ If I wanted to give a command about a variant it is::
   Option "XkbVariant" "xxxx"
 
 
-
-
 Turn off Capslock
 -----------------
+
 Oh dear god yes.
-Have a look in /usr/local/share/X11/xkb/rules/org.lst - do you see it. Oh wonder of wonders. A way to 
-turn off the capslock key, the useless appendix of the typewriter, out-evolved and just laying there waiting for an 
-unwary thumb to catch it an ruin a line of text.
+
+Have a look in /usr/local/share/X11/xkb/rules/org.lst - do you see
+it.  Oh wonder of wonders.  A way to turn off the capslock key, the
+useless appendix of the typewriter, out-evolved and just laying there
+waiting for an unwary thumb to catch it an ruin a line of text.
  
 
 under !option  I find ctrl:nocaps
-
 
 Option "XkbOptions" "ctrl:nocaps"
 
@@ -189,23 +194,25 @@ Option "XkbOptions" "ctrl:nocaps"
 Fix the config file in the right place
 --------------------------------------
 
-# cp xorg.conf.new /etc/X11/xorg.conf
+::
+
+   # cp xorg.conf.new /etc/X11/xorg.conf
+
 OR
-# cp xorg.conf.new /usr/local/etc/X11/xorg.conf
+
+::
+
+   # cp xorg.conf.new /usr/local/etc/X11/xorg.conf
+   # I prefer this location, but /etc is really more "BSD"
+
  
-Now try startx - and horray I can type shft-2 and see " and if I press capslock, it ignores it (well it treats it as
-a second ctl key. This is very very good. Wait till the section on emacs for a full explanation, but really dropping
-caps lock for an extra control key is great)
+Now try startx - and horray I can type shft-2 and see " and if I press
+capslock, it ignores it (well it treats it as a second ctl key. This
+is very very good.)
 
 
 Fonts
-------
-
-
-
-
-X11
-===
+-----
 
 ::
 
@@ -220,19 +227,22 @@ X11
  type 1 fonts make 
 
 
+xterm 
+-----
 
-x11/rxvt-unicode is a highly recommended text editor (see reddit thread
+
+x11/rxvt-unicode is a highly recommended xterm (see reddit thread
 http://www.reddit.com/comments/6wn5w/ask_proggit_whats_your_favorite_terminal_emulator/)
 
 
 XDM
 ---
-For testing purposes, we just want the XDM to run as a normal process not a daemon.
-so we call it as ::
+
+For testing purposes, we just want the XDM to run as a normal process not a daemon.  So we call it as ::
 
  #xdm -nodaemon
 
-(if you get stuck, simply ctl-alt-f1 to tty and kill the daemon xdm. You should understand how to do that by now)
+(ctl-alt-F1 *should* kill off xdm)
 
 now, normally ::
 
@@ -243,11 +253,9 @@ will ensure that when I type 'startx' xfce will run.
 However if I use xdm, it does not use my .xinitrc file.
 
 xdm uses files found in ' usr/local/lib/X11/xdm' for configuration.
-SO I can use a ~/.xsession or the global xsession file
-
+So I can use a ~/.xsession or the global xsession file
 
 % echo "/usr/local/bin/startxfce4" > ~/.xsession
-
 
 so 
 1. .xinitrc file with startxfce4 works only with startx, not with xdm
@@ -256,17 +264,13 @@ so
 
 Now how to run xdm every boot
 -----------------------------
+
 can be set as a tty - in /etc/ttys this line is off by default.::
 
  ttyv8   "/usr/local/bin/xdm -nodaemon"  xterm   off secure
 
 setting it to on will ensure each boot gets you a graphical login.
 
-
-
-http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/x11-wm.html
-# cd /usr/ports/x11-wm/xfce4
-# make install clean
 
 
 
@@ -284,41 +288,30 @@ http://www.freebsd.org/doc/en/books/faq/x.html#XDM-BOOT
 
 More than one card / monitor
 ============================
-Cards are 'Device' in the config file - you can tell which is labelled which by looking at the Device secion(s)
-It will tell you the Identifier (Card0) and which driver is being used (nv for nvidia) the board name and PCI ids 
-Really all you want to know is the identifiers 
 
-----------------------
+`dual monitors </SoHoFromScratch/dualX.html>`_
 
-Phone Line 
-----------
-Phone Line - ADSL Filter - DSL Modem - Ethernet Out - Own FIrewall/router - WIFI?
-
-http://www.broadbandbuyer.co.uk/Shop/ShopDetail.asp?ProductID=4122
-
-
-DNS
-===
-BIND8 is installed by default
-named_enable="YES"
-
-
-NTP
-===
-
-
-FTP
-===
-
-
-
-NFS
-===
+biliography
+-----------
 
 http://www.freebsdmadeeasy.com/tutorials/freebsd/set-up-xorg-on-freebsd.php
 
 #useful discussion on X setup 
 http://ubuntuforums.org/showpost.php?p=129379&postcount=21
+
+More on xorg.conf
+-----------------
+
+This is a mysterious little file, if only because "playing" with it can easily end up with no display and you looking silly.  
+
+So here is a whirlwind tour.
+
+1. ServerLayout
+2. Screen (device monitor)
+3. InputDevices
+4. Fonts
+
+
 
 .. [#] (and the history of that development and how Apple and Microsoft subsequently took the concepts to the mainstream is fascinating and can be found at .)
 
