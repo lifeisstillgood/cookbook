@@ -1,0 +1,46 @@
+================================
+When should a chef stop cooking?
+================================
+
+If you are just cooking, you aren't managing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+I am trying to work out when I should stop worrying that I don't know some techncal solution and instead let someone else solve the problem for me.
+
+Its quite a hard one, not because I am a control freak, (well perhaps) but because, well if you are a chef, and you do not know how to cook seafood, it could be a disaster grabbing some guy who claims he can do 
+
+When to delegate is the question
+--------------------------------
+
+My answer is twofold.
+
+When you have a framework within which the others can operate.  Delegating when you have a good source control, testing and release framework is good - there are plenty of places to catch and control problems without going mad.
+
+When you understand the boundaries of the chunk you are delegating to - and I would suggest when you can do without the delegated work.
+
+In short don't delegate your core, and don't let chaos rule.
+
+What do I mean by delegate - not do the job and I will supervise and review the results.  Thats not delegation.  Delegation is go do it and give me the results and I will include them.  No review.  You have already done that I am sure.
+
+
+Examples
+--------
+
+Well, WonderShaper is a good one.  It is a set of scripts around the *tc* or traffic control program.  If you have worked on a congested network at the office and ssh into a remote box, and suddenly the characters start to delay in echoing onto the terminal, its a pretty good bet that the network is maxed out - probably not downstream but upstream.  In other words the remote machine is waiting for your keystrokes to go through - but they are being held up in the ISP up-queue because it has given you 600TrillianBytes down stream but 14Kb up.  And some idiot is sending excel files by email to 100 customers.
+
+Traffic shaping starts to be useful here.  
+
+
+For me traffic shaping is probably the point at which the Chef should stop trying.  Running a SoHo network is the point at which I say each IT manager *should* be capable of.  Traffic shaping is I think just on the boundary of SoHo and 'proper' sysadmin.  Whilst I freely acknowledge that in 5 years traffic shaping will probably be the most obvious and basic function all IT Managers do, and this article will look stupid, but for me, for now, it is a boundary condition.
+
+
+In short, there needs to be things that the IT Manager can do, herself, so that she understands the issues and more importantly can run the place without dependance on outside help.  Therefore everyone she hires is wanted out of desire not desperation, and needs to be better than her.
+
+I am wondering what other boundary conditions there are
+
+
+So here is a list of the things I think a SoHo IT Manager/Chef should be able to do and by extension the limits a real IT manager needs to stop being 
+
+* Backup and Restore
+* Replication
+* 
