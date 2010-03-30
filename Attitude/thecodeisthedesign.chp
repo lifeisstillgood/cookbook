@@ -48,6 +48,30 @@ two-and-a-halfly ...
 Thirdly,  I happily predict that the architects will have to become programmers. It will be harder and harder to design a house, but cheaper to build. The world is becoming software.  
 
 
+.. sidebar::  specifications
+
+   It may be useful to consider the opinions of other software
+   professionals on "specifications" ::
+
+     "we still talk about the seven layers model, because it's a
+     convenient model for _discussion_, but that has absolutely zero to
+     do with any real-life software engineering. In other words, it's a
+     way to _talk_ about things, not to implement them. And that's
+     important. Specs are a basis for _talking_about_ things. But they
+     are _not_ a basis for implementing software."
+
+     Linus Torvalds
+     <http://kerneltrap.org/node/5725>
+
+   We should see specifications not as directions given to developers,
+   but as shared discussion documents to help everyone understand
+   what, together, we are going to build.  During development we want
+   to fine tune our directions, but we should rarely shout "Oh no !
+   We've been trying to do the wrong thing for weeks".  Volte-face is
+   for specifications, not code.
+
+
+
 
 
 
