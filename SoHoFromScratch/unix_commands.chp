@@ -9,6 +9,24 @@ why type
 Compare comamnd line and click GUI - scalability, prgrammability
 
 
+Mounting cdroms
+---------------
+For some reason this just gets hard for me.
+# mount -t cd9660 /dev/acd0 /mnt/cdrom/
+# umount /mnt/cdrom/
+# mount -t cd9660 /dev/acd0 /mnt/cdrom
+# umount /mnt/cdrom/
+
+ls /dev
+crw-r-----  1 root  operator    0,  91 Aug  4 09:50 acd0
+crw-r-----  1 root  operator    0, 128 Aug  4 12:40 acd0t01
+
+possibly alter /etc/devfs.conf
+
+perm acd0 0660
+
+
+
 listing and sorting
 -------------------
 
