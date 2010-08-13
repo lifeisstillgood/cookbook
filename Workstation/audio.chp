@@ -1,0 +1,35 @@
+Audio manipulation
+==================
+
+This is about manipulating recorded audio files to improve their
+quality, cut and paste out certain sections or make them smaller, or
+easier to manage.
+
+I must admit I know next to nothing on the subject.  Audio (and video)
+are the last things I bother putting on my Workstations, and although
+many people feel that not having Flash for BSD (or even a decent
+version on Linux) is terrible, I secretly smile and am happy I am
+unable to see a young boy dancing with a lightsaber.
+
+But, needs must, and I intend to record interviews with people in the area,
+and release them as podcasts.  I expect it is doable, but I might need to know how to use sound editing software.
+
+There are two main BSD-based methods - Audacity and Sox.  In essence, windowing and command line.
+
+Audacity
+--------
+
+:: 
+
+  cd /usr/ports/audio/audacity && make config-recursive && make install clean
+
+
+.. figure:: /img/audacity1.png
+   :class: screenshot
+
+The above is a screen shot of a simple human spoken phrase.
+
+Using audacity to edit an interview down.
+
+
+using Sox 
