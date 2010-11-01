@@ -1,0 +1,28 @@
+=========
+Webserver
+=========
+
+Apache is *fine*, but I want nginx
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Apache is the old warhorse - it will do battle for you when you call,
+you know how it works and can remember all its foibles.  But it is a little
+bit too big now, a few too many extras. Along comes a new kid, Nginx, nippy,
+faster, built differently.
+
+Install
+
+$ cd /usr/ports/www/nginx
+  ...
+
+There are a lot of options, choose SSL and any mix you like for now.
+
+
+Notes:
+
+1. file permissions are adhered to, so whatever user the server is running as 
+(set in nginix.conf) then that is the permission set to watch.  nobody or www
+seem easiest
+
+2. 
+

@@ -1,0 +1,24 @@
+
+===========================
+Kqueue and Python webserver
+===========================
+
+
+How do we make fast servers?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+What makes a server fast?
+FOr webservers, its no longer the hardware, its the strategy the webserver uses
+to get stuff off disk and onto the network *in parallel* to all the other stuff
+it is getting off disk and onto network
+
+The reason nginx is so much faster than apache is it took the right strategy.
+
+
+Aim: To use PyKqueue to write a fast web server for show.
+
+
+http://ai.mee.nu/seeking_a_database_that_doesnt_suck
+http://gigaom.com/2010/08/01/meet-big-data-equivalent-of-the-lamp-stack/
+http://www.kegel.com/c10k.html#nb.edge
+http://www.freebsd.org/cgi/man.cgi?query=kqueue&apropos=0&sektion=0&manpath=FreeBSD+5.0-current&format=html

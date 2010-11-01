@@ -1,0 +1,86 @@
+==========
+Using SliM
+==========
+
+SLim (http://slim.berlios.de) is the Simple Login Manager.  Its a xdm replacement without the heavy overhead of KDM.
+
+To install::
+
+  cd /usr/ports/
+  make install clean
+
+Then you can either alter /etc/ttys so that the usual xdm line (on tty8) 
+is changed to call slim, but don't do that - for some reason slim just
+polls tty / login over and over again.  Just add ::
+
+  slim_enable="YES"
+
+to /etc/rc.conf
+
+Also, you *must* have a valid ~/.xinitrc file in your home directory.
+(remember *s*tartx will call .x*s*ession but xdm call .xinitrc).
+A valid .xinitrc is called by xdm and needs to know what WindowManager to 
+hand over to.  So a file that looks like this is fine::
+
+  exec /usr/local/bin/startxfce4
+
+So, if you are using slim and you get these error messages::
+
+  Unable to execute login command
+
+Then you need to check your .xinitrc file.
+
+If you see lots of ::
+
+  getty repeating too quickly on port /dev/ttyv8
+
+then dump the ttys setup and use slim_enable="YES"
+
+Themes
+------
+The config file (/usr/local/etc/slim.conf) contains a useful setting::
+
+  current_theme  wave
+
+where we can look into /usr/local/share/slim/themes/ where a range of themes exist (assuming you compiled slim-themes, if not go back and redo).
+
+Simply change the above line to the name of a theme.  ie::
+
+  current_theme scotland-road
+
+If you want a preview, then run
+
+  slim -p /usr/local/share/slim/themes/scotland-road
+
+
+A fairly simple script will let you preview them quick::
+
+   for i in `ls -1 /usr/local/share/slim/themes/`
+   do                          
+	firefox3 file:///usr/local/share/slim/themes/$i/background.jpg
+   done
+
+
+Create my own
+-------------
+You need a jpg, a png and some sticky-backed plastic.  in each theme is a text file defintion (fonts etc) and a background image (background.jpg) and a panel
+(panel.png) which needs transparency and a precise layout so its easier to copy the default.
+
+So the easy thing is to change the background.jpg, you will need images of screen size (ie JPEG 1280x1024)
+
+I quite like rainbow, but I will be putting my sons photos up soon as I copy them across.
+
+Xlock
+-----
+
+I want to lock my PC so no-one can send rude emails to my boss when I am at lunch.  I want
+
+/usr/ports/x11/xlockmore
+
+$ make install clean.
+
+now xfce4 is configured to run xflock4 which calls xlock when ctl-alt-del is pressed. (xlockmore is the more modern version but still ln-s to /usr/local/bin/xlock)
+
+To configure it ... read the manual
+
+
