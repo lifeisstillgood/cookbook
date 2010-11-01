@@ -3,85 +3,122 @@ Documenting code with Sphinx
 ============================
 
 `Sphinx <http://sphinx.pococo.org>`_ is the new standard for Python
-documetnation.  and whilst it can be a bit awkward to start with, it
+documentation.  and whilst it can be a bit awkward to start with, it
 is surprisingly useful.
-
-Firstly it can be installed simply through easy_install::
-
-  $ easy_install sphinx
 
 In short, Sphinx takes ReSt-based documents that you write, along with
 ReSt-based docstrings from within Python files, and outputs HTML (or
-PDF).
+PDF), in a professional looking manner *and* it automates the awkward bits 
+of documenting code, stripping out docstrings, listing functions etc etc.
+
+Install
+=======
+
+It can be installed simply through easy_install::
+
+  $ easy_install sphinx
+
 
 Documenting a project 
 =====================
 
-It is best to divide up each project into Python packages, or at the
-very least directories that make sense.  Inside each directory I
+1. It is best to divide up each project into Python packages, or at
+the very least directories that make sense.  Inside each directory I
 recommend putting::
 
-  .doc/
+  .meta/
       .doc
       .test
-      .spec
-  .deploy/
+      .deploy
 
-To get-started, in the outer .doc run *sphinx-quickstart* which will
-create a configuration file and a few other directories to set up
-sphinx *in this directory*.  They are fairly straightforward
-settings. but I suggest taking the autodoc option now.  Ensure that in
-the conf.py file the following line (or similar exists::
 
-   extensions = ['sphinx.ext.autodoc', 'sphinx.ext.autosummary']
+2. In the outer .meta, run *sphinx-quickstart* which will create a
+configuration file and a few other directories to set up sphinx *in
+this directory*.  They are fairly straightforward settings. but I
+suggest taking the autodoc option now.
 
-You will probably need to manually add the *sphinx.ext.autosummary*.  
+2.a. Alter conf.py.  Ensure that in the conf.py file the following
+line (or similar) exists::
 
-These two settings enable a useful capability.  Sphinx is able to
-examine any importable module that you point it to and produce
-documentation based on docstrings.  Otherwise it simply produces
-documentation on what you write.
+   extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 
+              'sphinx.ext.coverage', 'sphinx.ext.viewcode',
+              'sphinx.ext.autosummary']
 
-As an example, imagine I am working on tracTools, and want to put a
-quick paragraph together and then let Sphinx output all my docstrings
-I worked so hard on.::
+   sys.path.insert(0, os.path.abspath('../..')) # ensure import <pkg>.<module> works in docs
 
-   <file: tracToolsOverview>
-   This is a document that gives an overview of tracTools
-   You can see what tracTools does, oh and here is a link to a module
-   you should know about if you are a developer
 
-   .. autosummary::
+You will probably need to manually add the *sphinx.ext.autosummary*
+etc.
 
-      tracTools.mikadoSvnLib
-      tracTools.freeze_help
 
-Now, this link will not work if there is not a *stub file* in the
-reach of Sphinx (same directory?) that does not produce an autodoc of
-the module.
+3. Autodoc v. AutoSummary 
+   
+Right, I have written useful notes in my module docstrings, and I want them
+out into pretty format now.
 
-Then ::
+I will later on write some documentation from scratch, in a "normal" ReSt file.
 
-   <file: stub_mikadoSvnLib.rst>
-   .. automodule:: tracTools.mikadoSvnLib
+So, to get the docstrings out
+
+1. create a stub .rst file that has in it a pointer to the python module
+
+2. include those stub files in the index.rst
+
+3. Profit!
+
+
+I have a dumb script to create stub files (`mkstubs.py <../img/mkstubs.py>`_)
+
+
+a) put a stub file into .doc for each module
+   stub file looks like::
+
+   =========
+   freezeLib
+   =========
+
+   .. automodule:: tracTools.freezeLib
       :members:
 
-the stub can have any name as long as it ends in *.rst* or whatever
-*source_suffix = '.rst'* has been set to.  However a sensible naming convention is shown.  I have one stub file per module, because I also include 
-the *:members:* directive which outputs the docstrings of each function
-/class in the module. 
-
-This gives us coverage of the documentation, and we can then concentrate
-our writing onto important areas.
-
-So, realtively simply, I can have a document root file (index) that I
-can write anything I like in, but easily link into real modules that
-have real docstrings - making documentation about as easy as it ever
-gets.  And as a bonus, the docs are stored in the same repository as
-the code.
+   We can write some text here, but we are better off writing a magnum opus
+   in other files.
 
 
+b) so we should have a .doc folder looking like ::
+
+   .doc$ ls     
+   stub_freezeLib.rst	stub_freeze_help.rst
+   stub_freezeLib2.rst	stub_freeze_test.rst
+
+c) then we alter index.rst so that it looks like ::
+
+   Contents:
+
+   .. toctree::
+      :glob:
+
+      .doc/*   
+
+   .. autosummary ::
+
+      tracTools.freezeLib
+      tracTools.mikadoSVNLib
 
 
+Now, index.rst will produce a toctree linking to each stub, and at the 
+bottom a summary table of each module and links to the module.
 
+So, we can go read the docstrings of the module in place (instant documentation)
+and we have stub files for each module, that can be used to make them more 
+readable without altering the docstrings.  
+
+Finally we can add any *.rst file we like as an explanation. intro.rst is
+usually a good idea.
+
+
+TBD
+---
+
+* using intersphinx
+* viewcode
 

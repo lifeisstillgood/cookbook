@@ -5,57 +5,90 @@ Why Open Source
 
 Why support the Free team?
 ==========================
-Open Source Software is winning.  Or, to be honest, has won.  Mitch kapor has come round to the idea that the old proprietary software model, just cannot stand up to the innovation and pace of the OSS world.  It evolves [#]_
 
-But there has to be some serious reasons - the simplest are 
+Open Source Software is winning.  Or, to be honest, has won.  Mitch
+Kapor has come round to the idea that the old proprietary software
+model, just cannot stand up to the innovation and pace of the OSS
+world.  It evolves [#]_
+
+But what are the *reasons* it wins.  Is it as simple as lots of people
+giving the time for free just makes OSS *cheaper*.  Is that all it is?
+No, I dont think so. It is an advantage, but not in the way you might think.
+
+I think there are 4 main reasons,
 
 - it is an explanation
 - it is like the Law
-- it evolves - and so survives
+- it evolves 
+- it has serious marketing advantage
 
 
 
+Explanation
+-----------
+
+The world is a complex thing, the world of software just becomes more
+complex daily.  And we try to understand it.  Why has this new piece
+of software been released?  What problem does it try to solve and how
+does it do it?  It matters, because if you do not understand how a tool works or what it does, how can you learn to use it in new and different ways?
+
+Either we support topless computing or curated computing.[#]_
+
+And I am a fan of topless computing.  I like knowing I can change it if I need it.  Well, in theory.
+
+But mostly I like feeling I understand it as deeply as I need to - and OSS provides all the explanations I will need.
 
 
-http://www.codinghorror.com/blog/archives/001283.html
-oh yes, very nicely put...
+Take for example Adobe.
 
-but Brookm makes a good comeback
-I don't know that this really affects your point that much, except to say that, in our domain, quite a lot of our users find that trying to do the compile-it-yourself version really takes rather more of their brains than downloading something that just works.
-
-
-It's worth summarizing. The miracles of the Internet -
-any-app over any infrastructure,
-growth without central planning,
-innovation without permission,
-and market discovery.
-If the Internet Protocol lost its public nature, we'd risk
-shutting these miracles off.
-http://isen.com/blog/2009/04/broadband-without-internet-ain-worth.html
-
-Commerce requires a meeting of minds between buyer and seller, and it's just not happening.
-http://www.schneier.com/blog/archives/2008/04/the_rsa_confere.html
-
-Its true. Take for example Adobe.
-They have produced a programming language called postscript which is a genuine Turing complete
-language. PDF files contain postscript for doing page layout and stuff. And they have 
-forms and they have 
-
-I once decided to find out if I could put the form data into the pdf, and so sign it and 
-make a smple workflow application.
+PDF is a great innovation, *almost* like digital paper. But I had a brainwave once years ago.  If you had a form in PDF, then 
+entered data into the PDF, say tacked on the end in some PDF-readable location, then you could create a instant workflow application.  More so, it would be fairly simple to put a gpg-style whatnot into the reader and so create irrevocable workflows.  I could create a form, fred could fill it in and then sign it, the whole PKI thing would be based around self-certification and it would be *intuitive*. 
 
 It would be great.
 
-I assumed adobe did it. I spent 40 frustrating minutes searching their site.
-I never understood what it was their products for PDF do. 
+I assumed adobe did it. I spent 40 frustrating minutes searching their
+site.  I never understood what it was their products for PDF do. No, really.  I simply did not understand. They have Adobe Reader (Ok, I get that), Acrobat, OK, creating PDFs, and then ... OMG.  What does this all do.  It is literally impossible to wade through the marketing bumfluffery to get an answer.
+
+Adobe could have years ago created the workflow app to end all workflow apps.  And I have no idea.  I cannot get an explanation.
+
+This however is not a OSS is always perfect - some of the bigger more
+polished OSS projects (like Gnome) are becoming opaque.  THis opacity
+reflects a disconnect between the itches of the intelligent layperson
+and the jargon and shared understanding of the culture of those in the
+OSS.  I also think they represent a vanishing point - software should at 
+some point simply be stopped working on (or at least, have parts *taken away*)
+When an intelligent, competant programmer (I do know one, whom I consult for the difficult bits around here) cannot understand the *essence* of the system
+with a simple explanation, then the system has jumped the shark.
 
 
-I read an expalanation of a 
+Software is a representation of human thinking in code form, so it
+should be understandable We are representing the company and how it
+thinks in code. So it should not be confusing, or hidden
 
-This however is not a OSS is always perfect  - some of the bigger more polished OSS projects
-(like GNome) are becoming opaque.
-THis opacity reflects a disconnect between the itches of the intelligent layperson and 
-the jargon and shared understanding of the culture of those in the OSS
+
+
+
+Bibliography
+============
+
+* http://www.codinghorror.com/blog/archives/001283.html
+  OSS comes only in Awesome Edition
+
+
+* It's worth summarizing. The miracles of the Internet -
+   - any-app over any infrastructure,
+   - growth without central planning,
+   - innovation without permission,
+   - and market discovery.
+
+  If the Internet Protocol lost its public nature, we'd risk shutting
+  these miracles off.
+  http://isen.com/blog/2009/04/broadband-without-internet-ain-worth.html
+
+* Commerce requires a meeting of minds between buyer and seller, and it's just   not happening.
+  http://www.schneier.com/blog/archives/2008/04/the_rsa_confere.html
+
+
 
 
 OSS is not panacea
@@ -72,13 +105,17 @@ Yes, it has a marketbased approach, it takes away a lot of the hording of inform
 
 
 Towards open source ERP, that is ERP that you can damn well understand
-The idea is to release not perfect poliched work, but to release work that is an explanation,
-and that a programmer can take and add to their own needs.
-This is philosophy of releasing work - it is also good for a lazy person.
+The idea is to release not perfect poliched work, but to release work
+that is an explanation, and that a programmer can take and add to
+their own needs.  This is philosophy of releasing work - it is also
+good for a lazy person.
 
 Open source is an explanation
-Software is a representation of human thinking in code form, so it should be understandable
-We are representing the company and how it thinks in code. So it should not be confusing, or hidden
+
 
 
 .. [#]  Linus Torvalds and that Linux was not designed - it evolved, and evolved according to a herd of cats needs and taste.
+
+.. [#] Curated computing is iirr a term used by DataMonitor to position iPhone and iPad in some spectrum.  The idea is that Steve Jobs decides what capabilities you need and thats all you get.  Its like wage slavery.  Not real actual slavery but certainly not freedom.
+
+  

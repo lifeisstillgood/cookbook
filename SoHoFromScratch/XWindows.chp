@@ -214,17 +214,58 @@ is very very good.)
 Fonts
 -----
 
+The fonts supplied from a bare build of BSD are "OK", but barely so.
+We want to improve the situation, we all want a bit of that luscious screen
+goodness.  Its not just that - applications like Firefox have real trouble
+without decent font selections to pull from, especially when it comes to printouts.  They can look really ugly.
+
+We can install 3 sets of fonts that will in most cases solve most problems 
+
+* x11-fonts/urwfonts
+  
+this requires this line::
+
+  FontPath     "/usr/local/lib/X11/fonts/URW/"
+
+To be added to Section "Files" in /etc/X11/xorg.conf
+
+* TrueType Fonts
+
+Basically get them from your (licensed) Windows box, and put them onto the 
+BSD, then turn off Windows.
+
+0. build  /usr/ports/x11-fonts/ttmkfdir
+
+1. Add line ::
+
+          Load  "freetype"
+
+to Section "Modules" in /etc/X11/xorg.conf
+
+2. Put TrueType fonts into right directory::
+
+  mkdir /usr/local/lib/X11/fonts/TrueType/
+ 
 ::
 
- /usr/ports/x11-fonts/ttmkfdir
+  (On windows box)
+  cd C:\WINDOWS\Fonts
+  pscp *.ttf root@<BSDBox>:/usr/local/lib/X11/fonts/TrueType/
+  (files copy over ...)
 
- fonts
- C:\WINDOWS\Fonts
- http://www.freebsd.org/doc/en_US.ISO8859-1/books/handbook/x-fonts.html
- pscp *.ttf root@192.168.1.11:/usr/local/lib/X11/fonts/TrueType/
- add line to xorg.conf
- FontPath "/usr/X11R6/lib/X11/fonts/URW"
- type 1 fonts make 
+Now run 
+
+::
+
+  cd /usr/local/lib/X11/fonts/TrueType/
+  ttmkfdir -o fonts.dir
+
+
+then add this line::
+
+  FontPath     "/usr/local/lib/X11/fonts/TrueType/"
+
+To Section "Files" in /etc/X11/xorg.conf
 
 
 xterm 
@@ -233,6 +274,8 @@ xterm
 
 x11/rxvt-unicode is a highly recommended xterm (see reddit thread
 http://www.reddit.com/comments/6wn5w/ask_proggit_whats_your_favorite_terminal_emulator/)
+
+
 
 
 XDM

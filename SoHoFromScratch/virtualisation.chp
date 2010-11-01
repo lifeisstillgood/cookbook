@@ -272,6 +272,94 @@ But to start the image normally::
 
 
 
+Ripping XP CD
+-------------
+Its much easier with a .iso file than pass-through 
+
+  # dd if=/dev/acd0t01 of=/home/pbrian/downloads/xp.iso bs=2048
+
+Really it was awful to get this far.  Had to read the man page to the 
+bottom - adding bs=2048 solved a lot.
+
+# dd if=/dev/acd0t01 of=/home/pbrian/downloads/xp.iso
+dd: /dev/acd0t01: Invalid argument
+0+0 records in
+0+0 records out
+0 bytes transferred in 0.000084 secs (0 bytes/sec)
+
+plus why the acd0t01 worked when acd0 did not?
+
+Actually it seems to be the bs=2048 - CD's transfer at that rate and dd
+fails presumably after the first 512Bytes come and 513th is not buffered
+and a CRC fails somewhere.
+
+Anyway, 
+
+  dd if=/dev/acd0 of=/home/pbrian/downloads/xp.iso bs=2048
+
+works.  Now I have the ISO I install it the usual way,
+and presto, Windows on Virtual Machine.  And with Bridging.
+
+VirtualBox
+==========
+
+Installing
+----------
+
+First guest
+-----------
+
+The first one to create is Unbuntu.  Its simple and free.
+Download the latest version (www.ubuntu.com), and keep somewhere safe.
+Create a harddisk - there is a simple wizard on VirtualBox, I recommend 
+512MB RAM and min 8GB disk space, 5 years ago that was a damn good spec.!
+
+Then open File > Virtual Media Manager, which will allow us to make the ISO 
+visible. Just "add" a CD/DVD image, and it is available to the guest image.
+Now go to Settings for the image. Choose Storage and click on the CD below the IDE COntroller
+You should see on RHS "Attributes" of the CD device, and can select any one of the
+"mounted" CD drives above to "put into" the virtual CD tray.
+
+Start the image as usual, and select boot menu (probably f12), boot from the CD.
+You should see a normal install from ubuntu.  Just install.
+
+
+Bridged Networking
+------------------
+
+Compile Kernel with Netgraph included
+Basically, bridge networking uses a driver in the Host OS, to bypass the 
+usual host network stack (ie grab packets before they have gone through
+all the usual layers).  Netgraph is one such popular way of doing this.
+Thus the virtual machine can take apacket off the real NIC, read it and then 
+put its own reply back onto the real NIC at the same layer - it looks 
+to the Host as if right next door on the Ethernet network is another 
+NIC reading the packets it reads and putting more on the network.
+
+The Virtual machine on the other hand just sets up its stack as normal, thinking 
+it has access to a genuine real NIC.  
+
+Its a bit like this::
+
+   Host  VM
+    \    /
+     \  /
+      --  Netgraph
+      |
+      NIC 
+      
+But not really.
+
+
+
+http://www.virtualbox.org/manual/ch06.html
+
+
+
+
+
+
+
 bibliography
 ------------
 

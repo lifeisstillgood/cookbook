@@ -158,38 +158,53 @@ xxx
 
 Using command line printing
 ---------------------------
-This should work
 
-  $ lpr -P Brother_HL_5270DN mytestfile.txt
+This should work::
+  
+  $ lpr mytestfile.txt
 
-however there may be problems. The most common is that the old non CUPS printing software 
-is also named lp or lpr. and that they sit higher up $PATH than the stuff CUPS installs
+however there may be problems. The most common is that the old non CUPS printing software is also named lp or lpr. and that they sit higher up $PATH than the stuff CUPS installs
 
   $ /usr/local/bin/lpr -P Brother_HL_5270DN resolv.conf
 
-if that works you just have a path problem.  It can be fixed on install of CUPS by XXX
-Or you can move /usr/local/bin *before* /usr/bin in your $PATH [1]_
-Or force a replace of the old with a softlink to the new
+if that works you just have a path problem.  
+You can move /usr/local/bin *before* /usr/bin in your $PATH [1]_
+Or force a replace of the old with a softlink to the new::
 
   $ ln -s /usr/local/bin/lpr /usr/bin/lpr
 
+Setting the default printer.  The -P Mylong_print_name argument is a bit awkward,
+so the simplest approach is to set a default printer.
+
+  setenv PRINTER brother3 #for csh shells
+  PRINTER=brother3; export PRINTER #for bash shells (say in ~/.bashrc)
+
+Better is to::
+
+  lpoptions -d printer
 
 
-/usr/local/bin/lpr -P brother3 xorg.conf.new
+Using Postscript drivers
+------------------------
 
-setenv PRINTER brother3
+It is preferable to use postscript drivers for the printer, because then 
+you can just do ::
 
+  lpr mybigessay.ps
 
-
-So we are now able to print to a printer from our local machine
+and you get a real printout.
 
 
 Sharing the printer
 -------------------
 
+TBC
 
 Controlling policies
 --------------------
+
+TBC 
+
 /usr/local/etc/cups/cupsd.conf
 
 
