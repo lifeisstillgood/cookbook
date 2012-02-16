@@ -33,10 +33,13 @@ For various license-based reasons (and no I don't know and don't care right now)
  Please place the downloaded file(s) in /usr/ports/distfiles 
  and restart the build.
 
+ (NB halfway through the compile you will be asked to download diablo-caffe manually too.)
+
  
 So lets do that.  Download the above as needed.  Please note you get the above instructions from running $make install clean.  Run this yourself on your source as the page may be out of date.
 
 You will be asked to agree to a (non-free, personal use only) license.
 
 You may want to use OpenJDK instead.  I am not doing so as I am aiming at a Oracle application build and am guessing it will have less problems.  I shall compare and contrast the OpenJDK and the Oracle JDK in a few months time.
+
 
