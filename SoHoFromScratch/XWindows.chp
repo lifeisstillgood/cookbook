@@ -5,11 +5,16 @@ X Windows
 Show me the windows
 ===================
 
-X-Windows, otherwise known as just *X*, is the Unix version of the well-known Windows/Mouse Graphical User Interface.
-First developed at Parc-Xerox [#]_ the concept of using 
-overlapping windows, and a 'mouse' is often seen as the *only* way to interact with a computer.
+X-Windows, otherwise known as just *X*, is the Unix version of the
+well-known Windows/Mouse Graphical User Interface.  First developed at
+Parc-Xerox [#]_ the concept of using overlapping windows, and a
+'mouse' is often seen as the *only* way to interact with a computer.
 
-Of course the Unix tradition is for a command line interface - and I can happily attest that typing in commands to a shell is a more powerful way to control a computer in almost all cases. [#]_ . However, if you want to "use" a computer, for web surfing, graphics, and simple everyday actually not going mad usage, you need a GUI.   
+Of course the Unix tradition is for a command line interface - and I
+can happily attest that typing in commands to a shell is a more
+powerful way to control a computer in almost all cases. [#]_
+. However, if you want to "use" a computer, for web surfing, graphics,
+and simple everyday actually not going mad usage, you need a GUI.
 
 
 Installing
@@ -18,19 +23,32 @@ There is a meta-port for X windows. ::
 
  x11/xorg
 
-Simply install this - takes about 6 hours.  Yes. Six. On a decent 3 year old machine.  Firefox will take 3. Almost anything graphical takes forever to compile.  Just accept it.
+Simply install this - takes about 6 hours.  Yes. Six. On a decent 3
+year old machine.  Firefox will take 3. Almost anything graphical
+takes forever to compile.  Just accept it.
 
-Anyway,  if you just left it at *X* then you would only ever get a true 1980's experience of sawtooth background and poor looking windows.  This is because X is designed not to look good, but to provide the functionality other programs on top can use.  These programs are called *Windows Managers*.  The best known in the X world are KDE and GNOME.  Installing either can be a 12 hour compile easily, and they have a bewildering array of options.  I suggest using a simple but effective WM called xfce4::
+Anyway, if you just left it at *X* then you would only ever get a true
+1980's experience of sawtooth background and poor looking windows.
+This is because X is designed not to look good, but to provide the
+functionality other programs on top can use.  These programs are
+called *Windows Managers*.  The best known in the X world are KDE and
+GNOME.  Installing either can be a 12 hour compile easily, and they
+have a bewildering array of options.  I suggest using a simple but
+effective WM called xfce4::
 
   x11-wm/xfce4
 
-Anyway, we have X installed, and a window manager to make things look good / not awful...
+Anyway, we have X installed, and a window manager to make things look
+good / not awful...
 
-We are still at the command line when we boot our machine, and after logging in I still only have the prompt. On a machine that has X installed, we can type ::
+We are still at the command line when we boot our machine, and after
+logging in I still only have the prompt. On a machine that has X
+installed, we can type ::
   
   startx
 
-and up comes the GUI. (to get out of the GUI, use *ctl-alt-backspace*. This will stop the current X session)
+and up comes the GUI. (to get out of the GUI, use
+*ctl-alt-backspace*. Well, backspace used to work.  Then it became a security issue, and XOrg changed it.  But getting out of X is a real pain.  More on that later.  At first try swapping to a F1 virtual terminal (C-A-F1 or F8 and kill X with )
 
 
 
@@ -54,9 +72,11 @@ This will automatically scan your hardware and put a config file in /root called
 
 Try it out - you never know !::
 
- $ Xorg -config /root/xorg.config.new
+ $ Xorg -config /root/xorg.config.new -retro
 
-You will see a sawtooth background with a X cross in the middle. Try moving the mouse. If the cross moves too, good.  If not, you probably need to enable the mouse daemon. (see sidebar)
+You will see a sawtooth background with a X cross in the middle (If you used the retro settings - otherwise the amazing default baked into XOrg 7.4+ is that a black screen is displayed.  This easily shows people that they have managed to get their monitors configured correctly.  Because a black screen is easy to tell from a monitor that is just doing nothing. WTF.) 
+
+Try moving the mouse. If the cross moves too, good.  If not, you probably need to enable the mouse daemon. (see sidebar)
 
 More than likely you will have a sawtooth pattern that has lines "scanning" through it wildly.  You'll know what scanning means when you see it.  This is because the scan and refresh rates that X-Windows is trying to use are out of whack with the ones the monitor uses.
 

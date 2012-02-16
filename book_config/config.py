@@ -20,7 +20,7 @@ TEMPLATE_DIR = os.path.join(working_dir, "tmpls")
 
 ### CONSTANTS 
 ## the root that will be added to all (relative?) urls
-HTMLROOT = "/book"
+HTMLROOT = ""
 
 
 
