@@ -78,6 +78,29 @@ href="http://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-se
 # /etc/rc.d/netif restart && /etc/rc.d/routing restart
 
 
+Colours under Bash
+------------------
+
+Oh yes, please.
+Just type ls -G (or like above, alias it.)
+This is great, right up to the point that the cool green on black screen you have tries to show you all your directories in a dark blue.  I know I am getting old but taht is unreadable.
+
+So ...
+
+in ~/.bash_profile::
+
+
+  CLICOLOR=1; export CLICOLOR
+  LSCOLORS='gxfxcxdxbxegedabagacad'; export LSCOLORS
+
+CLICOLOR is the equivalent of ls -G but always set.
+LSCOLORS is a string of 11 pairs, so gx is foreground-magenta, background-default, and the first pair is how to display a directory in ls (hence LSCOLORS).  See the man page for details, but suffice to say gx gives me readble directory names now.
+
+Note that in Linux, the environment variable is LS_COLORS, and its 'ls --colors'.  However this is BSD world (mac included!).
+
+
+:biblio: http://www.bigsoft.co.uk/blog/index.php/2008/04/11/configuring-ls_colors
+
 
 Temperature
 -----------
