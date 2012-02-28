@@ -131,6 +131,11 @@ sudo runs emacs, but the permissions granted by sudo do not carry over to my ema
 ##  C-c C-f /sudo::/my/path/file
 (require 'tramp)
 
+emacs and annoying cut paste issues
+===================================
+http://www.jwz.org/doc/x-cut-and-paste.html
+
+
 
 sort and sed and uniq
 ---------------------
