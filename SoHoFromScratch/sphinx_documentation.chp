@@ -73,36 +73,36 @@ I have a dumb script to create stub files (`mkstubs.py <../img/mkstubs.py>`_)
 a) put a stub file into .doc for each module
    stub file looks like::
 
-   =========
-   freezeLib
-   =========
+     =========
+     freezeLib
+     =========
 
-   .. automodule:: tracTools.freezeLib
-      :members:
+     .. automodule:: tracTools.freezeLib
+        :members:
 
-   We can write some text here, but we are better off writing a magnum opus
-   in other files.
+     We can write some text here, but we are better off writing a magnum opus
+     in other files.
 
 
 b) so we should have a .doc folder looking like ::
 
-   .doc$ ls     
-   stub_freezeLib.rst	stub_freeze_help.rst
-   stub_freezeLib2.rst	stub_freeze_test.rst
+     .doc$ ls     
+     stub_freezeLib.rst	stub_freeze_help.rst
+     stub_freezeLib2.rst	stub_freeze_test.rst
 
 c) then we alter index.rst so that it looks like ::
 
-   Contents:
+     Contents:
 
-   .. toctree::
-      :glob:
+     .. toctree::
+        :glob:
 
-      .doc/*   
+        .doc/*   
 
-   .. autosummary ::
+     .. autosummary ::
 
-      tracTools.freezeLib
-      tracTools.mikadoSVNLib
+        tracTools.freezeLib
+        tracTools.mikadoSVNLib
 
 
 Now, index.rst will produce a toctree linking to each stub, and at the 

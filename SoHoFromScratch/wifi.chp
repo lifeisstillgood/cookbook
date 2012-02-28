@@ -23,6 +23,7 @@ Find the adaptor
 ================
 To be honest this is clearly the most awkward point.  I am using a work-supplied laptop, and finding the chipset that is built in is a RRPITA.  To be perfectly honest, I am still unsure I have managed to.  
 
+
 Firstly look at dmesg for anything resembling an Ethernet driver or setup.
 
 ::
@@ -83,6 +84,23 @@ Basically, read the man pages.
 Each ethernet driver (I think thet are rum, ath, zyd, upgt ...)
 has a man page and in there it is listed which chipsets that driver supports
 
+However we can run ::
+
+  pciconf -lv
+
+which will show ::
+
+  none1@pci0:2:0:0:       class=0xff0000 card=0x3577103c chip=0x520910ec rev=0x01 hdr=0x00
+    vendor     = 'Realtek Semiconductor Co., Ltd.'
+  re0@pci0:6:0:0: class=0x020000 card=0x3577103c chip=0x813610ec rev=0x05 hdr=0x00
+    vendor     = 'Realtek Semiconductor Co., Ltd.'
+    device     = 'RTL8101E/RTL8102E PCI Express Fast Ethernet controller'
+    class      = network
+    subclass   = ethernet
+  none2@pci0:7:0:0:       class=0x028000 card=0x1636103c chip=0x53901814 rev=0x00 hdr=0x00
+    vendor     = 'Ralink corp.'
+    class      = network
+
 
 
 ifconfig settings
@@ -93,12 +111,14 @@ Access Point (AP).
 
 I do recommend reading the ifconfig man pages.  It is really useful.
 
+
+
 Scan for AP's 
 -------------
 The first thing to do is see if the adaptor can find the AP ::
 
-  ifconfig rum0 up 
-  ifconfig rum0 list scan
+  ifconfig wlan0 up 
+  ifconfig wlan0 list scan
 
 
 In a NY hotel room I get ::
