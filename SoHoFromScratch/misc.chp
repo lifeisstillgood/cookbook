@@ -14,68 +14,33 @@ Setting Bash prompt
 -------------------
 
 You need to set the environment variable PS1.
-So, at a prompt type::
+The simplest approach is the best here I feel.::
 
-  [pbrian@delli7 /usr/home/pbrian]$ PS1=E
-  E
-  EPS1="$ "
-  $ 
-  $ ls
-  ...
+  PS1="\[\033[0;36m\][\$(date +%H:%M)][\u@\h:\w]$\[\033[0m\] ";export PS1
 
+We set the PS1 variable.  If we had used ::
 
-Well that works.  Now we can use escape characters - such as \W (basename of cwd)
+  PS1="$ "
 
-::
+Then our prompts would be a boring but functional ::
 
-  $ PS1="\W $"
-  pbrian $PS1="\W $ "
-  pbrian $ cd mikadosoftware.com/
-  mikadosoftware.com $ PS1="\u@\h $ "
-  pbrian@delli7 $ PS1="\u@\h \W> "
-  pbrian@delli7 mikadosoftware.com>
+  $ ls -l
 
-Ok, lets save that.  Now we save in .bashrc *not* in .profile because .profile is read
-on system start up and .bashrc on every spawn of a xterm.  So if something (like startx)
-destroys our prompt for us, then if it was in .profile we would have default prompt, but 
-if its in .bashrc we get it set back each time.
+But instead we are being hopefully a little cleaner.  OK ::
 
-
-Edit these files to contain the following. In .bashrc put these statements.
-
-# .bashrc - Bourne Again Shell configuration file 
-# for interactive shells. 
-# file permissions: rwxr-xr-x umask 022 BLOCKSIZE=K; 
-# export BLOCKSIZE EDITOR=pico; export EDITOR PAGER=/usr/bin/more; export PAGER
-
-# some useful aliases 
-alias h='fc -l' 
-alias j=jobs 
-alias m=$PAGER 
-alias ll='ls -laFo' 
-alias ls='ls -la -G' 
-alias g='egrep -i' 
-alias ll='ls -laFo' 
-alias ls='ls -la -G' 
-alias g='egrep -i'
-
-# set prompt PS1="u@ w $> "
-
-Now for .bash_profile put the following statements:
-
-# .bash_profile - Bourne Again Shell configuration file # for login shells. PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/bin: # file permissions: rwxr-xr-x umask 022 BLOCKSIZE=K; export BLOCKSIZE EDITOR=pico; export EDITOR PAGER=/usr/bin/more; export PAGER
-
-# set ENV to a file invoked each time bash is started # for interactive use. ENV=$HOME/.shrc; export ENV # some useful aliases alias h='fc -l' alias j=jobs alias m=$PAGER alias ll='ls -laFo' alias ls='ls -la -G' alias g='egrep -i'
-
-# set prompt PS1="u@w $> " 
-
-http://www.freeos.com/articles/4040/
+  \[\033[0;36m\]
+  ^^^^^^^     ^^
+  always needed to *wrap* any thing we want to pass to terminal, but not print.  In this case, the command 0;36m which sets the terminal colour to be magenta (not bold).   Later on we set the terminal colour to be 0m, or back to defaults.
 
 
 
-href="http://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-service.html"
 
-# /etc/rc.d/netif restart && /etc/rc.d/routing restart
+
+.. PROMPT_COMMAND=?if [ ${#PWD} -gt 30 ]; then myPWD=${PWD:0:12}?${PWD:${#PWD}-15}; else myPWD=$PWD; fi? 
+
+:biblio: http://www.linuxdoc.org/HOWTO/Bash-Prompt-HOWTO/x329.html
+
+
 
 
 Colours under Bash
@@ -110,26 +75,35 @@ hw.acpi.thermal.tz0.temperature: 54.0C
 
 scp
 ---
+
 Very useful in all respects but wildcards are a bugger 
 
 $ scp *.txt myremotesvr:/tmp/misc
 
-will copy all txt file in local dir to remote server
+will copy all txt file in local dir to remote server.  Thats because
+the shell *expands* the commands you give it *before* it passes the
+commands to the program (scp).  Normally thats good (in other words
+the shell took *.txt and actually sent the scp program  ::
+
+    $ scp a.txt b.txt c.txt myremotesvr:/tmp/misc
+
+
 
 however
 
 $ scp myremotesvr:/tmp/misc/*.txt ./
 
-fails.  With *.txt not found.  Thats because the shell *expands* the commands you give it *before* 
-it passes the commands to the program.  Normally thats good (in other words the shell took
-*.txt and actually sent the scp program 
+fails.  It is trying to send ::
 
-$ scp a.txt b.txt c.txt myremotesvr:/tmp/misc
+   $ scp myremotesvr:/tmp/misc/a.txt  b.txt c.txt ./
+
+and it is invalid.
 
 
 So to solve the problem, escape the wildcard, the shell will not expand it but will 'unescape' and pass it to the program as we want
 
 $ scp myremotesvr:/tmp/misc/\*.txt ./
+
 
 http://books.google.co.uk/books?id=3XzIFG3w8-YC&pg=PA316&lpg=PA316&dq=scp+wildcard+match&source=bl&ots=oEjO3_aptE&sig=-YFh37YI4hLdFX8hWasA9N0NEOs&hl=en&ei=E5bnSe74CpG1-Qb02LjoBQ&sa=X&oi=book_result&ct=result&resnum=3http://books.google.co.uk/books?id=3XzIFG3w8-YC&pg=PA316&lpg=PA316&dq=scp+wildcard+match&source=bl&ots=oEjO3_aptE&sig=-YFh37YI4hLdFX8hWasA9N0NEOs&hl=en&ei=E5bnSe74CpG1-Qb02LjoBQ&sa=X&oi=book_result&ct=result&resnum=3
 
@@ -155,7 +129,7 @@ sudo runs emacs, but the permissions granted by sudo do not carry over to my ema
 (require 'tramp)
 
 emacs and annoying cut paste issues
-===================================
+-----------------------------------
 http://www.jwz.org/doc/x-cut-and-paste.html
 
 
@@ -204,4 +178,13 @@ Nice example showing a lot of the standard goodies on the command line.
 
 Also interesting is the grep [[:space:]] - but I find '\ ' more readable
 
+
+Restart networking in FreeBSD
+-----------------------------
+
+:biblio: href="http://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-service.html"
+
+
+
+ $ /etc/rc.d/netif restart && /etc/rc.d/routing restart
 
