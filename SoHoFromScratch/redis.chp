@@ -1,0 +1,95 @@
+=======================
+The NOSQL Files - Redis
+=======================
+
+Key Value store - Fast, simple
+==============================
+
+`Redis <redis.io>`_ is a key-value store
+
+Install 
+-------
+
+::
+
+  $ cd /usr/ports/databases/redis
+  $ make install clean
+
+To start the server "out-of-the-box"::
+
+  $ /usr/local/bin/redis-server
+  ...
+  [1663] 15 Jun 11:23:32 * The server is now ready to accept connections on port 6379
+
+
+To do it properly ::
+ 
+   > /etc/rc.conf
+   redis_enable="YES"
+  
+  config file is a /usr/local/etc/redis.conf.  A sample is provided.
+  The sample is a pretty good, standard setup.  It uses AOF (ie writing changes to disk)
+  and a dump file and will write the dump file to /var/db/redis, but it does not setup replication.
+
+
+
+Now lets connect to it.  ::
+
+  $ redis-cli
+
+    redis 127.0.0.1:6379> keys *
+    (empty list or set)
+    redis 127.0.0.1:6379> set 'k12345' 'hello world'
+    OK
+    redis 127.0.0.1:6379> keys *
+    1) "k12345"
+    redis 127.0.0.1:6379> get 'k12345'
+    "hello world"
+    redis 127.0.0.1:6379> set k12345 'hello world2'
+    OK
+    redis 127.0.0.1:6379> keys *
+    1) "k12345"
+    redis 127.0.0.1:6379> get k12345
+    "hello world2"
+    redis 127.0.0.1:6379> set k123456 'test'
+    OK
+    redis 127.0.0.1:6379> keys *
+    1) "k123456"
+    2) "k12345"
+
+
+Things to note.  The default is local host, which kind of tells us that a really popular use case for redis just doing stuff locally fast.  
+Also note that "K12345" as a string and K12345 (this would be same for 12345).  The CLI is  
+
+
+
+
+::
+
+  $ cd /usr/ports/databases/py-redis
+  $ make install clean
+
+
+Using python is pretty much the same as the cli.
+
+::
+
+    >>> import redis
+    >>> r = redis.Redis()
+    >>> r.info()
+    {'pubsub_channels': 0, ...
+    >>> r.keys("*")
+    ['12345', 'k123456', 'k12345']
+    >>> r.set(1234,'test4')
+    True
+    >>> r.keys("*")
+    ['12345', 'k123456', '1234', 'k12345']
+
+
+Why choose Redis?
+-----------------
+
+I have used Redis in a project that I hope will be FOSS very soon.  The reasons for choosing it were simple - speed of writing.  
+
+Bibliography
+------------

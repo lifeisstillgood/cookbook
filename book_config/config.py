@@ -20,8 +20,9 @@ TEMPLATE_DIR = os.path.join(working_dir, "tmpls")
 
 ### CONSTANTS 
 ## the root that will be added to all (relative?) urls
-HTMLROOT = "/book"
+HTMLROOT = ""
 css_theme = 'theme_sphinx.css' #'cookbook.css'  #set this to the stylesheet we want to use.
+
 
 
 BINARYPATH = os.path.abspath('./')

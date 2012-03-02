@@ -2,9 +2,6 @@
 Base BSD Build
 ==============
 
-1. I have created a simple system for building a consistent and updaeable freeBSD
-system
+Please see `OSBuilder <https://github.com/lifeisstillgood/OSBuilder>`_
 
 
-
- portsdb -Fu
