@@ -21,6 +21,7 @@ TEMPLATE_DIR = os.path.join(working_dir, "tmpls")
 ### CONSTANTS 
 ## the root that will be added to all (relative?) urls
 HTMLROOT = ""
+css_theme = 'theme_sphinx.css' #'cookbook.css'  #set this to the stylesheet we want to use.
 
 
 
@@ -93,6 +94,7 @@ def setup_chp_dir(chp_dir):
     SOURCE_RST_ROOT = chapters_dir
     IMG_DIR = os.path.join(chapters_dir, "img")
     CSS_DIR = os.path.join(chapters_dir, "css")
+
 
 
 def prepare_config(path_to_meta_dir):

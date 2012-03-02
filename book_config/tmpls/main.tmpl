@@ -7,49 +7,48 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>%(title)s | FreeBSD and Open Source for IT Managers</title>
   
-  <link rel="stylesheet" href="%(html_root)s/css/cookbook.css" type="text/css" />
+  <link rel="stylesheet" href="%(html_root)s/css/%(css_theme)s" type="text/css" />
 
 
 </head>
 
+
 <body>
+<!-- ref: http://www.456bereastreet.com/lab/developing_with_web_standards/csslayout/2-col/finished.html -->
 
-<div id="header">
+<div id="wrap">
+  <div id="header">
 
-<img src="%(html_root)s/img/tour_tonbridge.jpg" 
+         <img src="%(html_root)s/img/tour_tonbridge.jpg" 
          style="width:100%%; position:relative; top:-10px;"
          alt="itmanagerscookbook.com"
          title="IT Manager's CookBook"
          />
+     
+  </div>
 
-   <ul style="width:50%%;">
-     <li><a href="%(html_root)s/Introduction/WhatsGoingOnHere.html">What's all this?</a></li>
-     <li><a href="%(html_root)s/Introduction/introduction.html">Introduction</a></li>
-     <li><a href="%(html_root)s/contents.html">Contents</a></li>
-   </ul>
+  <div id="nav">
 
-</div>
+       <ul style="width:50%%;">
+	 <li><a href="%(html_root)s/Introduction/WhatsGoingOnHere.html">What's all this?</a></li>
+	 <li><a href="%(html_root)s/Introduction/introduction.html">Introduction</a></li>
+	 <li><a href="%(html_root)s/contents.html">Contents</a></li>
+       </ul>
 
-<div class="colmask rightmenu">
-    <div class="colleft">
-        <div class="col1wrap">
-            <div class="col1">
-                <!-- Column 1 start -->
-%(maintext)s
-				<!-- Column 1 end -->
-            </div>
-        </div>
-        <div class="col2">
-            <!-- Column 2 start -->
+   </div>
 
-<span class="breadcrumbs">%(breadcrumbs)s</span>
-%(rhs)s
+  <div id="main">
 
-			<!-- Column 2 end -->
+     %(maintext)s
 
-        </div>
-    </div>
-</div>
+  </div>
+
+  <div id="sidebar">
+   
+      %(rhs)s
+
+  </div>
+
 
 <div id="footer">
     The IT Managers CookBook
@@ -85,5 +84,11 @@ pageTracker._trackPageview();
 <a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 
 <!-- /disqus -->
+
+
+
+</div> <!-- end main wrap -->
+
 </body>
 </html>
+
