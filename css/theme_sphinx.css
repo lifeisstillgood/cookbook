@@ -1,0 +1,123 @@
+/*
+ * mikado css template
+ * overwriting the rst css calls to try and make a useful css layout
+ *
+ * :copyright: Paul Brian <paul@mikadosoftware.com>
+ * :license: BSD, see LICENSE for details.
+ *
+ */
+
+@import url("html4css1.css");
+
+body,
+html {
+    margin:0;
+    padding:0;
+    background:#B0D8E9;
+    }
+
+#wrap {
+    width:95%;
+    margin:0 auto;
+    background:white;
+
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
+                 'Verdana', sans-serif;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    line-height: 150%;
+    text-align: justify;
+
+    }
+
+
+#header {
+    padding:5px 10px;
+    background:#FFFFFF;
+    }
+
+h1 {
+        margin:0;
+    }
+
+#nav {
+    padding:5px 10px;
+    background:white;
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-bottom-color:#B0D8E9;
+    border-top-color:#B0D8E9;
+    border-top-width:0.5px;
+    border-bottom-width:0.5px;
+
+    }
+
+#nav ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    }
+
+#nav li {
+    display:inline;
+    margin:0;
+    padding:0;
+    }
+
+#main {
+    float:left;
+    width:75%;
+    padding:10px;
+    background:white;
+    }
+
+h2 {
+    margin:0 0 1em;
+    padding-top: 1em;
+    }
+
+#sidebar {
+    float:right;
+    width:20%;
+    padding:10px;
+    background:#E9C1B0;
+
+    font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva',
+                 'Verdana', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0em;
+    line-height: 120%;
+    text-align: justify;
+
+
+    }
+
+#footer {
+    clear:both;
+    padding:5px 10px;
+
+    background:white;
+    border-top-style:solid;
+    border-bottom-style:solid;
+    border-bottom-color:#B0D8E9;
+    border-top-color:#B0D8E9;
+    border-top-width:0.5px;
+    border-bottom-width:0.5px;
+
+    }
+
+
+
+#footer p {
+    margin:0;
+    }
+
+#disqus_thread {
+
+    width:50%;
+}
+
+* html #footer {
+    height:1px;
+    }
+
