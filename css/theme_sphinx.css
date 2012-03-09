@@ -121,3 +121,9 @@ h2 {
     height:1px;
     }
 
+
+h2.subtitle{
+    text-align:left;
+    color:red;
+    font-size: medium;
+}
