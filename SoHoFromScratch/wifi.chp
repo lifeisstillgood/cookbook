@@ -2,15 +2,27 @@
 wifi
 ====
 
-Connecting to a wireless network is *de rigeur* these days.  It's simple to do - apparently.  For Mac users perhaps, but for us doughty FreeBSD folks, life is never so simple.  Well, setting up a BSD wifi connection is not that bad really, it's just that compared to Mac, Windows or even Ubuntu, well it *is* awkward.
+Connecting to a wireless network is *de rigeur* these days.  It's
+simple to do - apparently.  For Mac users perhaps, but for us doughty
+FreeBSD folks, life is never so simple.  Well, setting up a BSD wifi
+connection is not that bad really, it's just that compared to Mac,
+Windows or even Ubuntu, well it *is* awkward.
 
-However, once we have, we find we can do other bigger things, like creating our own access point, running wireless sniffers and more, all just a little more confidently and knowledgably than those Mac and Windows users.  And that frankly is the point - a little more pain in return for confidence, knowledge and clearer path into the 'advanced' functions.
+However, once we have, we find we can do other bigger things, like
+creating our own access point, running wireless sniffers and more, all
+just a little more confidently and knowledgably than those Mac and
+Windows users.  And that frankly is the point - a little more pain in
+return for confidence, knowledge and clearer path into the 'advanced'
+functions.
 
 Summary
 =======
-With a normal Ethernet over wire, we establish a live *physical* circuit, send packets over that circuit and route accordingly.
 
-With wifi we need to create a *radio ethernet*, essentially we sling a virtual wire between our adaptor and the Access Point (AP).
+With a normal Ethernet over wire, we establish a live *physical*
+circuit, send packets over that circuit and route accordingly.
+
+With wifi we need to create a *radio ethernet*, essentially we sling a
+virtual wire between our adaptor and the Access Point (AP).
 
 This virtual wire requires three things
 
@@ -21,7 +33,10 @@ This virtual wire requires three things
 
 Find the adaptor
 ================
-To be honest this is clearly the most awkward point.  I am using a work-supplied laptop, and finding the chipset that is built in is a RRPITA.  To be perfectly honest, I am still unsure I have managed to.  
+
+To be honest this is clearly the most awkward point.  I am using a
+work-supplied laptop, and finding the chipset that is built in is a
+RRPITA.  To be perfectly honest, I am still unsure I have managed to.
 
 
 Firstly look at dmesg for anything resembling an Ethernet driver or setup.
@@ -47,7 +62,12 @@ The thing to note here is that we can get useful stats from sysctl ::
   dev.msk.0.stats.rx.ucast_frames: 0
   dev.msk.0.stats.rx.bcast_frames: 0
 
-OK, well, msk is the driver for my fixed ethernet.  So, err, what about the wifi?  Well the best I can find is what appears to be a dual function Broadcom chip.  And all the Google-butt [#]_ says that Broadcom hates Unix and this chipset stands about as much chance working with FreeBSD as Michael Jackson does working with the Abused Children's Dance Therapy group.
+OK, well, msk is the driver for my fixed ethernet.  So, err, what
+about the wifi?  Well the best I can find is what appears to be a dual
+function Broadcom chip.  And all the Google-butt [#]_ says that
+Broadcom hates Unix and this chipset stands about as much chance
+working with FreeBSD as Michael Jackson does working with the Abused
+Children's Dance Therapy group.
 
 ::
 
@@ -64,14 +84,16 @@ So I went and bought a USB stick
 
 I plug it in, ugen (the standard USB driver) finds it, then the rum driver is identified and hooray.
 
-
+I think I want to be more ... hackerish on this.  But I have things to do, and that USB dongle has now served 3 laptops quite happily.
 
 What drivers work with what chipsets?
 =====================================
+
 [EXTEND - how does kernel locate drivers - device to driver mapping - find the right .h file. ]
 
-This is a slight diversion, but it is important - how does the Kernel know which driver to assign to which 
-device.  Firstly it identifies the device. 
+This is a slight diversion, but it is important - how does the Kernel
+know which driver to assign to which device.  Firstly it identifies
+the device.
 
 - device on pci bus
 
@@ -79,10 +101,11 @@ device.  Firstly it identifies the device.
 
 
 What drivers for what chipset?
+------------------------------
 
-Basically, read the man pages.
-Each ethernet driver (I think thet are rum, ath, zyd, upgt ...)
-has a man page and in there it is listed which chipsets that driver supports
+Basically, read the man pages.  Each ethernet driver (I think thet are
+rum, ath, zyd, upgt ...)  has a man page and in there it is listed
+which chipsets that driver supports
 
 However we can run ::
 
@@ -106,8 +129,8 @@ which will show ::
 ifconfig settings
 =================
 
-We are assuming that the wifi adaptor has been found and that a driver is assigned,  We now want to connect to the 
-Access Point (AP).
+We are assuming that the wifi adaptor has been found and that a driver
+is assigned, We now want to connect to the Access Point (AP).
 
 I do recommend reading the ifconfig man pages.  It is really useful.
 
@@ -115,10 +138,11 @@ I do recommend reading the ifconfig man pages.  It is really useful.
 
 Scan for AP's 
 -------------
+
 The first thing to do is see if the adaptor can find the AP ::
 
-  ifconfig wlan0 up 
-  ifconfig wlan0 list scan
+  $ ifconfig wlan0 up 
+  $ ifconfig wlan0 list scan
 
 
 In a NY hotel room I get ::
@@ -127,25 +151,13 @@ In a NY hotel room I get ::
   SSID            BSSID              CHAN RATE   S:N     INT CAPS
   Buckingham_...  00:c0:02:0f:ac:67    8   54M -89:-95  100 ES  
 
-  Err, why the ... try -v option to view SSID's that are longer than usual.
+             ^^^
+
+Err, why the ... try -v option to view SSID's that are longer than usual.::
 
   pbrian_laptop# ifconfig -v rum0 list scan
   SSID                              BSSID              CHAN RATE   S:N     INT CAPS
   Buckingham_Hotel                  00:c0:02:0f:ac:67    8   54M -89:-95  100 ES  
-
-
-But I do not always get a listing?
-----------------------------------
-
-Yeah, OK.  list scan is it seems a bit broken in the BSD world.  Firstly make sure the interface is up::
-
-  pbrian_laptop# ifconfig rum0  
-  rum0: flags=108843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST,NEEDSGIANT>
-                    /\/\
-                    says UP
-
-But I have sat for hours waiting for ifconfig rum0 scan to complete and got no where.
-So net-mgmt/kismet is our friend.  Its a sniffer tool, and does the job we want.
 
 
 
@@ -215,6 +227,36 @@ Change settings in /etc/rc.conf, then run
   pbrian_laptop# /etc/rc.d/netif start
 
 
+All Change
+==========
+
+The above was very useful.  Back in the day.  However things have moved on and now the approach is to use wpa security.
+
+in /etc/rc.conf::
+
+
+    wlan_load="YES"
+
+    #making wep /wpa work
+    wlan_wep_load="YES"
+    wlan_ccmp_load="YES"
+    wlan_tkip_load="YES"
+
+    wlans_rum0="wlan0"
+    ifconfig_wlan0="WPA DHCP"
+
+this essentially replaces the ifconfig calls earlier in rc.conf.
+All of FreeBSD wifi is handled by a super driver - wlan.
+We tell this that we want to use the rum0 driver, and refer to it as wlan0.
+
+using WPA security
+------------------
+
+As noted above, WEP security was essentially broken, and advice from respected security advisors such as Bruce Schneier was to run open wifi.[*]_  
+
+
+
+
 
 discussion of settings
 ----------------------
@@ -266,3 +308,5 @@ Well, thats about it for now folks.  This will be an oft-revisited entry I think
 .. [#] Like scuttlebutt, but comes from reading Google found entries on whatever subject you are looking for.  I just made it up cos it sounded good, but there are clearly some other interpretations.  I just cannot stop hearing David Schwimmer singing "I like big butts ...".  Sad or what.
 
 .. [#] THis is not the same as SSL being broken.  If your neighbour breaks your WEP key its as if he has plugged into your wired switch/hub.  He can read all your packets.  He can see which porn sites you look at, but if you use SSL to enter your credit card details, he cannot get the important information.  (You do use SSL pages when buying your porn don't you :-).  And when did you stop beating your wife ?
+
+.. [#] http://www.schneier.com/blog/archives/2011/04/security_risks_7.html, http://www.schneier.com/blog/archives/2008/01/my_open_wireles.html

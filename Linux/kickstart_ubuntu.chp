@@ -1,0 +1,49 @@
+=====================
+Kickstart with ubuntu
+=====================
+
+
+
+Ubuntu became a pain to install so I pulled out the old kickstarter memories from the RedHat days.  Ubunutu is a debian based distro, and uses the debian preseeding approach.  However we can ignore that as they have written a nice kickstarter compatibility layer.
+
+How to use 
+
+1. PXEBooting is beyond the scope of this article.
+2. boot a PC from the ubunut USB 
+3. enter F6 expert mode, then Esc.
+4. you will see the boot parameters that will be sent to kernel i.e::
+
+    boot: linux ks=http://192.168.1.1/ks.cfg
+
+5. ensure that you have DHCP on the network ready for the PC to pull
+6. ensure that you have a ks.cfg in right place
+
+
+
+
+
+configure XE 10g
+----------------
+run
+
+   /etc/init.d/oracle-xe configure
+
+and take mostly the defaults
+
+port: 8080
+listener: 1521
+sys/system password:
+start on boot
+
+
+
+install a client on FreeBSD for Oracle
+--------------------------------------
+
+* install unixODBC
+* install pyodbc from google. or mxODBC
+
+
+biblio
+
+https://help.ubuntu.com/11.04/installation-guide/i386/automatic-install.html

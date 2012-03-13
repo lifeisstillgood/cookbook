@@ -2,6 +2,20 @@
 misc stuff I will find another place for
 ========================================
 
+Using sudo and not root
+-----------------------
+
+I am a very bad boy and have a tendancy to just use root to get things done quick.
+This very nicely phrased page on why you should `never login as root <https://help.ubuntu.com/community/RootSudo>`_ 
+tells me off.
+
+in short
+
+1. sudoers is there for audit purposes and audit is half of security.
+2. use sudo sh -c "echo foo >> /etc/bar"
+
+this gets around the problem that sudo echo foo >> /etc/bar is two commands
+
 passwords
 ---------
 /etc/passwd is a bit long in the tooth.

@@ -1,0 +1,20 @@
+===
+LVM
+===
+
+Logical volume manager
+
+My most common problem is finding I need to resize (usually) swap space
+
+So::
+
+   vgdisplay
+   
+   --- Volume group ---
+   VG Name                minidell
+
+   ls /dev/minidell/swap_1
+
+
+
+ 

@@ -16,6 +16,24 @@ FULLROOTPATH = os.path.dirname(working_dir)
 
 ### location of templates
 TEMPLATE_DIR = os.path.join(working_dir, "tmpls")
+### setting up the chapter and config locations
+configdocs = """
+I want config variables to tell me where we are on disk
+ the requirement is that there is a structure as below::
+
+     cookbook/  <-- user defined top level holding all the rst.
+       .bookmaker/  <-- required name
+         config.py  <-- this file
+         __init__.py <-- needed to import config !!! try using configparser one day
+  
+""" 
+ 
+chapters_dir = os.path.split(os.path.split(__file__)[0])[0]
+SOURCE_RST_ROOT = chapters_dir
+IMG_DIR = os.path.join(chapters_dir, "img")
+CSS_DIR = os.path.join(chapters_dir, "css")
+
+
 
 
 ### CONSTANTS 
@@ -78,22 +96,22 @@ to_latex_cmds   = ['rst2latex.py']
 maintmpl = open(os.path.join(TEMPLATE_DIR, 'main.tmpl')).read()
 rhs_text = open(os.path.join(TEMPLATE_DIR, 'rhs.tmpl')).read() % {'HTML_ROOT': HTMLROOT}
 
-chapters_dir = None; SOURCE_RST_ROOT = None; IMG_DIR = None; CSS_DIR = None
+
 
 
 #name of file that if in a dir will stop bookmaker parsing subdirs
 NO_INDEX_SUBDIRS = 'no_index_subdirs'
 
 def setup_chp_dir(chp_dir):
-    #This will get replaced by an arg passed to mkbook os.path.join(working_dir, 'thebook') #'/home/pbrian/clone_upstream/thebook/thebook'
+    import warnings
+    warnings.warn("setup_chp_dir() is deprecated", DeprecationWarning)
+
     global chapters_dir
     global SOURCE_RST_ROOT
     global IMG_DIR
     global CSS_DIR
     chapters_dir = chp_dir
     SOURCE_RST_ROOT = chapters_dir
-    IMG_DIR = os.path.join(chapters_dir, "img")
-    CSS_DIR = os.path.join(chapters_dir, "css")
 
 
 
