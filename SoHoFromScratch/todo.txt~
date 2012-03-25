@@ -1,0 +1,13 @@
+
+ToDo
+----
+
+* put RabbitMQ onto paul-brian, get a github post-hook to post to nginx, 
+  leave a msg on MQ, then have running (python) process pick it up and 
+  rebuild appropriate website.
+
+* Clean up workstation area
+
+* contact cmed - what was good / bad about cookbook.  Interview on the data trails?
+
+* 

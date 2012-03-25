@@ -1,0 +1,10 @@
+
+little bit awkward - easiest way is to run program dialog and 
+then it will vanish and terminal will be out of the way
+
+import /tmp/foo.png
+
+xwininfo
+will tell me window ID
+
+

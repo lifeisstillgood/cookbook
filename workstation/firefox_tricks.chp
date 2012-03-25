@@ -1,0 +1,33 @@
+==============
+Firefox tricks
+==============
+
+Firstly getting pdf files to appear
+===================================
+
+OK, FreeBSD, great stuff and all that but there is a point when 
+complexity starts to rear its head - when I cannot get pdf files
+to open up in my web browser.  Why? Because I do not know enough 
+about how *firefox* works - but I do know how my OS works, but that is not enough.
+
+Somehow we have passed over the user-friendliness event horizon and 
+things are not working as I expect.
+
+So the solution is, sadly, to put some more code on top::
+
+    cd /usr/ports/www/mozplugger
+    make install clean
+
+then alter /usr/local/etc/mozpluggerrc ::
+
+   text/x-pdf:pdf:PDF file
+       ACROREAD()
+   #	repeat noisy swallow(kpdf) fill: kpdf "$file"
+       repeat noisy swallow(Xpdf) fill: xpdf -g +9000+9000 "$file"
+   #	repeat noisy swallow(okular) fill: okular "$file"
+    
+Now pdfs will open inside the mozilla browser.  And I do not know whey the initial window geometry is 9000x9000
+
+
+I am reluctantly coming to the conclusion that firefox has become bloated
+and no longer has economy.  

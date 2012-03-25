@@ -1,0 +1,14 @@
+topics
+
+* Testing
+
+  Cucumber - really we are not seeing business people write them, 
+             so its just a regex based DSL, and there are much more flexible 
+             approaches
+           - also anlysis - how much cucumber is seeing reuse ?
+
+           - compare the 24 lines replaement
+
+* Selenium - how to 
+
+* 

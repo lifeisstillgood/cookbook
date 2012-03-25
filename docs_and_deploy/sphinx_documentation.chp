@@ -1,0 +1,124 @@
+============================
+Documenting code with Sphinx
+============================
+
+`Sphinx <http://sphinx.pococo.org>`_ is the new standard for Python
+documentation.  and whilst it can be a bit awkward to start with, it
+is surprisingly useful.
+
+In short, Sphinx takes ReSt-based documents that you write, along with
+ReSt-based docstrings from within Python files, and outputs HTML (or
+PDF), in a professional looking manner *and* it automates the awkward bits 
+of documenting code, stripping out docstrings, listing functions etc etc.
+
+Install
+=======
+
+It can be installed simply through easy_install::
+
+  $ easy_install sphinx
+
+
+Documenting a project 
+=====================
+
+1. It is best to divide up each project into Python packages, or at
+the very least directories that make sense.  Inside each directory I
+recommend putting::
+
+  .meta/
+      .doc
+      .test
+      .deploy
+
+
+2. In the outer .meta, run *sphinx-quickstart* which will create a
+configuration file and a few other directories to set up sphinx *in
+this directory*.  They are fairly straightforward settings. but I
+suggest taking the autodoc option now.
+
+2.a. Alter conf.py.  Ensure that in the conf.py file the following
+line (or similar) exists::
+
+   extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx', 
+              'sphinx.ext.coverage', 'sphinx.ext.viewcode',
+              'sphinx.ext.autosummary']
+
+   sys.path.insert(0, os.path.abspath('../..')) # ensure import <pkg>.<module> works in docs
+
+
+You will probably need to manually add the *sphinx.ext.autosummary*
+etc.
+
+
+3. Autodoc v. AutoSummary 
+   
+Right, I have written useful notes in my module docstrings, and I want them
+out into pretty format now.
+
+I will later on write some documentation from scratch, in a "normal" ReSt file.
+
+So, to get the docstrings out
+
+1. create a stub .rst file that has in it a pointer to the python module
+
+2. include those stub files in the index.rst
+
+3. Profit!
+
+
+I have a dumb script to create stub files (`mkstubs.py <../img/mkstubs.py>`_)
+
+
+a) put a stub file into .doc for each module
+   stub file looks like::
+
+     =========
+     freezeLib
+     =========
+
+     .. automodule:: tracTools.freezeLib
+        :members:
+
+     We can write some text here, but we are better off writing a magnum opus
+     in other files.
+
+
+b) so we should have a .doc folder looking like ::
+
+     .doc$ ls     
+     stub_freezeLib.rst	stub_freeze_help.rst
+     stub_freezeLib2.rst	stub_freeze_test.rst
+
+c) then we alter index.rst so that it looks like ::
+
+     Contents:
+
+     .. toctree::
+        :glob:
+
+        .doc/*   
+
+     .. autosummary ::
+
+        tracTools.freezeLib
+        tracTools.mikadoSVNLib
+
+
+Now, index.rst will produce a toctree linking to each stub, and at the 
+bottom a summary table of each module and links to the module.
+
+So, we can go read the docstrings of the module in place (instant documentation)
+and we have stub files for each module, that can be used to make them more 
+readable without altering the docstrings.  
+
+Finally we can add any *.rst file we like as an explanation. intro.rst is
+usually a good idea.
+
+
+TBD
+---
+
+* using intersphinx
+* viewcode
+

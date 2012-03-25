@@ -23,7 +23,7 @@ Identity, Security and ID Cards
 
 You are unique, a one-off, there is no-one quite like you in the world. Honestly.
 
-It sounds like a nice compliment, and of course I meant it like that.  I _love_ your work, _dahling_. 
+It sounds like a nice compliment, and of course I meant it like that.  I *love* your work, *dahling*. 
  
 However, its probably less of a compliment than most of us would first think, because its rather an obvious statement.
 
@@ -74,38 +74,76 @@ And it works well for the things governments are concerned about too - crime and
 Failure of biometrics and two factor authentication
 ---------------------------------------------------
 
-Using a persons identity to Authenticate their identity is circular and foolish.  This is the failure of biometrics.  The most common biometric all humans have is their face.  Millions of years of evolution have brought us the ability to easily recognise the clearest identity-proxy humans have.  I can be pretty sure of differentiating between any one of 6 billion humans using this simple biometric.  And so what.  I can identify George Clooney from his well-known biometric - but do I trust him with the server passwords? 
+Using a persons identity to Authenticate their identity is circular and foolish.  This is the failure of biometrics.  The most common biometric all humans have is their face.  Millions of years of evolution have brought us the ability to easily recognise the clearest identity-proxy humans have.  I can be pretty sure of differentiating between any one of 6 billion humans using this simple biometric.  But it is *not* a shared secret.  It is not part of a web of trust.  It is a username, not a password.  And using biometrics as a security is asking for *one* factor authentication.  We have just confused difficulty of stealing biometrics with difficulty of obtaining two factors at once.  Its fine to let the computer recognise my face, and say please enter password.  But not to let it recgnise my face and open up.
 
-
-In 2005 [#]_ the Mercedes S-class had fingerprint recognition on the handle.  Very swish.  Till robbers in Malaysia cut off a man's fingers and stole his car.  The car makers had confused a public (and publicly available) statement (the owner's identity) with Authentication - a corroboration of the identity (i.e. knowing a pin number to get in the car).  This was not Identity theft.  It was theft of his car keys.  His one-factor security system, just was not secure.  
+In 2005 [#]_ the Mercedes S-class car had fingerprint recognition on the handle.  Very swish.  Till robbers in Malaysia cut off a man's fingers and stole his car.  The car makers had confused a public (and publicly available) statement (the owner's identity) with Authentication - a corroboration of the identity (i.e. knowing a pin number to get in the car).  This was not Identity theft.  It was theft of his *car keys*.  His one-factor security system, just was not secure.  
 
 Web of trust
 ------------
-Imagine a Kafka-esque situation for a moment. You wake up one morning and say hello to your husband who demands to know what you are doing in his house.  Your kids do not recognise you, your boss and colleagues say "where is Susan?".  The world has gone mad.  It's the beginning of an exciting movie or a fantastically dull book.
 
-But look at things from the point of view of the rest of the world.  They remember a different, possibly better-looking person called Susan.  They laughed and spent time with her.  Now you turn up and say "Hi, I am Susan".  
+Imagine a Kafka-esque situation for a moment. You wake up one morning
+and say hello to your husband who demands to know what you are doing
+in his house.  Your kids do not recognise you, your boss and
+colleagues say "where is Susan?".  The world has gone mad.  
 
-The world has two choices - to think that the entire country has undergone some parallel universe swap / mass hypnosis event, *or* that you are mad or lying.  Guess which they will take?
+It's the beginning of an exciting movie or a fantastically dull book.
 
-OK, now imagine the inverse of this.  A person awakes with total amnesia.  He has no idea who he is.  Again, an exciting movie beckons.  The doctor smiles and says "Hello, George".  His wife walks in and kisses him, his friends all assure him he is George and they remember him.  He must assume he actually *is* George.  (the secret piece of paper found in his pocket saying "they are lying.  Your name is Fred, get out now" will wait till after the credits).
+But look at things from the point of view of the rest of the world.
+They remember a different, possibly better-looking person called
+Susan.  They laughed and spent time with her.  Now you turn up and say
+"Hi, I am Susan".
+
+The world has two choices - to think that the entire country has
+undergone some parallel universe swap / mass hypnosis event, *or* that
+you are mad.  Guess which they will take?
+
+So what *is* your identity?  Are you Susan? Or is the other person your husband remembers marrying actually Susan? 
+
+Well, from the practical point of view, its who the rest of the world thinks is Susan, *is* Susan.  Your Identity is a function of everyone else in the world.  Who you are is who you are - how everyone else recognises you will vary.  Your wife will recognise you from your face [#]_
+
+ This is a bit of an odd one to get your head round, but bear with me.
+
+
+OK, now imagine the inverse of this.  A person awakes with total
+amnesia.  He has no idea who he is.  Again, an exciting movie beckons.
+The doctor smiles and says "Hello, George".  His wife walks in and
+kisses him, his friends all assure him he is George and they remember
+him.  He must assume he actually *is* George, and seeks treatment for amnesia.  (But sitting in the waiting room, he finds the secret piece of
+paper found in his pocket saying "They are all lying.  You are John Watson, meet me by Tower Bridge at midnight !).
 
 How would an amnesiac know if they were being lied to about who they are?
 
-Your identity depends on the rest of the world.  Your identity also *varies* with the rest of the world.  Perhaps your wife knows you better than you know yourself, but the Amazon marketing department barely knows customer 12345678 at all.  
+Your identity depends on the rest of the world.  Your identity also
+*varies* with the rest of the world.  Perhaps your wife knows you
+better than you know yourself, but the Amazon marketing department
+barely knows customer 12345678 at all.
 
-You do have *an* identity, but *which* identity depends on everyone else agreeing.  If you think I am going off the deep end, ask yourself, how does a spy ring put sleepers into a country.  Someone arrives in Chicago and says 'Hello Comrades, my name is Gregorovitch, err sorry, Greg.'  If enough people believe him, he *becomes* Greg. [#]_
+You do have *an* identity, but *which* identity depends on everyone
+else agreeing.  If you think I am going off the deep end, ask
+yourself, how does a spy ring put sleepers into a country.  Someone
+arrives in Chicago and says 'Hello Comrades, my name is Gregorovitch,
+err sorry, Greg.'  If enough people believe him, he *becomes*
+Greg. [#]_
 
 The crypto-blokes have a term for this - web of trust.
 
-Essentially it means that the only way to know if you can "trust" person X is to trust the judgment of someone else who also trusts person X. 
+Essentially it means that the only way to know if you can "trust"
+person X is to trust the judgment of someone else who also trusts
+person X.
 
-This web provides the source of our uncertainty.  If you are relying on other people to tell you what a persons identity is and how much you can trust a person with that identity, then you can never be 100% sure.
+This web provides the source of our uncertainty.  If you are relying
+on other people to tell you what a persons identity is and how much
+you can trust a person with that identity, then you can never be 100%
+sure.
 
-And so a computer security system starts off like our amnesiac, and needs to be told who to trust, in order to start their web of trust.  [#]_
+And so a computer security system starts off like our amnesiac, and
+needs to be told who to trust, in order to start their web of trust.
+[#]_
 
-Governments want to keep the web of trust *short*.  The "government" trusted the post office clerk, the post office clerk saw my passport and issued me a ID card.  Therefore my ID card is valid.  
+Governments want to keep the web of trust *short*.  The "government"
+trusted the post office clerk, the post office clerk saw my passport
+and issued me a ID card.  Therefore my ID card is valid.
 
-However, 
 
 
 Better Bio-metrics
@@ -158,64 +196,54 @@ I can then publish this, and anyone can download the hash, and the two parts. No
 What is needed is a way to trust that the hash you downloaded from the Internet 
 It should be simple - there should only be one unique publicly available social security number up on Google. The minute there are two I can be informed, lets face it a search of 60m social security numbers even on a modern laptop is less than a second.
 
-The problem of authentication is then placed where it should be - with human beings looking at other human beings and going - huh?
+.. The problem of authentication is then placed where it should be - with human beings looking at other human beings and going - huh?
 
-The govt does not need to run an ID card system - it needs to run a dispute resolution system, and a large publicly available social security and hash photo repository.
+.. The govt does not need to run an ID card system - it needs to run a dispute resolution system, and a large publicly available social security and hash photo repository.
 
-Can it fail - well yes, but as the data needed to commit impersonation successfully is publicly stored, the chances of a poisoning of the data being discovered in a timely fashion is orders of magnitude higher.
-
-do not confuse identity and authentication, certainly not if you value your fingers.
-there is no authentication only levels of trust 
+.. Can it fail - well yes, but as the data needed to commit impersonation successfully is publicly stored, the chances of a poisoning of the data being discovered in a timely fashion is orders of magnitude higher.
 
 
 
 
 
 
-An identity agreement/ 
 
-Even if we authenticate you, we are back to levels of trust.
+
+.. Even if we authenticate you, we are back to levels of trust.
 We authenticate you as being 
 
-tying too much into one identity token is dangerous.
-If I want to join Special Branch they basically go an talk to all my friends and family. The more good trust links I get the better
+.. tying too much into one identity token is dangerous. If I want to join Special Branch they basically go an talk to all my friends and family. The more good trust links I get the better
 
 
 
 
 
-The original Identity / Authentication Two-step
+.. The original Identity / Authentication Two-step
 
-I got my first bank account when I was 14 years old - very exciting. Barclay's had a "get 'em early" account if my Father would counter sign. No credit, just a savings account.  If I wanted to withdraw money, I had to go to the bank and sign a slip.
+.. I got my first bank account when I was 14 years old - very exciting. Barclay's had a "get 'em early" account if my Father would counter sign. No credit, just a savings account.  If I wanted to withdraw money, I had to go to the bank and sign a slip.
 
-Now here is the perfect example.  I would walk into the bank and announce that I was Paul Brian (14 and 3/4s).  The bank teller would not care whether that identity was correct or not.  They would just ask me to provide my shared secret - my signature. If my shared secret matched their shared secret, they would give me the cash.
+.. Now here is the perfect example.  I would walk into the bank and announce that I was Paul Brian (14 and 3/4s).  The bank teller would not care whether that identity was correct or not.  They would just ask me to provide my shared secret - my signature. If my shared secret matched their shared secret, they would give me the cash.
 
-How did they get the shared secret ?  They trusted another party (my father) to corroborate that I was Paul Brian, then they would accept a shared secret from me (my signature)
-
-
-
-
-Is a signature a biometric or a shared secret?
+.. How did they get the shared secret ?  They trusted another party (my father) to corroborate that I was Paul Brian, then they would accept a shared secret from me (my signature)
 
 
 
-Secrets corroborate your identity in a hard to repudiate manner, and is to all intents and purposes a hash of all the trust the *link person* has converted into a proxy.
 
-So we want secrets not identity to use for authentication
+.. Is a signature a biometric or a shared secret?
 
-identity corroboration
-- hard to repudiate, hard to fake
-- shared secret, 
+
+
+.. Secrets corroborate your identity in a hard to repudiate manner, and is to all intents and purposes a hash of all the trust the *link person* has converted into a proxy.
+
+.. So we want secrets not identity to use for authentication
+
  
 
-Identity
-Corroboration that passes my trust level
-aim to remove fraudulent (i.e. harmful to me) transactions.
-Sometimes that is done by passing on the risk. see Dick Fuld
+.. Sometimes that is done by passing on the risk. see Dick Fuld
 
 
 
-woman who was refused credit because of woman with same name and birthday living next door.
+.. woman who was refused credit because of woman with same name and birthday living next door.
   
 
 
@@ -248,5 +276,6 @@ It is I who claim to *be* a particular identity.  Therefore that is how the proc
 
 .. [#] compared to all the other basic mistakes, like thinking somehow you can build a single database with everyones retina scans on it, and have it available to every civil servant, *and still keep it secret*.
 
+.. [#] Or she will recognise you from other parts of your body, that frankly I don't want to see scanned at the entrance to a server room. Or at least provide WetWipes.
 
 .. [#] When the robots take over the world, I want to be *that* guy.  Telling the Terminator who he cannot trust.  Bwahahahahaha....
