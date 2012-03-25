@@ -30,8 +30,8 @@ I want config variables to tell me where we are on disk
  
 chapters_dir = os.path.split(os.path.split(__file__)[0])[0]
 SOURCE_RST_ROOT = chapters_dir
-IMG_DIR = os.path.join(chapters_dir, "img")
-CSS_DIR = os.path.join(chapters_dir, "css")
+IMG_DIR = os.path.join(chapters_dir, ".bookmaker/img")
+CSS_DIR = os.path.join(chapters_dir, ".bookmaker/css")
 
 
 
