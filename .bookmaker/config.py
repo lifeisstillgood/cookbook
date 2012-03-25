@@ -60,9 +60,9 @@ PATH_FROM_DOCROOT = HTMLROOT
 DEPLOY_HTML_ROOT = HTML_DEPLOY_DIR
 
 ### setting front page
-frontpage_list_articles =  ["Attitude/whatswrongwithagile.chp",
-    "Attitude/ibmadverts.chp", "SoHoFromScratch/time.chp",
-    "Attitude/business_case.chp"]
+frontpage_list_articles =  ["philosophy/topic.rst",
+    "philosophy/ibmadverts.chp", "SoHoFromScratch/time.chp",
+    "philosophy/business_case.chp"]
 
 
 
@@ -70,7 +70,7 @@ logfilepath = os.path.join(FULLROOTPATH, 'log.log')
 
 ###
 incl_file_name = '.ppp_include'
-IGNORE_EXCLUDE = False         # if true put every file into site.  This is set with argument flag to make simple for me to review site.
+IGNORE_EXCLUDE = True         # if true put every file into site.  This is set with argument flag to make simple for me to review site.
 
 latex_dir  = 'simpleITmanager_latex'
 

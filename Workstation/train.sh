@@ -1,2 +1,0 @@
-startxfce4
-
