@@ -151,8 +151,7 @@ The c partition is a sort of whole disk placeholder
 the e partition is usually the point to put /var in system disks and everything for other disks
 the f partition is usually the everything point (/usr) for system disks
 
--B will turn a slice into a bootable slice - by copying the boot code from /boot/boot into the bootsector of the slice being worked on.
-It useful for system disks but this is not a system disk
+-B will turn a slice into a bootable slice - by copying the boot code from /boot/boot into the bootsector of the slice being worked on. It useful for system disks but this is not a system disk
 
 
 ::
@@ -262,7 +261,16 @@ fdisk: Geom not found: "da0"
 
 
 
+Just format a USB Disk for use between BSD and Windows
+------------------------------------------------------
 
+
+http://lists.freebsd.org/pipermail/freebsd-questions/2010-May/215819.html
+http://en.wikipedia.org/wiki/BSD_disklabel
+
+::
+
+   In BSD-derived computer operating systems (including NetBSD, OpenBSD, FreeBSD and DragonFly BSD) and in related operating systems such as SunOS, a disklabel is a record stored on a data storage device such as a hard disk that contains information about the location of the partitions on the disk. Disklabels were introduced in the 4.3BSD-Tahoe release.[1] Disklabels are usually edited using the disklabel utility. In later versions of FreeBSD this was renamed as bsdlabel.
 
 
 

@@ -39,7 +39,7 @@ CSS_DIR = os.path.join(chapters_dir, ".bookmaker/css")
 ### CONSTANTS 
 ## the root that will be added to all (relative?) urls
 HTMLROOT = "/book"
-css_theme = 'theme_sphinx.css' #'cookbook.css'  #set this to the stylesheet we want to use.
+css_theme = 'mikado.css' #'cookbook.css'  #set this to the stylesheet we want to use.
 
 
 
@@ -93,7 +93,7 @@ errors = []
 pdflatex_cmds = ['pdflatex', '--output-directory=%s' % latex_dir, '--interaction=nonstopmode']
 to_latex_cmds   = ['rst2latex.py']
 
-maintmpl = open(os.path.join(TEMPLATE_DIR, 'main.tmpl')).read()
+maintmpl = open(os.path.join(TEMPLATE_DIR, 'bamboo.tmpl')).read()
 rhs_text = open(os.path.join(TEMPLATE_DIR, 'rhs.tmpl')).read() % {'HTML_ROOT': HTMLROOT}
 
 
