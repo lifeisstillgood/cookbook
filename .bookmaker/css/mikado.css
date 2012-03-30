@@ -10,7 +10,7 @@ body
   padding: 0px;
   margin: 0px;
   font-size: .80em;
-  background: #E9E4C7 url(../img/pattern.png);
+  background: #D1B08B url(../img/pattern.png);
   color: #555;}
 
 p
@@ -227,7 +227,7 @@ ul#menu li.tab_selected a:hover, ul#menu li a:hover
   text-align: center; 
   color: #444;}
 
-.alternate_colour{color: #A2AB3B;}
+.alternate_colour{color: #694115;}
 
 .form_settings
 { margin: 15px 0 0 0;}
