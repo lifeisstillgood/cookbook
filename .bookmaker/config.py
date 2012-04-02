@@ -60,7 +60,7 @@ PATH_FROM_DOCROOT = HTMLROOT
 DEPLOY_HTML_ROOT = HTML_DEPLOY_DIR
 
 ### setting front page
-frontpage_list_articles =  ["philosophy/topic.rst",
+frontpage_list_articles =  [
     "philosophy/ibmadverts.chp", "SoHoFromScratch/time.chp",
     "philosophy/business_case.chp"]
 
