@@ -38,7 +38,7 @@ CSS_DIR = os.path.join(chapters_dir, ".bookmaker/css")
 
 ### CONSTANTS 
 ## the root that will be added to all (relative?) urls
-HTMLROOT = "/book"
+HTMLROOT = ''#"/book"
 css_theme = 'mikado.css' #'cookbook.css'  #set this to the stylesheet we want to use.
 
 
