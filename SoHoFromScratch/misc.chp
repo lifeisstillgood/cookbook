@@ -195,10 +195,34 @@ Also interesting is the grep [[:space:]] - but I find '\ ' more readable
 
 Restart networking in FreeBSD
 -----------------------------
+::
+
+ $ /etc/rc.d/netif restart && /etc/rc.d/routing restart
 
 :biblio: href="http://www.cyberciti.biz/tips/freebsd-how-to-start-restart-stop-network-service.html"
 
 
 
- $ /etc/rc.d/netif restart && /etc/rc.d/routing restart
+* More emacs
+
+::
+   
+    find /usr/local/share/emacs/ -iname '*.el'
+
+  Where the 'builtin' files are kept - but cannot see rst.el
+  Thats because rst is now 'builtin' to the emacs, so its supplied compiled, and need search for .elc
+
+
+* Rest mode in emacs
+
+  It has a really horrible highlight the text of each header.  With a dark background its distracting and 
+  unreadable.  SO we get rid of it.
+
+  in .emacs file ::
+ 
+     '(rst-level-face-base-light 0)
+
+
+
+
 
