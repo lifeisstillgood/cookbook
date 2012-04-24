@@ -76,6 +76,21 @@ The TrueType fonts look better.
     emacs*pointerColor: Orchid
     emacs*cursorColor: Orchid
     emacs*bitmapIcon: on
-#    emacs*font: fixed
+    #    emacs*font: fixed
     emacs.geometry: 80x25
     emacs*font: -adobe-courier-medium-r-*-*-18-*-*-*-*-*-iso8859-1
+
+
+LSColours
+=========
+
+When we run :file:ls we often find that the colours used are suboptimal. Wew can fix this with a text string passed to the ENVIRONMENT
+so the following is in my bash_profile::
+
+    CLICOLOR=1; export CLICOLOR
+    LSCOLORS='gxfxcxdxbxegedabagacad'; export LSCOLORS
+
+This is a set of 11 FB pairs - foreground and background. The first pair determines how to show directories, so this is foregreound colour of cyan
+and a background of default.
+
+cf: http://plug-and-pray.blogspot.co.uk/2008/02/lscolors.html 
