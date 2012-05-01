@@ -94,3 +94,20 @@ This is a set of 11 FB pairs - foreground and background. The first pair determi
 and a background of default.
 
 cf: http://plug-and-pray.blogspot.co.uk/2008/02/lscolors.html 
+
+
+Other colours
+
+http://stackoverflow.com/questions/63950/how-to-make-emacs-terminal-colors-the-same-as-emacs-gui-colors
+
+export TERM=xterm-256color in .bash_profile
+
+
+keychain
+
+http://www.gentoo.org/doc/en/keychain-guide.xml
+I use this as form of ssh-agent
+How to wuse better gpg 
+see my bash_profile::
+
+ eval `keychain -q --eval id_rsa mikado passtest`

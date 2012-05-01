@@ -115,10 +115,29 @@ readable without altering the docstrings.
 Finally we can add any *.rst file we like as an explanation. intro.rst is
 usually a good idea.
 
+Roles
+-----
+
+We can essentially force any CSS class to be applied to a piece of text, by declaring a new role
+
+::
+
+   .. role:: myrole(emphasis)
+
+then using it
+
+   this is some :myrole:`text`
+
+In sphinx they have created several roles for decorating things like functions, methods etc.
+
+http://sphinx.pocoo.org/domains.html
 
 TBD
 ---
 
 * using intersphinx
 * viewcode
+* custom roles - :rfc: http://www.doughellmann.com/articles/how-tos/sphinx-custom-roles/index.html
+
+
 

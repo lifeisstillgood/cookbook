@@ -246,11 +246,13 @@ Getting TeX onto your systems is a RRPITA. Honest.
 
 * Getting TexLive
 
-wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-tar -zxf xxx
-cd /usr/ports/ftp/wget; make install clean
-install-tl -gui wizard 
-Choose install 
+::
+
+  wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  tar -zxf xxx
+  cd /usr/ports/ftp/wget; make install clean
+  install-tl -gui wizard 
+  Choose install 
 
 Post-install: setting the PATH
 
