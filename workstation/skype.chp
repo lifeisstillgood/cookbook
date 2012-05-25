@@ -1,0 +1,74 @@
+===========================================
+Using Skype with Python, dbus and Skype API
+===========================================
+
+I have to use Skype - I need to talk to people around the globe, and 
+paying international call rates is crazy.  But most people don't do XMPP and SIP and carefully configure your own VOIP client.  Just download Skype and get on with it.
+
+But....
+
+1. I cannot use Skype on FreeBSD
+2. I would like to co-ordinate my contacts (currently on Google)
+   between iPhone and laptop and ...
+3. I want to play.
+
+tl;dr
+=====
+
+::
+
+   import dbus
+   session_bus = dbus.SessionBus()
+   obj = session_bus.get_object('com.Skype.API', '/com/Skype')
+
+   >>> obj.Invoke('NAME pbrian')
+   dbus.String(u'OK')
+   >>> obj.Invoke('PROTOCOL 7')
+   dbus.String(u'PROTOCOL 7')
+   >>> obj.Invoke('CALL +447540456115')
+   dbus.String(u'CALL 2472 STATUS UNPLACED')
+   ...  and the call is made, the little dialer app apears etc etc
+
+
+Skype API
+=========
+
+http://developer.skype.com/public-api-reference
+
+We need to send three things to Skype::
+
+  NAME <appname>
+  PROTOCOL <x> 
+  <command> <args>
+  
+  NAME myapp
+  PROTOCOL 7
+  CALL +44800118118
+
+
+Dbus
+====
+
+dbus is the intra-application system message bus for Xorg.
+It allows one application in X to talk to another, it has been around long enough that *everything* supports it.
+
+So lets try connecting to a Skype instance with qdbus::
+
+  qdbus --literal com.Skype.API /com/Skype com.Skype.API.Invoke "NAME Paul"
+
+Yay that works.  Now lets make a call.
+
+  
+   qdbus --literal com.Skype.API /com/Skype com.Skype.API.Invoke "CALL +4412345"
+   ERROR 68
+
+Errr, I need some way of keeping the connection between telling skype I am app pbrian, and what protocol to use, and the command.
+
+My dbus-fu is non-existent so this is a head scratcher - we can try dbus-send the built in program.  But instead lets let python-dbus take the heavy load.
+
+
+python-dbus
+===========
+
+Please see github.com/lifeisstillgood/pyskype
+
