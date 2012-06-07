@@ -60,9 +60,10 @@ But instead we are being hopefully a little cleaner.  OK ::
 Colours under Bash
 ------------------
 
-Oh yes, please.
-Just type ls -G (or like above, alias it.)
-This is great, right up to the point that the cool green on black screen you have tries to show you all your directories in a dark blue.  I know I am getting old but taht is unreadable.
+Oh yes, please.  Just type ls -G (or like above, alias it.)  This is
+great, right up to the point that the cool green on black screen you
+have tries to show you all your directories in a dark blue.  I know I
+am getting old but taht is unreadable.
 
 So ...
 
@@ -72,14 +73,60 @@ in ~/.bash_profile::
   CLICOLOR=1; export CLICOLOR
   LSCOLORS='gxfxcxdxbxegedabagacad'; export LSCOLORS
 
-CLICOLOR is the equivalent of ls -G but always set.
-LSCOLORS is a string of 11 pairs, so gx is foreground-magenta, background-default, and the first pair is how to display a directory in ls (hence LSCOLORS).  See the man page for details, but suffice to say gx gives me readble directory names now.
+CLICOLOR is the equivalent of ls -G but always set.  
+LSCOLORS is a
+string of 11 pairs, so gx is foreground-magenta, background-default,
+and the first pair is how to display a directory in ls (hence
+LSCOLORS).  See the man page for details, but suffice to say gx gives
+me readble directory names now.
 
 Note that in Linux, the environment variable is LS_COLORS, and its 'ls --colors'.  However this is BSD world (mac included!).
 
+Escape sequences etc etc
 
-:biblio: http://www.bigsoft.co.uk/blog/index.php/2008/04/11/configuring-ls_colors
+Here is a PS1 setting::
 
+ export PS1="\[\033[0;36m\][\u@\h:\W]$\[\033[0m\] "
+
+ESC is ANSI 27
+\033 is the octal representation of ESC
+\0x1B is HEX
+\e is whatever
+
+We want this *not* to be interpreted by shell so ::
+
+  echo "\033[H\033[2J"
+
+will not work.  But::
+
+  printf "\033[H\033[2J"
+
+will (its clear screen btw).::
+
+  tput cl 
+
+  tput cl | less 
+
+tput is the command to execute escape sequences. DOnt worry.
+
+
+So we can look up escape sequences in tables (wikiepdia) and build our own
+
+::
+
+  "\[\033[0;36m\][\u@\h:\W]$\[\033[0m\] "
+
+  leftsquarebracket, Escape code (^[), blue colour, username@host:pwd$ reset to defaults/
+    
+  gives:
+
+  [pbrian@hadrian:pbrian]$ 
+
+  
+
+
+
+:biblio: http://www.bigsoft.co.uk/blog/index.php/2008/04/11/configuring-ls_colors  http://unix.stackexchange.com/questions/2897/clicolor-and-ls-colors-in-bash
 
 Temperature
 -----------
