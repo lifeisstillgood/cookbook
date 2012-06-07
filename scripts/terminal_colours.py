@@ -38,12 +38,16 @@ CLR_BGLG = 47 # gray background
 CLR_BGDG = 100# dark-gray background
 
 def colorize(txt, color):
-    colored = '\033[1;%dm%s\033[1;m' % (color, txt)
+    colored = '\033[1;%dm%s\033[1;m - ^[1;%s' % (color, txt, color)
+    colored += "\n" + '\033[0;%dm%s\033[1;m - ^[0;%s' % (color, txt, color)
     return colored
 
 c=colorize
 
-print c('Thin White', CLR_THIN)
+import os
+print os.environ['LSCOLORS']
+
+print c('Thin White (default in LSCOLORS)', CLR_THIN)
 print c('Thick White', CLR_THIC)
 print c('Thin Gray', CLR_THGR)
 print c('Underline', CLR_UNLI)
