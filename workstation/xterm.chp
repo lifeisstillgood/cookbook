@@ -111,3 +111,8 @@ How to wuse better gpg
 see my bash_profile::
 
  eval `keychain -q --eval id_rsa mikado passtest`
+
+
+See a ssh fingerprint
+
+  ssh-keygen -l -f ./id_rsa
